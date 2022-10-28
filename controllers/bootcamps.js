@@ -32,6 +32,7 @@ exports.updateBootcamp = async (req, res, next) => {
     new: true,
     runValidators: true,
   })
+
   res.status(200).json({
     success: true,
     data: bootcamp,
