@@ -6,8 +6,10 @@ const morgan = require('morgan')
 dotenv.config({ path: './config/config.env' })
 const connectDB = require('./config/db')
 const colors = require('colors')
+const errorHandler = require('./middleware/error')
 
 const bootcamps = require('./routes/bootcamps')
+const users = require('./routes/users')
 
 connectDB()
 
@@ -22,6 +24,9 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount routes
 app.use('/bootcamps', bootcamps)
+app.use('/users', users)
+
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 
