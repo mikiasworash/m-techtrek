@@ -1,0 +1,11 @@
+.passwordInputDiv {
+  position: relative;
+}
+
+.showPassword {
+  cursor: pointer;
+  position: absolute;
+  top: -4%;
+  right: 1%;
+  padding: 1rem;
+}

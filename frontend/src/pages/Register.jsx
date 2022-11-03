@@ -1,67 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import visibilityIcon from '../components/layout/assets/visibilityIcon.svg'
 
 function Register() {
-  const [bootcamps, setBootcamps] = useState([])
-  const [bootcamp, setBootcamp] = useState([])
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  })
+  const { name, email, password, confirmPassword } = formData
 
-  const [bootcampname, setBootcampname] = useState('')
-  const [description, setDescription] = useState('')
-  const [website, setWebsite] = useState('')
-
-  const getBootcamps = (e) => {
-    e.preventDefault()
-    fetch('/bootcamps')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        setBootcamps(data.data)
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
-  }
-
-  const getBootcamp = (e) => {
-    e.preventDefault()
-    fetch('bootcamps/635a3e4548b8ddd421c65421')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        setBootcamp(data.data)
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
-  }
-
-  const createBootcamp = (e) => {
-    e.preventDefault()
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0MiIsImlhdCI6MTY2NjYxMjc0NCwiZXhwIjoxNjY5MjA0NzQ0fQ.kafabY2voGSRQwcV36ugPz8xZxiyCTGXU1eYBeF86uY'
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        name: bootcampname,
-        description: description,
-        website: website,
-      }),
-    }
-    fetch('/bootcamps', requestOptions)
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((err) => {
-        console.log(err.message)
-      })
-  }
+  const [btnDisabled, setBtnDisabled] = useState(true)
 
   const createUser = (e) => {
     e.preventDefault()
@@ -69,153 +23,116 @@ function Register() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: 'Mikias Worash',
-        email: 'mikias@gmail.com',
-        password: '123456',
+        name: name,
+        email: email,
+        password: password,
         role: 'user',
       }),
     }
-    fetch('auth/register', requestOptions)
+    fetch('users', requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        data.success
+          ? toast.success('User Registered!')
+          : toast.error(data.error)
+        console.log(data)
+      })
       .catch((err) => {
         console.log(err.message)
+        toast.error('Something went wrong!')
       })
   }
 
   const handleTextChange = (e) => {
-    if (e.target.id === 'uname') {
-      setName(e.target.value)
-    } else if (e.target.id === 'uemail') {
-      setEmail(e.target.value)
-    } else if (e.target.id === 'upass') {
-      setPassword(e.target.value)
-    } else if (e.target.id === 'bcname') {
-      setBootcampname(e.target.value)
-    } else if (e.target.id === 'bcdesc') {
-      setDescription(e.target.value)
-    } else if (e.target.id === 'bcws') {
-      setWebsite(e.target.value)
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }))
+
+    if (password && password === confirmPassword) {
+      setBtnDisabled(false)
+      console.log(password, confirmPassword)
+    }
+    if (password !== confirmPassword) {
+      setBtnDisabled(true)
     }
   }
+
   return (
     <div className="bg-purple">
-      <div>
-        <button onClick={getBootcamps} className="btn">
-          Get bootcamps
-        </button>
-      </div>
-      <form>
+      <form onSubmit={createUser} className="grid place-items-center gap-4">
         <div className="form-control w-full max-w-xs">
           <label className="label">
-            <span className="label-text">
-              What is the name of bootcamp you want to find?
-            </span>
+            <span className="label-text">Name *</span>
           </label>
           <input
             onChange={handleTextChange}
             type="text"
-            placeholder="Type here"
             className="input input-bordered w-full max-w-xs"
-            value={bootcampname}
-            id="bcname"
-          />
-        </div>
-        <button onClick={getBootcamp} className="btn">
-          Get a single bootcamp
-        </button>
-      </form>
-      <form onSubmit={createBootcamp}>
-        <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text">What is your bootcamp's name?</span>
-          </label>
-          <input
-            onChange={handleTextChange}
-            type="text"
-            placeholder="Type here"
-            className="input input-bordered w-full max-w-xs"
-            value={bootcampname}
-            id="bcname"
+            value={name}
+            id="name"
           />
         </div>
 
         <div className="form-control w-full max-w-xs">
           <label className="label">
-            <span className="label-text">
-              What is your bootcamp's description?
-            </span>
+            <span className="label-text">Email *</span>
           </label>
           <input
             onChange={handleTextChange}
             type="text"
-            placeholder="Type here"
             className="input input-bordered w-full max-w-xs"
-            value={description}
-            id="bcdesc"
+            value={email}
+            id="email"
           />
         </div>
 
         <div className="form-control w-full max-w-xs">
           <label className="label">
-            <span className="label-text">What is your bootcamp's website?</span>
+            <span className="label-text">Password *</span>
           </label>
-          <input
-            onChange={handleTextChange}
-            type="text"
-            placeholder="Type here"
-            className="input input-bordered w-full max-w-xs"
-            value={website}
-            id="bcws"
-          />
+          <div className="passwordInputDiv">
+            <input
+              onChange={handleTextChange}
+              type={showPassword ? 'text' : 'password'}
+              className="input input-bordered w-full max-w-xs"
+              value={password}
+              id="password"
+            />
+            <img
+              src={visibilityIcon}
+              alt="show password"
+              className="showPassword"
+              onClick={() => setShowPassword((prevState) => !prevState)}
+            />
+          </div>
         </div>
 
-        <button type="submit" className="btn">
-          Create a new bootcamp
-        </button>
-      </form>
+        <div className="form-control w-full max-w-xs">
+          <label className="label">
+            <span className="label-text">Confirm Password *</span>
+          </label>
+          <div className="passwordInputDiv">
+            <input
+              onChange={handleTextChange}
+              type={showConfirmPassword ? 'text' : 'password'}
+              className="input input-bordered w-full max-w-xs"
+              value={confirmPassword}
+              id="confirmPassword"
+            />
+            <img
+              src={visibilityIcon}
+              alt="show password"
+              className="showPassword"
+              onClick={() => setShowConfirmPassword((prevState) => !prevState)}
+            />
+          </div>
+        </div>
 
-      <form onSubmit={createUser}>
-        <input
-          onChange={handleTextChange}
-          type="text"
-          placeholder="name"
-          value={name}
-          id="uname"
-        />
-        <input
-          onChange={handleTextChange}
-          type="email"
-          placeholder="email"
-          value={email}
-          id="uemail"
-        />
-        <input
-          onChange={handleTextChange}
-          type="password"
-          placeholder="password"
-          value={password}
-          id="upass"
-        />
-        <button type="submit" className="btn mx-auto">
-          Create a new user
+        <button type="submit" className="btn glass" disabled={btnDisabled}>
+          Register
         </button>
       </form>
-
-      {bootcamps.map((bootcamp) => (
-        <div key={bootcamp.id}>
-          <div>{bootcamp.name}</div>
-          <div>{bootcamp.description}</div>
-          <div>{bootcamp.website}</div>
-        </div>
-      ))}
-
-      {
-        <div>
-          <div>{bootcamp.name}</div>
-          <div>{bootcamp.website}</div>
-        </div>
-      }
     </div>
   )
 }
