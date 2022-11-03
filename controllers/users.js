@@ -3,7 +3,7 @@ const ErrorResponse = require('../utils/errorResponse')
 const User = require('../models/User')
 
 // @desc    Get all users
-// @route   GET /api/v1/auth/users
+// @route   GET /auth/users
 // @access  Private/Admin
 exports.getUsers = asyncHandler(async (req, res, next) => {
   const users = await User.find()
@@ -15,7 +15,7 @@ exports.getUsers = asyncHandler(async (req, res, next) => {
 })
 
 // @desc    Get a single user
-// @route   GET /api/v1/auth/users/:id
+// @route   GET /auth/users/:id
 // @access  Private/Admin
 exports.getUser = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.params.id)
@@ -27,7 +27,7 @@ exports.getUser = asyncHandler(async (req, res, next) => {
 })
 
 // @desc    Create a user
-// @route   POST /api/v1/auth/users
+// @route   POST /auth/users
 // @access  Private/Admin
 exports.createUser = asyncHandler(async (req, res, next) => {
   const user = await User.create(req.body)
@@ -39,7 +39,7 @@ exports.createUser = asyncHandler(async (req, res, next) => {
 })
 
 // @desc    Update a user
-// @route   PUT /api/v1/auth/users/:id
+// @route   PUT /auth/users/:id
 // @access  Private/Admin
 exports.updateUser = asyncHandler(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req.params.id, req.body, {
@@ -54,7 +54,7 @@ exports.updateUser = asyncHandler(async (req, res, next) => {
 })
 
 // @desc    Delete a user
-// @route   DELETE /api/v1/auth/users/:id
+// @route   DELETE /auth/users/:id
 // @access  Private/Admin
 exports.deleteUser = asyncHandler(async (req, res, next) => {
   await User.findByIdAndDelete(req.params.id)

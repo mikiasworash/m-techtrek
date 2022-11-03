@@ -1,9 +1,12 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import BootcampContext from '../context/BootcampContext'
 import visibilityIcon from '../components/layout/assets/visibilityIcon.svg'
 
 function Register() {
+  const { logIn } = useContext(BootcampContext)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
@@ -15,7 +18,7 @@ function Register() {
   })
   const { name, email, password, confirmPassword } = formData
 
-  const [btnDisabled, setBtnDisabled] = useState(true)
+  const navigate = useNavigate()
 
   const createUser = (e) => {
     e.preventDefault()
@@ -23,18 +26,23 @@ function Register() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
+        name,
+        email,
+        password,
+        confirmPassword,
         role: 'user',
       }),
     }
-    fetch('users', requestOptions)
+    fetch('auth/register', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         data.success
           ? toast.success('User Registered!')
           : toast.error(data.error)
+        if (data.success) {
+          logIn()
+          navigate('/')
+        }
         console.log(data)
       })
       .catch((err) => {
@@ -43,19 +51,11 @@ function Register() {
       })
   }
 
-  const handleTextChange = (e) => {
+  const handleChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }))
-
-    if (password && password === confirmPassword) {
-      setBtnDisabled(false)
-      console.log(password, confirmPassword)
-    }
-    if (password !== confirmPassword) {
-      setBtnDisabled(true)
-    }
   }
 
   return (
@@ -66,7 +66,7 @@ function Register() {
             <span className="label-text">Name *</span>
           </label>
           <input
-            onChange={handleTextChange}
+            onChange={handleChange}
             type="text"
             className="input input-bordered w-full max-w-xs"
             value={name}
@@ -79,7 +79,7 @@ function Register() {
             <span className="label-text">Email *</span>
           </label>
           <input
-            onChange={handleTextChange}
+            onChange={handleChange}
             type="text"
             className="input input-bordered w-full max-w-xs"
             value={email}
@@ -93,7 +93,7 @@ function Register() {
           </label>
           <div className="passwordInputDiv">
             <input
-              onChange={handleTextChange}
+              onChange={handleChange}
               type={showPassword ? 'text' : 'password'}
               className="input input-bordered w-full max-w-xs"
               value={password}
@@ -114,7 +114,7 @@ function Register() {
           </label>
           <div className="passwordInputDiv">
             <input
-              onChange={handleTextChange}
+              onChange={handleChange}
               type={showConfirmPassword ? 'text' : 'password'}
               className="input input-bordered w-full max-w-xs"
               value={confirmPassword}
@@ -129,7 +129,7 @@ function Register() {
           </div>
         </div>
 
-        <button type="submit" className="btn glass" disabled={btnDisabled}>
+        <button type="submit" className="btn glass">
           Register
         </button>
       </form>
