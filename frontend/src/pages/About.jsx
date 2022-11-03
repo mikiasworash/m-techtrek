@@ -3,7 +3,7 @@ import React from 'react'
 function About() {
   return (
     <div className="grid place-items-center gap-6">
-      <h1 className="text-6xl mb-4">E-Learning Platform</h1>
+      <h1 className="text-5xl mb-4">E-Learning Platform</h1>
       <p className="mb-4 text-2xl font-light">
         A bootcamps directory where users can search and register for courses.
       </p>
