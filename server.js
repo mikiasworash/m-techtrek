@@ -6,10 +6,12 @@ const morgan = require('morgan')
 dotenv.config({ path: './config/config.env' })
 const connectDB = require('./config/db')
 const colors = require('colors')
+const cookieParser = require('cookie-parser')
 const errorHandler = require('./middleware/error')
 
 const bootcamps = require('./routes/bootcamps')
 const users = require('./routes/users')
+const auth = require('./routes/auth')
 
 connectDB()
 
@@ -18,6 +20,9 @@ const app = express()
 // Body parser
 app.use(express.json())
 
+// Cookie parser
+app.use(cookieParser())
+
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
@@ -25,6 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 // Mount routes
 app.use('/bootcamps', bootcamps)
 app.use('/users', users)
+app.use('/auth', auth)
 
 app.use(errorHandler)
 

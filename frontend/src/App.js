@@ -10,11 +10,13 @@ import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
+import Profile from './pages/Profile'
 // import Alert from './components/layout/Alert'
+import { BootcampProvider } from './context/BootcampContext'
 
 function App() {
   return (
-    <>
+    <BootcampProvider>
       <Router>
         <div className="flex flex-col justify-between h-screen">
           <Navbar />
@@ -26,6 +28,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/notfound" element={<NotFound />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
@@ -35,7 +38,7 @@ function App() {
         </div>
       </Router>
       <ToastContainer />
-    </>
+    </BootcampProvider>
   )
 }
 
