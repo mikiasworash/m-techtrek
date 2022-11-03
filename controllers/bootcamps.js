@@ -1,3 +1,5 @@
+const asyncHandler = require('../middleware/async')
+const errorResponse = require('../utils/errorResponse')
 const Bootcamp = require('../models/Bootcamp')
 
 exports.getBootcamps = async (req, res, next) => {
@@ -9,14 +11,20 @@ exports.getBootcamps = async (req, res, next) => {
   })
 }
 
-exports.getBootcamp = async (req, res, next) => {
+exports.getBootcamp = asyncHandler(async (req, res, next) => {
   const bootcamp = await Bootcamp.findById(req.params.id)
 
-  res.status(200).json({
-    success: true,
-    data: bootcamp,
-  })
-}
+  if (!bootcamp) {
+    next(
+      new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404)
+    )
+  } else {
+    res.status(200).json({
+      success: true,
+      data: bootcamp,
+    })
+  }
+})
 
 exports.createBootcamp = async (req, res, next) => {
   const bootcamp = await Bootcamp.create(req.body)
