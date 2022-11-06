@@ -129,7 +129,7 @@ function Register() {
           </div>
         </div>
 
-        <button type="submit" className="btn glass">
+        <button type="submit" className="btn">
           Register
         </button>
       </form>
