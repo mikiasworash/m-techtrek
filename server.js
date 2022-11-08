@@ -12,6 +12,7 @@ const errorHandler = require('./middleware/error')
 const bootcamps = require('./routes/bootcamps')
 const users = require('./routes/users')
 const auth = require('./routes/auth')
+const courses = require('./routes/courses')
 
 connectDB()
 
@@ -31,6 +32,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/bootcamps', bootcamps)
 app.use('/users', users)
 app.use('/auth', auth)
+app.use('/courses', courses)
 
 app.use(errorHandler)
 
