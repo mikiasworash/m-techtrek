@@ -6,12 +6,7 @@ const User = require('../models/User')
 // @route   GET /auth/users
 // @access  Private/Admin
 exports.getUsers = asyncHandler(async (req, res, next) => {
-  const users = await User.find()
-
-  res.status(200).json({
-    success: true,
-    data: users,
-  })
+  res.status(200).json(res.advancedResults)
 })
 
 // @desc    Get a single user
