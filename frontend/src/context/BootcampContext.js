@@ -5,9 +5,25 @@ const BootcampContext = createContext()
 export const BootcampProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false)
 
-  // login
+  const [alertData, setAlertData] = useState({
+    type: '',
+    msg: '',
+  })
+
+  // set login true
   const logIn = async () => {
     setLoggedIn(true)
+  }
+
+  // set an alert
+  const setAlert = (msg, type) => {
+    setAlertData((prevState) => ({
+      ...prevState,
+      type,
+      msg,
+    }))
+
+    setTimeout(() => setAlertData({ type: '', msg: '' }), 3000)
   }
 
   return (
@@ -15,6 +31,8 @@ export const BootcampProvider = ({ children }) => {
       value={{
         loggedIn,
         logIn,
+        alertData,
+        setAlert,
       }}
     >
       {children}

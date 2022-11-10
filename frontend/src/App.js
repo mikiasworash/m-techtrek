@@ -11,7 +11,7 @@ import Footer from './components/layout/Footer'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
 import Profile from './pages/Profile'
-// import Alert from './components/layout/Alert'
+import Alert from './components/layout/Alert'
 import { BootcampProvider } from './context/BootcampContext'
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
           <Navbar />
 
           <main className="container mx-auto px-3 pb-12">
-            {/* <Alert /> */}
+            <Alert />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />

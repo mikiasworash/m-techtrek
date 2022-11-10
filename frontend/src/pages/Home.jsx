@@ -1,10 +1,10 @@
 // import UserResults from '../components/users/UserResults'
-// import UserSearch from '../components/users/UserSearch'
+import CourseSearch from '../components/courses/CourseSearch'
 
 function Home() {
   return (
     <>
-      <h1>Home page</h1>
+      <CourseSearch />
     </>
   )
 }

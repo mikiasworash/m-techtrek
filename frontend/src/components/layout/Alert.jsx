@@ -1,13 +1,13 @@
-import { useContext } from "react";
-import AlertContext from "../../context/alert/AlertContext";
+import { useContext } from 'react'
+import BootcampContext from '../../context/BootcampContext'
 
 function Alert() {
-  const { alert } = useContext(AlertContext);
+  const { alertData } = useContext(BootcampContext)
 
   return (
-    alert != null && (
-      <p className="flex items-start mb-4 space-x-2">
-        {alert.type === "error" && (
+    alertData != null && (
+      <div className="flex items-start mb-4 space-x-2">
+        {alertData.type === 'error' && (
           <svg
             fill="none"
             viewBox="0 0 24 24"
@@ -23,11 +23,11 @@ function Alert() {
           </svg>
         )}
         <p className="flex-1 text-base font-semibold leading-7 text-white">
-          <strong>{alert.msg}</strong>
+          <strong>{alertData.msg}</strong>
         </p>
-      </p>
+      </div>
     )
-  );
+  )
 }
 
-export default Alert;
+export default Alert
