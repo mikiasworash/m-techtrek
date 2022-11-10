@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import BootcampContext from '../../context/BootcampContext'
+import CourseContext from '../../context/CourseContext'
 
 function Alert() {
-  const { alertData } = useContext(BootcampContext)
+  const { alertData } = useContext(CourseContext)
 
   return (
     alertData != null && (

@@ -9,7 +9,9 @@ const Bootcamp = require('../models/Bootcamp')
 // @access  Public
 exports.getCourses = asyncHandler(async (req, res, next) => {
   if (req.params.bootcampId) {
-    const courses = await Course.find({ bootcamp: req.params.bootcampId })
+    const courses = await Course.find({
+      bootcamp: req.params.bootcampId,
+    })
 
     return res.status(200).json({
       success: true,
@@ -18,6 +20,39 @@ exports.getCourses = asyncHandler(async (req, res, next) => {
     })
   } else {
     res.status(200).json(res.advancedResults)
+  }
+})
+
+// @desc    Get courses
+// @route   GET /courses/:courseTitle
+// @access  Public
+exports.getCoursesByTitle = asyncHandler(async (req, res, next) => {
+  // Find all course the start with the sent param (title)
+  // const courses = await Course.find({ title: {$regex : "^" + req.params.courseTitle} })
+
+  // Find all cousrse that contain the sent param (title)
+  // const regex = new RegExp(req.params.courseTitle, 'i')
+  const courses = await Course.find({
+    // title: {$regex : regex}
+    title: { $regex: req.params.courseTitle, $options: 'i' },
+  }).populate({
+    path: 'bootcamp',
+    select: 'name',
+  })
+
+  if (courses.length === 0) {
+    return next(
+      new ErrorResponse(
+        `Course not found with the title of '${req.params.courseTitle}' `,
+        404
+      )
+    )
+  } else {
+    return res.status(200).json({
+      success: true,
+      count: courses.length,
+      data: courses,
+    })
   }
 })
 

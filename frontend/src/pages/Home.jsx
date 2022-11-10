@@ -1,10 +1,11 @@
-// import UserResults from '../components/users/UserResults'
+import CourseResults from '../components/courses/CourseResults'
 import CourseSearch from '../components/courses/CourseSearch'
 
 function Home() {
   return (
     <>
       <CourseSearch />
+      <CourseResults />
     </>
   )
 }

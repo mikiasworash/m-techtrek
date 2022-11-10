@@ -1,25 +1,27 @@
-import { useState, useContext } from 'react'
-// import CourseContex from '../../context/CourseContex'
-import BootcampContext from '../../context/BootcampContext'
+import { useContext } from 'react'
+import CourseContex from '../../context/CourseContext'
 
 function CourseSearch() {
-  const [text, setText] = useState('')
-
-  //   const { courses, searchCourses, clearResults } = useContext(CourseContex)
-  const { setAlert } = useContext(BootcampContext)
+  const {
+    courseTitle,
+    setCourseTitle,
+    coursesData,
+    searchCourses,
+    clearResults,
+    setAlert,
+  } = useContext(CourseContex)
 
   const handleChange = (e) => {
-    setText(e.target.value)
+    setCourseTitle(e.target.value)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (text === '') {
-      setAlert('Please enter a course', 'error')
+    if (courseTitle === '') {
+      setAlert('Please enter a course title', 'error')
     } else {
-      //   searchCourses(text)
-      setText('')
+      searchCourses(courseTitle)
     }
   }
 
@@ -33,7 +35,7 @@ function CourseSearch() {
                 type="text"
                 className="w-full pr-40 bg-gray-200 input input-lg text-black"
                 placeholder="Search for courses"
-                value={text}
+                value={courseTitle}
                 onChange={handleChange}
               />
               {/* <button
@@ -65,11 +67,11 @@ function CourseSearch() {
           </div>
         </form>
       </div>
-      {/* {courses.length > 0 && (
+      {coursesData.count > 0 && (
         <div onClick={clearResults}>
           <button className="btn btn-ghost btn-lg">Clear</button>
         </div>
-      )} */}
+      )}
     </div>
   )
 }

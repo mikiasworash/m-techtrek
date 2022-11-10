@@ -13,31 +13,34 @@ import SignIn from './pages/SignIn'
 import Profile from './pages/Profile'
 import Alert from './components/layout/Alert'
 import { BootcampProvider } from './context/BootcampContext'
+import { CourseProvider } from './context/CourseContext'
 
 function App() {
   return (
     <BootcampProvider>
-      <Router>
-        <div className="flex flex-col justify-between h-screen">
-          <Navbar />
+      <CourseProvider>
+        <Router>
+          <div className="flex flex-col justify-between h-screen">
+            <Navbar />
 
-          <main className="container mx-auto px-3 pb-12">
-            <Alert />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/signin" element={<SignIn />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/notfound" element={<NotFound />} />
-              <Route path="/*" element={<NotFound />} />
-            </Routes>
-          </main>
+            <main className="container mx-auto px-3 pb-12">
+              <Alert />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/notfound" element={<NotFound />} />
+                <Route path="/*" element={<NotFound />} />
+              </Routes>
+            </main>
 
-          <Footer />
-        </div>
-      </Router>
-      <ToastContainer />
+            <Footer />
+          </div>
+        </Router>
+        <ToastContainer />
+      </CourseProvider>
     </BootcampProvider>
   )
 }
