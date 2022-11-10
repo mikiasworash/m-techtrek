@@ -29,22 +29,29 @@ function Register() {
         password: password,
       }),
     }
-    fetch('/auth/login', requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        data.success
-          ? toast.success('Successfully Signed In!')
-          : toast.error(data.error)
-        if (data.success) {
-          logIn()
-          navigate('/')
-        }
-        console.log(data)
-      })
-      .catch((err) => {
-        console.log(err.message)
-        toast.error('Something went wrong!')
-      })
+
+    if (!email) {
+      toast.error('Please add an email')
+    } else if (!password) {
+      toast.error('Please add a password')
+    } else {
+      fetch('/auth/login', requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          data.success
+            ? toast.success('Successfully Signed In!')
+            : toast.error(data.error)
+          if (data.success) {
+            logIn()
+            navigate('/')
+          }
+          console.log(data)
+        })
+        .catch((err) => {
+          console.log(err.message)
+          toast.error('Something went wrong!')
+        })
+    }
   }
 
   const handleChange = (e) => {

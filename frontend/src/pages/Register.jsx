@@ -33,22 +33,33 @@ function Register() {
         role: 'user',
       }),
     }
-    fetch('auth/register', requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        data.success
-          ? toast.success('User Registered!')
-          : toast.error(data.error)
-        if (data.success) {
-          logIn()
-          navigate('/')
-        }
-        console.log(data)
-      })
-      .catch((err) => {
-        console.log(err.message)
-        toast.error('Something went wrong!')
-      })
+
+    if (!name) {
+      toast.error('Please add a name')
+    } else if (!email) {
+      toast.error('Please add an email')
+    } else if (!password) {
+      toast.error('Please add a password')
+    } else if (!confirmPassword) {
+      toast.error('Please confirm your password')
+    } else {
+      fetch('auth/register', requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          data.success
+            ? toast.success('User Registered!')
+            : toast.error(data.error)
+          if (data.success) {
+            logIn()
+            navigate('/')
+          }
+          console.log(data)
+        })
+        .catch((err) => {
+          console.log(err.message)
+          toast.error('Something went wrong!')
+        })
+    }
   }
 
   const handleChange = (e) => {
