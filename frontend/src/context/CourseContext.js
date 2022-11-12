@@ -42,6 +42,7 @@ export const CourseProvider = ({ children }) => {
 
   const clearResults = () => {
     setCourseTitle('')
+    setCourses([])
     setCoursesData({
       count: '',
       data: '',
