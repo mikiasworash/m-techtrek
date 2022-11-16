@@ -12,7 +12,7 @@ export const CourseProvider = ({ children }) => {
   const [coursesData, setCoursesData] = useState({
     count: '',
     data: '',
-    succes: null,
+    success: null,
   })
 
   const [alertData, setAlertData] = useState({
@@ -46,7 +46,7 @@ export const CourseProvider = ({ children }) => {
     setCoursesData({
       count: '',
       data: '',
-      succes: null,
+      success: null,
     })
   }
 

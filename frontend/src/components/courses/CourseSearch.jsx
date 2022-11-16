@@ -67,7 +67,7 @@ function CourseSearch() {
           </div>
         </form>
       </div>
-      {coursesData.count > 0 && (
+      {(coursesData.count > 0 || coursesData.success === false) && (
         <div onClick={clearResults}>
           <button className="btn btn-ghost btn-lg">Clear</button>
         </div>
