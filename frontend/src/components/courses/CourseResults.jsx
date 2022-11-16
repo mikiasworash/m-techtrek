@@ -6,18 +6,21 @@ import CourseContext from '../../context/CourseContext'
 function UserResults() {
   const { courses, loading } = useContext(CourseContext)
 
-  // Get initial sample users (testing purpose)
-  // useEffect(() => {
-  //   fetchUsers();
-  // }, []);
-
   return loading ? (
     <Spinner />
+  ) : courses.length === 0 ? (
+    ''
   ) : (
-    <div className="grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
-      {courses.map((course) => (
-        <CourseItem key={course._id} course={course} />
-      ))}
+    <div className="rounded-lg shadow-lg card bg-base-100">
+      <div className="card-body">
+        <h2 className="text-3xl my-4 font-bold card-title">
+          {courses.length}
+          {courses.length > 1 ? ' Courses Found' : ' Course Found'}
+        </h2>
+        {courses.map((course) => (
+          <CourseItem key={course._id} course={course} />
+        ))}
+      </div>
     </div>
   )
 }
