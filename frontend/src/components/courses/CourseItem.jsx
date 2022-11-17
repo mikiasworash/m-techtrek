@@ -7,9 +7,11 @@ import {
 
 import { SiGooglescholar } from 'react-icons/si'
 import { GiLevelEndFlag, GiTeacher } from 'react-icons/gi'
+import { Link } from 'react-router-dom'
 
 function CourseItem({ course }) {
   const {
+    _id,
     title,
     description,
     minimumSkill,
@@ -23,9 +25,9 @@ function CourseItem({ course }) {
     <div className="mb-2 rounded-md card bg-base-200 hover:bg-base-300">
       <div className="card-body">
         <h3 className="mb-2 text-xl font-semibold">
-          <a href="/course" target="_blank" rel="noreferrer">
+          <Link to={`/courses/${_id}`}>
             <FaChalkboardTeacher className="inline mr-1" /> {title}
-          </a>
+          </Link>
         </h3>
         <p className="mb-3">{description}</p>
         <div>

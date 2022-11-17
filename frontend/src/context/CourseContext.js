@@ -8,6 +8,7 @@ export const CourseProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
 
   const [courses, setCourses] = useState([])
+  const [course, setCourse] = useState({})
 
   const [coursesData, setCoursesData] = useState({
     count: '',
@@ -20,6 +21,7 @@ export const CourseProvider = ({ children }) => {
     msg: '',
   })
 
+  // Search for courses
   const searchCourses = (courseTitle) => {
     setLoading(true)
     fetch(`courses/title/${courseTitle}`)
@@ -40,6 +42,19 @@ export const CourseProvider = ({ children }) => {
       })
   }
 
+  // Get a single course
+  const getCourse = (id) => {
+    fetch(`${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        data.success ? setCourse(data.data) : console.log(data.error)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+  }
+
+  // Clear search results
   const clearResults = () => {
     setCourseTitle('')
     setCourses([])
@@ -48,6 +63,7 @@ export const CourseProvider = ({ children }) => {
       data: '',
       success: null,
     })
+    setLoading(false)
   }
 
   // set an alert
@@ -73,6 +89,8 @@ export const CourseProvider = ({ children }) => {
         alertData,
         setAlert,
         loading,
+        getCourse,
+        course,
       }}
     >
       {children}
