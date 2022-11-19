@@ -37,7 +37,7 @@ exports.getCoursesByTitle = asyncHandler(async (req, res, next) => {
     title: { $regex: req.params.courseTitle, $options: 'i' },
   }).populate({
     path: 'bootcamp',
-    select: 'name',
+    select: 'name website',
   })
 
   if (courses.length === 0) {
