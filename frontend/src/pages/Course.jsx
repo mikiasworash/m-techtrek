@@ -8,7 +8,15 @@ import avatar from '../components/layout/assets/bram-naus-n8Qb1ZAkK88-unsplash.j
 function Course({ id }) {
   const params = useParams()
   const { course, getCourse, loading } = useContext(CourseContext)
-  const { title, description, tuition, bootcamp, weeks, minimumSkill } = course
+  const {
+    title,
+    description,
+    tuition,
+    bootcamp: { name, website } = { name: '', website: '' },
+    weeks,
+    minimumSkill,
+    scholarshipAvailable,
+  } = course
   useEffect(() => {
     getCourse(params.id)
     // setTimeout(() => getCourse(params.id), 3000)
@@ -37,24 +45,25 @@ function Course({ id }) {
 
           <div className="col-span-2">
             <div className="mb-6">
-              <h1 className="text-3xl card-title">{title}</h1>
-              {/* <p>{bootcamp.name}</p> */}
-              <div className="mt-4 card-actions">
-                {/* <a
-                  href={bootcamp.website}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-outline"
-                >
-                  Visit Bootcamp Website
-                </a> */}
-              </div>
+              <h1 className="text-3xl card-title">
+                {title}
+                {scholarshipAvailable ? (
+                  <div className="mx-1 badge badge-info">Scholarship ✔</div>
+                ) : (
+                  <div className="mx-1 badge badge-info">Scholarship ❌</div>
+                )}
+              </h1>
+
+              <p>{name}</p>
+              <a href={website} target="_blank" rel="noreferrer">
+                {website}
+              </a>
             </div>
 
             <div className="w-full rounded-lg shadow-md bg-base-100 stats">
               {tuition && (
                 <div className="stat">
-                  <div className="stat-title text-md">Tutition Fee</div>
+                  <div className="stat-title text-md">Tuition Fee</div>
                   <div className="text-lg-stat-value">{tuition} Birr</div>
                 </div>
               )}
@@ -66,7 +75,7 @@ function Course({ id }) {
               )}
               {minimumSkill && (
                 <div className="stat">
-                  <div className="stat-title text-md">Skill Level</div>
+                  <div className="stat-title text-md">Level</div>
                   <div className="text-lg-stat-value">
                     {minimumSkill.charAt(0).toUpperCase() +
                       minimumSkill.slice(1)}
