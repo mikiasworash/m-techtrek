@@ -11,7 +11,8 @@ import Footer from './components/layout/Footer'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
 import Profile from './pages/Profile'
-import Course from './pages/Course'
+import FeaturedCourses from './pages/FeaturedCourses'
+import Courses from './pages/Courses'
 import Alert from './components/layout/Alert'
 import { BootcampProvider } from './context/BootcampContext'
 import { CourseProvider } from './context/CourseContext'
@@ -32,7 +33,8 @@ function App() {
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/courses/:id" element={<Course />} />
+                <Route path="/courses/:id" element={<Courses />} />
+                <Route path="/courses" element={<FeaturedCourses />} />
                 <Route path="/notfound" element={<NotFound />} />
                 <Route path="/*" element={<NotFound />} />
               </Routes>
