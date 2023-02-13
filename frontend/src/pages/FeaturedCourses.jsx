@@ -4,11 +4,11 @@ import CourseItem from '../components/courses/CourseItem'
 import CourseContext from '../context/CourseContext'
 
 function UserResults() {
-  const { courses, loading, coursesData, searchCourses } =
-    useContext(CourseContext)
+  const { courses, loading, searchCourses } = useContext(CourseContext)
 
   useEffect(() => {
     searchCourses('dev')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return loading ? (
