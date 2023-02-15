@@ -14,9 +14,15 @@ const users = require('./routes/users')
 const auth = require('./routes/auth')
 const courses = require('./routes/courses')
 
+// to allow request from another domain
+const cors = require('cors')
+
 connectDB()
 
 const app = express()
+
+// enable CORS for all routes
+app.use(cors())
 
 // Body parser
 app.use(express.json())
