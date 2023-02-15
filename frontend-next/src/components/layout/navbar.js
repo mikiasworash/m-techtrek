@@ -1,3 +1,6 @@
+import { FaSchool } from 'react-icons/fa'
+import Link from 'next/link'
+
 export default function Navbar() {
   return (
     <>
@@ -5,9 +8,16 @@ export default function Navbar() {
         {/* Flex Container */}
         <div class="flex items-center justify-between">
           {/*  Logo */}
-          <div class="pt-2">
-            <img src="" alt="m-bootcamp" />
+          <div>
+            {' '}
+            <FaSchool className="inline pr-2 text-3xl" />
+            <Link href={'/'} className="text-lg font-bold align-middle">
+              E-Learning Platform
+            </Link>
           </div>
+          {/* <Link href={'/'} class="pt-2">
+            <img src="" alt="m-bootcamp" />
+          </Link> */}
           {/*  Menu Items*/}
           <div class="hidden md:flex space-x-6">
             <a href="#" class="hover:text-darkGrayishBlue">
@@ -27,13 +37,13 @@ export default function Navbar() {
             </a>
           </div>
           {/* Button  */}
-          <div class="flex space-x-3">
+          <div class="hidden md:flex space-x-3">
             <input
               type="text"
-              class="flex-1 px-4 rounded-full text-center focus:outline-none border-2 border-gray-300"
+              class="flex-1 px-3 rounded-full text-center focus:outline-none border-2 border-gray-300"
               placeholder="Search for Course"
             />
-            <button class="px-6 py-2 text-white rounded-full bg-darkGrayishBlue hover:bg-brightRedLight focus:outline-none">
+            <button class="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none">
               Go
             </button>
           </div>
