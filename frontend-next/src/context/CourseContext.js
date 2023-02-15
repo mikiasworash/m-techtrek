@@ -24,7 +24,7 @@ export const CourseProvider = ({ children }) => {
   // Search for courses
   const searchCourses = (courseTitle) => {
     setLoading(true)
-    fetch(`courses/title/${courseTitle}`)
+    fetch(`http://localhost:5000/courses/title/${courseTitle}`)
       .then((response) => response.json())
       .then((data) => {
         setLoading(false)
