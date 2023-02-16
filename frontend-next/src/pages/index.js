@@ -2,10 +2,11 @@ import Hero from '@/components/hero-section'
 import Features from '@/components/features'
 import CourseResults from '@/components/courses/CourseResults'
 import CourseContext from '@/context/CourseContext'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
+import FeaturedCourses from '@/components/courses/FeaturedCourses'
 
 export default function Home() {
-  const { courses, loading, coursesData } = useContext(CourseContext)
+  const { courses, coursesData } = useContext(CourseContext)
 
   return courses.length > 0 || coursesData.success === false ? (
     <CourseResults />
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <Features />
+      <FeaturedCourses />
     </>
   )
 }

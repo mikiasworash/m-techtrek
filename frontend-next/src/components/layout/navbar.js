@@ -20,7 +20,7 @@ export default function Navbar() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (courseTitle === '') {
+    if (courseTitle === '' && coursesData.success == null) {
       setAlert('Please enter a course title', 'error')
     } else if (coursesData.count > 0 || coursesData.success === false) {
       clearResults()
@@ -43,7 +43,11 @@ export default function Navbar() {
           <div>
             {' '}
             <FaSchool className="inline pr-2 text-3xl" />
-            <Link href={'/'} className="text-lg font-bold align-middle">
+            <Link
+              href={'/'}
+              className="text-lg font-bold align-middle"
+              onClick={clearResults}
+            >
               E-Learning Platform
             </Link>
           </div>
@@ -51,26 +55,29 @@ export default function Navbar() {
             <img src="" alt="m-bootcamp" />
           </Link> */}
           {/*  Menu Items*/}
-          <div className="hidden md:flex space-x-6">
-            <a href="#" className="hover:text-darkGrayishBlue">
+          <div className="hidden lg:flex space-x-6">
+            <a href="#featured-courses" className="hover:text-darkGrayishBlue">
               Courses
             </a>
-            <a href="#" className="hover:text-darkGrayishBlue">
+            <Link href="#" className="hover:text-darkGrayishBlue">
               Profile
-            </a>
-            <a href="#" className="hover:text-darkGrayishBlue">
+            </Link>
+            <Link href="#" className="hover:text-darkGrayishBlue">
               Sign In
-            </a>
-            <a href="#" className="hover:text-darkGrayishBlue">
+            </Link>
+            <Link href="#" className="hover:text-darkGrayishBlue">
               Sign Up
-            </a>
-            <a href="#" className="hover:text-darkGrayishBlue">
-              About Us
-            </a>
+            </Link>
+            <Link href="#" className="hover:text-darkGrayishBlue">
+              About
+            </Link>
+            <Link href="#" className="hover:text-darkGrayishBlue">
+              Contact
+            </Link>
           </div>
           {/* Search Form  */}
           <form onSubmit={handleSubmit}>
-            <div className="hidden md:flex space-x-3">
+            <div className="hidden lg:flex space-x-3">
               <input
                 type="text"
                 className="flex-1 px-3 rounded-full text-center focus:outline-none border-2 border-gray-300"
@@ -93,7 +100,7 @@ export default function Navbar() {
           {/*  Hamburger Icon  */}
           <button
             id="menu-btn"
-            className="block hamburger md:hidden focus:outline-none"
+            className="block hamburger lg:hidden focus:outline-none"
           >
             <span className="hamburger-top"></span>
             <span className="hamburger-middle"></span>
@@ -117,7 +124,7 @@ export default function Navbar() {
 
       {/* Search Form on Mobile View  */}
       <form onSubmit={handleSubmit}>
-        <div className="text-center md:hidden space-x-3">
+        <div className="text-center lg:hidden space-x-3">
           <input
             type="text"
             className="flex-1 px-3 py-2 rounded-full text-center focus:outline-none border-2 border-gray-300"

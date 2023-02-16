@@ -22,9 +22,9 @@ export const CourseProvider = ({ children }) => {
   })
 
   // Search for courses
-  const searchCourses = (courseTitle) => {
+  const searchCourses = async (courseTitle) => {
     setLoading(true)
-    fetch(`http://localhost:5000/courses/title/${courseTitle}`)
+    await fetch(`http://localhost:5000/courses/title/${courseTitle}`)
       .then((response) => response.json())
       .then((data) => {
         setLoading(false)

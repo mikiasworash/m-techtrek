@@ -35,7 +35,6 @@ export default function CourseResults() {
         </h2>
         {courses.map((course) => (
           <CourseItem key={course._id} course={course} />
-          //   <div>{course.title}</div>
         ))}
       </div>
     </div>

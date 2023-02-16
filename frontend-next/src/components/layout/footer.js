@@ -26,23 +26,23 @@ export default function Footer() {
             {/*  Social Links  */}
             <div className="flex justify-center space-x-4">
               {/*  Link 1  */}
-              <a href="#">
+              <a href="https://www.facebook.com" target="_blank">
                 <img src="img/icon-facebook.svg" alt="" className="h-8" />
               </a>
               {/*  Link 2  */}
-              <a href="#">
+              <a href="https://www.youtube.com" target="_blank">
                 <img src="img/icon-youtube.svg" alt="" className="h-8" />
               </a>
               {/*  Link 3  */}
-              <a href="#">
+              <a href="https://www.twitter.com" target="_blank">
                 <img src="img/icon-twitter.svg" alt="" className="h-8" />
               </a>
               {/* Link 4  */}
-              <a href="#">
+              <a href="https://www.pinterest.com" target="_blank">
                 <img src="img/icon-pinterest.svg" alt="" className="h-8" />
               </a>
               {/*  Link 5  */}
-              <a href="#">
+              <a href="https://www.instagram.com" target="_blank">
                 <img src="img/icon-instagram.svg" alt="" className="h-8" />
               </a>
             </div>
@@ -50,26 +50,26 @@ export default function Footer() {
           {/*  List container  */}
           <div className="flex justify-around space-x-32">
             <div className="flex flex-col space-y-3 text-white">
-              <a href="#" className="hover:text-brightRed">
-                Home
-              </a>
-              <a href="#" className="hover:text-brightRed">
+              <a href="#featured-courses" className="hover:text-brightRed">
                 Courses
               </a>
-              <a href="#" className="hover:text-brightRed">
+              <Link href="#" className="hover:text-brightRed">
                 Profile
-              </a>
+              </Link>
+              <Link href="#" className="hover:text-brightRed">
+                Sign In
+              </Link>
             </div>
             <div className="flex flex-col space-y-3 text-white">
-              <a href="#" className="hover:text-brightRed">
-                Sign In
-              </a>
-              <a href="#" className="hover:text-brightRed">
+              <Link href="#" className="hover:text-brightRed">
                 Sign Up
-              </a>
-              <a href="#" className="hover:text-brightRed">
-                About Us
-              </a>
+              </Link>
+              <Link href="#" className="hover:text-brightRed">
+                About
+              </Link>
+              <Link href="#" className="hover:text-brightRed">
+                Contact
+              </Link>
             </div>
           </div>
           {/*  Input container */}
@@ -79,10 +79,10 @@ export default function Footer() {
                 <input
                   type="text"
                   className="flex-1 px-4 text-center rounded-full focus:outline-none"
-                  placeholder="Enter Email for Newsletter"
+                  placeholder="Enter email for newsletter"
                 />
-                <button className="px-6 py-2 text-white rounded-full bg-lightPurplish hover:bg-brightRedLight hover:text-purplish focus:outline-none">
-                  Go
+                <button className="px-6 py-2 text-black rounded-full bg-brightRedLight hover:bg-brightRedSupLight hover:text-purplish focus:outline-none">
+                  Register
                 </button>
               </div>
             </form>
