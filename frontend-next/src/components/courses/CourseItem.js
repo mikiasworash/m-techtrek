@@ -13,7 +13,7 @@ function CourseItem({ course }) {
           <div className="flex flex-col items-center p-12 space-y-2 rounded-lg bg-veryLightGray hover:bg-veryPaleRed">
             <img
               src="img/bram-naus-n8Qb1ZAkK88-unsplash.jpg"
-              class="w-32 -mt-20"
+              className="w-32 -mt-20"
               alt=""
             />
             <h5 className="text-lg font-bold">{title}</h5>

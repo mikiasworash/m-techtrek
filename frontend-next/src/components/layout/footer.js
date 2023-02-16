@@ -20,7 +20,7 @@ export default function Footer() {
                 href={'/'}
                 className="text-white text-lg font-bold align-middle"
               >
-                E-Learning Platform
+                m-bootcamp
               </Link>
             </div>
             {/*  Social Links  */}

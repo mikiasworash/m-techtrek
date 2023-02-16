@@ -48,7 +48,7 @@ export default function Navbar() {
               className="text-lg font-bold align-middle"
               onClick={clearResults}
             >
-              E-Learning Platform
+              m-bootcamp
             </Link>
           </div>
           {/* <Link href={'/'} class="pt-2">
