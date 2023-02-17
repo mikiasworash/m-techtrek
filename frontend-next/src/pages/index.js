@@ -33,5 +33,6 @@ export async function getStaticProps() {
     props: {
       featuredCourses,
     },
+    revalidate: 3600,
   }
 }
