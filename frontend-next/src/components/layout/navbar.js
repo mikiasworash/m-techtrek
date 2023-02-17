@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import CourseContext from '../../context/CourseContext'
 import { FaSchool } from 'react-icons/fa'
 import Link from 'next/link'
@@ -33,6 +33,8 @@ export default function Navbar() {
     clearResults()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const [hamburgerClicked, setHamburgerClicked] = useState(false)
 
   return (
     <>
@@ -100,7 +102,12 @@ export default function Navbar() {
           {/*  Hamburger Icon  */}
           <button
             id="menu-btn"
-            className="block hamburger lg:hidden focus:outline-none"
+            className={
+              hamburgerClicked
+                ? 'block hamburger lg:hidden focus:outline-none open'
+                : 'block hamburger lg:hidden focus:outline-none'
+            }
+            onClick={() => setHamburgerClicked((current) => !current)}
           >
             <span className="hamburger-top"></span>
             <span className="hamburger-middle"></span>
@@ -108,16 +115,20 @@ export default function Navbar() {
           </button>
         </div>
         {/*  Mobile Menu  */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <div
             id="menu"
-            className="absolute flex-col items-center self-end hidden py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
+            className={
+              hamburgerClicked
+                ? 'absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md'
+                : 'absolute hidden flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md'
+            }
           >
-            <a href="#">Pricing</a>
-            <a href="#">Product</a>
-            <a href="#">About Us</a>
-            <a href="#">Careers</a>
-            <a href="#">Community</a>
+            <Link href="#">Courses</Link>
+            <Link href="#">Profile</Link>
+            <Link href="#">Sign In</Link>
+            <Link href="#">Sign Up</Link>
+            <Link href="#">About</Link>
           </div>
         </div>
       </nav>
