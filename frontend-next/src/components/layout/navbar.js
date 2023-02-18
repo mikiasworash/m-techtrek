@@ -1,9 +1,14 @@
 import { useContext, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import CourseContext from '../../context/CourseContext'
 import { FaSchool } from 'react-icons/fa'
 import Link from 'next/link'
+import Alert from './Alert'
 
 export default function Navbar() {
+  const router = useRouter()
+  const currentPath = router.pathname
+
   const {
     courseTitle,
     setCourseTitle,
@@ -21,10 +26,13 @@ export default function Navbar() {
     e.preventDefault()
 
     if (courseTitle === '' && coursesData.success == null) {
-      setAlert('Please enter a course title', 'error')
+      setAlert('Please enter a title', 'error')
     } else if (coursesData.count > 0 || coursesData.success === false) {
       clearResults()
     } else {
+      if (currentPath != '/') {
+        router.push('/')
+      }
       searchCourses(courseTitle)
     }
   }
@@ -53,12 +61,13 @@ export default function Navbar() {
               m-bootcamp
             </Link>
           </div>
-          {/* <Link href={'/'} class="pt-2">
+          {/* Logo Images
+          <Link href={'/'} class="pt-2">
             <img src="" alt="m-bootcamp" />
           </Link> */}
           {/*  Menu Items*/}
           <div className="hidden lg:flex space-x-6">
-            <a href="#featured-courses" className="hover:text-darkGrayishBlue">
+            <a href="/#featured-courses" className="hover:text-darkGrayishBlue">
               Courses
             </a>
             <Link href="#" className="hover:text-darkGrayishBlue">
@@ -80,6 +89,7 @@ export default function Navbar() {
           {/* Search Form  */}
           <form onSubmit={handleSubmit}>
             <div className="hidden lg:flex space-x-3">
+              <Alert />
               <input
                 type="text"
                 className="flex-1 px-3 rounded-full text-center focus:outline-none border-2 border-gray-300"
@@ -120,11 +130,11 @@ export default function Navbar() {
             id="menu"
             className={
               hamburgerClicked
-                ? 'absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md'
-                : 'absolute hidden flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md'
+                ? 'absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md z-50'
+                : 'hidden'
             }
           >
-            <Link href="#">Courses</Link>
+            <Link href="/#featured-courses">Courses</Link>
             <Link href="#">Profile</Link>
             <Link href="#">Sign In</Link>
             <Link href="#">Sign Up</Link>
@@ -155,6 +165,9 @@ export default function Navbar() {
           )}
         </div>
       </form>
+      <div className="max-w-md mx-auto lg:hidden">
+        <Alert />
+      </div>
     </>
   )
 }
