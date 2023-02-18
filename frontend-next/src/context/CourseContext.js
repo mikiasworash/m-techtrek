@@ -43,8 +43,8 @@ export const CourseProvider = ({ children }) => {
   }
 
   // Get a single course
-  const getCourse = (id) => {
-    fetch(`${id}`)
+  const getCourse = async (id) => {
+    await fetch(`http://localhost:5000/courses/${id}`)
       .then((response) => response.json())
       .then((data) => {
         data.success ? setCourse(data.data) : console.log(data.error)

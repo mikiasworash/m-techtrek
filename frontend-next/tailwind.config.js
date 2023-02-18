@@ -20,8 +20,12 @@ module.exports = {
         veryLightGray: 'hsl(0, 0%, 98%)',
         purplish: '#2E1437',
         lightPurplish: '#948E99',
+        greenish: '#38ef7d',
       },
     },
   },
-  plugins: [],
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: [],
+  },
 }
