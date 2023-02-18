@@ -9,11 +9,9 @@ import 'swiper/css/pagination'
 
 export default function FeaturedCourses({ featuredCourses }) {
   return (
-    <div id="featured-courses" className="rounded-lg card bg-base-100">
-      <div className="card-body text-center">
-        <h2 className="text-3xl  mt-16 mb-8 font-bold card-title">
-          Featured Courses
-        </h2>
+    <div id="featured-courses" className="rounded-lg">
+      <div className="text-center">
+        <h2 className="text-3xl  mt-16 mb-8 font-bold">Featured Courses</h2>
         <Swiper
           // install Swiper modules
           modules={[Pagination]}

@@ -27,9 +27,9 @@ export default function CourseResults() {
       ''
     )
   ) : (
-    <div className="rounded-lg card bg-base-100 min-h-screen">
-      <div className="card-body text-center">
-        <h2 className="text-3xl  my-4 mb-8 font-bold card-title">
+    <div className="rounded-lg min-h-screen">
+      <div className="text-center">
+        <h2 className="text-3xl  my-4 mb-8 font-bold">
           {courses.length}
           {courses.length > 1 ? ' results for ' : ' result for '}"{courseTitle}"
         </h2>
