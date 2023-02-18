@@ -6,12 +6,12 @@ function Alert() {
 
   return (
     alertData != null && (
-      <div className="flex items-start mb-4 space-x-2">
+      <div className="flex items-center mb-4">
         {alertData.type === 'error' && (
           <svg
             fill="none"
             viewBox="0 0 24 24"
-            className="w-6 h-6 stroke-current mr-3"
+            className="w-6 h-6 stroke-current mr-3 text-center"
           >
             <path
               strokeLinecap="round"
@@ -22,7 +22,7 @@ function Alert() {
             ></path>
           </svg>
         )}
-        <p className="flex-1 text-base font-semibold leading-7 text-white">
+        <p className="flex-1 font-semibold leading-7 text-black">
           <strong>{alertData.msg}</strong>
         </p>
       </div>

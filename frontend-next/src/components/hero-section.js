@@ -31,7 +31,7 @@ export default function Hero() {
               src={bootcampImage}
               alt="bootcamp img"
               width={680}
-              className="rounded-full mb-24"
+              className="rounded-3xl mb-24"
             />
           </div>
         </div>
