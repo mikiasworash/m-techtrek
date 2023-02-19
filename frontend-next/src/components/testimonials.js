@@ -11,12 +11,12 @@ function Testimonials() {
           What makes out bootcamp special?
         </h2>
         <p class="font-light text-gray-500 mb-4 sm:text-xl">
-          Don't take our words for it. Here it from our students.
+          Don't take our words for it. Hear it from our students.
         </p>
         {/* Testimonials Container  */}
         <div className="flex flex-col mt-24 md:flex-row md:space-x-6">
           {/* Testimonial 1  */}
-          <div className="flex flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:w-1/3">
+          <div className="flex flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray hover:bg-veryPaleRed md:w-1/3">
             <img src="img/avatar-anisha.png" className="w-16 -mt-14" alt="" />
             <h5 className="text-lg font-bold">Pheobe Buffay</h5>
             <p className="text-sm text-darkGrayishBlue">
@@ -27,7 +27,7 @@ function Testimonials() {
             </p>
           </div>
           {/* Testimonial 2  */}
-          <div className="hidden flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:flex md:w-1/3">
+          <div className="hidden flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray hover:bg-veryPaleRed md:flex md:w-1/3">
             <img src="img/avatar-ali.png" className="w-16 -mt-14" alt="" />
             <h5 className="text-lg font-bold">Regina Falange</h5>
             <p className="text-sm text-darkGrayishBlue">
@@ -38,7 +38,7 @@ function Testimonials() {
             </p>
           </div>
           {/* Testimonial 3  */}
-          <div className="hidden flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:flex md:w-1/3">
+          <div className="hidden flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray hover:bg-veryPaleRed md:flex md:w-1/3">
             <img src="img/avatar-richard.png" className="w-16 -mt-14" alt="" />
             <h5 className="text-lg font-bold">Ken Adams</h5>
             <p className="text-sm text-darkGrayishBlue">

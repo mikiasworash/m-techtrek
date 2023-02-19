@@ -73,20 +73,23 @@ export default function Footer() {
             </div>
           </div>
           {/*  Input container */}
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between space-y-4">
+            <h3 className="text-white sm:text-xl font-semibold text-center">
+              Subscribe to our newsletter.
+            </h3>
             <form>
               <div className="flex space-x-3">
                 <input
                   type="text"
-                  className="flex-1 px-4 text-center rounded-full focus:outline-none"
-                  placeholder="Enter email for newsletter"
+                  className="flex-1 px-4 text-center rounded-lg focus:outline-none"
+                  placeholder="Enter your email"
                 />
-                <button className="px-6 py-2 text-black rounded-full bg-brightRedLight hover:bg-brightRedSupLight hover:text-purplish focus:outline-none">
-                  Register
+                <button className="px-6 py-2  rounded-full bg-indigo-500 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                  Subscribe
                 </button>
               </div>
             </form>
-            <div className="hidden text-white lg:block">
+            <div className="hidden text-white text-center lg:block">
               Copyright &copy; 2023 All Rights Reserved!
             </div>
           </div>

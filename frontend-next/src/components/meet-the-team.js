@@ -21,8 +21,8 @@ function MeetTeam() {
           </Link>
         </div>
         <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-          <div className="items-center bg-veryLightGray rounded-lg shadow sm:flex ">
-            <a href="#">
+          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed rounded-lg shadow sm:flex ">
+            <div>
               <Image
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                 src="/img/team/mikias.jpg"
@@ -30,7 +30,7 @@ function MeetTeam() {
                 width={200}
                 height={200}
               />
-            </a>
+            </div>
             <div className="p-5">
               <h3 className="text-xl font-bold">
                 <a href="#">Mikias Worash</a>
@@ -94,14 +94,14 @@ function MeetTeam() {
             </div>
           </div>
 
-          <div className="items-center bg-veryLightGray rounded-lg shadow sm:flex ">
-            <a href="#">
+          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed rounded-lg shadow sm:flex ">
+            <div>
               <img
-                class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+                className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
-                alt="Henok Setegn"
+                alt="Henok"
               />
-            </a>
+            </div>
             <div className="p-5">
               <h3 className="text-xl font-bold">
                 <a href="#">Henok Setegn</a>
@@ -153,14 +153,14 @@ function MeetTeam() {
             </div>
           </div>
 
-          <div className="items-center bg-veryLightGray rounded-lg shadow sm:flex ">
-            <a href="#">
+          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed rounded-lg shadow sm:flex ">
+            <div>
               <img
                 class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
                 alt="Khalil Abdurehman"
               />
-            </a>
+            </div>
             <div className="p-5">
               <h3 className="text-lg font-bold">
                 <a href="#">Khalil Abdurehman</a>
@@ -211,14 +211,14 @@ function MeetTeam() {
             </div>
           </div>
 
-          <div className="items-center bg-veryLightGray rounded-lg shadow sm:flex ">
-            <a href="#">
+          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed rounded-lg shadow sm:flex ">
+            <div>
               <img
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
                 alt="Ismail"
               />
-            </a>
+            </div>
             <div className="p-5">
               <h3 className="text-lg font-bold">
                 <a href="#">Ismail Yimer</a>

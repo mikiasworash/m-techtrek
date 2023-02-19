@@ -92,7 +92,7 @@ export default function Navbar() {
               <Alert />
               <input
                 type="text"
-                className="flex-1 px-3 rounded-full text-center focus:outline-none border-2 border-gray-300"
+                className="flex-1 px-3 rounded-lg text-center focus:outline-none border-2 border-gray-300"
                 placeholder="Search for Courses"
                 value={courseTitle}
                 onChange={handleChange}
@@ -164,6 +164,12 @@ export default function Navbar() {
             >
               About
             </Link>
+            <Link
+              href="/#contact"
+              onClick={() => setHamburgerClicked((current) => !current)}
+            >
+              Contact
+            </Link>
           </div>
         </div>
       </nav>
@@ -175,7 +181,7 @@ export default function Navbar() {
             <div className="text-center lg:hidden space-x-3">
               <input
                 type="text"
-                className="flex-1 px-3 py-2 rounded-full text-center focus:outline-none border-2 border-gray-300"
+                className="flex-1 px-3 py-2 rounded-lg text-center focus:outline-none border-2 border-gray-300"
                 placeholder="Search for Courses"
                 value={courseTitle}
                 onChange={handleChange}
