@@ -169,30 +169,36 @@ export default function Navbar() {
       </nav>
 
       {/* Search Form on Mobile View  */}
-      <form onSubmit={handleSubmit}>
-        <div className="text-center lg:hidden space-x-3">
-          <input
-            type="text"
-            className="flex-1 px-3 py-2 rounded-full text-center focus:outline-none border-2 border-gray-300"
-            placeholder="Search for Courses"
-            value={courseTitle}
-            onChange={handleChange}
-          />
-          {coursesData.count == 0 && (
-            <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none">
-              Go
-            </button>
-          )}
-          {(coursesData.count > 0 || coursesData.success === false) && (
-            <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none">
-              Clear
-            </button>
-          )}
+      {currentPath == '/' ? (
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div className="text-center lg:hidden space-x-3">
+              <input
+                type="text"
+                className="flex-1 px-3 py-2 rounded-full text-center focus:outline-none border-2 border-gray-300"
+                placeholder="Search for Courses"
+                value={courseTitle}
+                onChange={handleChange}
+              />
+              {coursesData.count == 0 && (
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none">
+                  Go
+                </button>
+              )}
+              {(coursesData.count > 0 || coursesData.success === false) && (
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none">
+                  Clear
+                </button>
+              )}
+            </div>
+          </form>
+          <div className="max-w-md mx-auto lg:hidden">
+            <Alert />
+          </div>
         </div>
-      </form>
-      <div className="max-w-md mx-auto lg:hidden">
-        <Alert />
-      </div>
+      ) : (
+        ''
+      )}
     </>
   )
 }
