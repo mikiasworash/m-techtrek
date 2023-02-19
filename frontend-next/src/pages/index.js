@@ -5,6 +5,8 @@ import CourseContext from '@/context/CourseContext'
 import { useContext } from 'react'
 import FeaturedCourses from '@/components/courses/FeaturedCourses'
 import Testimonials from '@/components/testimonials'
+import Contact from '@/components/contact'
+import MeetTeam from '@/components/meet-the-team'
 
 export default function Home({ featuredCourses }) {
   const { courses, coursesData } = useContext(CourseContext)
@@ -17,6 +19,8 @@ export default function Home({ featuredCourses }) {
       <Features />
       <FeaturedCourses featuredCourses={featuredCourses} />
       <Testimonials />
+      <MeetTeam />
+      <Contact />
     </>
   )
 }

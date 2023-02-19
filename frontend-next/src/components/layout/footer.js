@@ -64,10 +64,10 @@ export default function Footer() {
               <Link href="#" className="hover:text-brightRed">
                 Sign Up
               </Link>
-              <Link href="#" className="hover:text-brightRed">
+              <Link href="/#meet-the-team" className="hover:text-brightRed">
                 About
               </Link>
-              <Link href="#" className="hover:text-brightRed">
+              <Link href="/#contact" className="hover:text-brightRed">
                 Contact
               </Link>
             </div>
