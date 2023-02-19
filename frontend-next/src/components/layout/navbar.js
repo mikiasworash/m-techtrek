@@ -79,10 +79,10 @@ export default function Navbar() {
             <Link href="#" className="hover:text-darkGrayishBlue">
               Sign Up
             </Link>
-            <Link href="#" className="hover:text-darkGrayishBlue">
+            <Link href="/#meet-the-team" className="hover:text-darkGrayishBlue">
               About
             </Link>
-            <Link href="#" className="hover:text-darkGrayishBlue">
+            <Link href="/#contact" className="hover:text-darkGrayishBlue">
               Contact
             </Link>
           </div>
@@ -134,11 +134,36 @@ export default function Navbar() {
                 : 'hidden'
             }
           >
-            <Link href="/#featured-courses">Courses</Link>
-            <Link href="#">Profile</Link>
-            <Link href="#">Sign In</Link>
-            <Link href="#">Sign Up</Link>
-            <Link href="#">About</Link>
+            <Link
+              href="/#featured-courses"
+              onClick={() => setHamburgerClicked((current) => !current)}
+            >
+              Courses
+            </Link>
+            <Link
+              href="#"
+              onClick={() => setHamburgerClicked((current) => !current)}
+            >
+              Profile
+            </Link>
+            <Link
+              href="#"
+              onClick={() => setHamburgerClicked((current) => !current)}
+            >
+              Sign In
+            </Link>
+            <Link
+              href="#"
+              onClick={() => setHamburgerClicked((current) => !current)}
+            >
+              Sign Up
+            </Link>
+            <Link
+              href="/#meet-the-team"
+              onClick={() => setHamburgerClicked((current) => !current)}
+            >
+              About
+            </Link>
           </div>
         </div>
       </nav>

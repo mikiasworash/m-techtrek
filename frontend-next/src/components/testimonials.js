@@ -7,9 +7,12 @@ function Testimonials() {
       {/* Container to heading and testimonial blocks  */}
       <div className="max-w-6xl px-5 mx-auto mt-32 text-center">
         {/* Heading */}
-        <h2 className="text-4xl font-bold text-center">
+        <h2 className="text-4xl font-bold text-center mb-2">
           What makes out bootcamp special?
         </h2>
+        <p class="font-light text-gray-500 mb-4 sm:text-xl">
+          Don't take our words for it. Here it from our students.
+        </p>
         {/* Testimonials Container  */}
         <div className="flex flex-col mt-24 md:flex-row md:space-x-6">
           {/* Testimonial 1  */}
