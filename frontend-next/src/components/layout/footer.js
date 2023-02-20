@@ -57,18 +57,18 @@ export default function Footer() {
                 Profile
               </Link>
               <Link href="#" className="hover:text-brightRed">
-                Sign In
+                Log In
               </Link>
             </div>
             <div className="flex flex-col space-y-3 text-white">
-              <Link href="#" className="hover:text-brightRed">
-                Sign Up
-              </Link>
               <Link href="/#meet-the-team" className="hover:text-brightRed">
                 About
               </Link>
               <Link href="/#contact" className="hover:text-brightRed">
                 Contact
+              </Link>
+              <Link href="#" className="hover:text-brightRed">
+                Log Out
               </Link>
             </div>
           </div>

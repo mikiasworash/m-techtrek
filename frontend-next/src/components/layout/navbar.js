@@ -65,34 +65,14 @@ export default function Navbar() {
           <Link href={'/'} class="pt-2">
             <img src="" alt="m-bootcamp" />
           </Link> */}
-          {/*  Menu Items*/}
-          <div className="hidden lg:flex space-x-6">
-            <a href="/#featured-courses" className="hover:text-darkGrayishBlue">
-              Courses
-            </a>
-            <Link href="#" className="hover:text-darkGrayishBlue">
-              Profile
-            </Link>
-            <Link href="#" className="hover:text-darkGrayishBlue">
-              Sign In
-            </Link>
-            <Link href="#" className="hover:text-darkGrayishBlue">
-              Sign Up
-            </Link>
-            <Link href="/#meet-the-team" className="hover:text-darkGrayishBlue">
-              About
-            </Link>
-            <Link href="/#contact" className="hover:text-darkGrayishBlue">
-              Contact
-            </Link>
-          </div>
+
           {/* Search Form  */}
           <form onSubmit={handleSubmit}>
             <div className="hidden lg:flex space-x-3">
               <Alert />
               <input
                 type="text"
-                className="flex-1 px-3 rounded-lg text-center focus:outline-none border-2 border-gray-300"
+                className="flex-1 px-3 rounded-lg lg:w-72 text-center focus:outline-none border-2 border-gray-300"
                 placeholder="Search for Courses"
                 value={courseTitle}
                 onChange={handleChange}
@@ -109,6 +89,29 @@ export default function Navbar() {
               )}
             </div>
           </form>
+
+          {/*  Menu Items*/}
+          <div className="hidden lg:flex space-x-6">
+            <a href="/#featured-courses" className="hover:text-darkGrayishBlue">
+              Courses
+            </a>
+            <Link href="#" className="hover:text-darkGrayishBlue">
+              Profile
+            </Link>
+            <Link href="#" className="hover:text-darkGrayishBlue">
+              Log In
+            </Link>
+            <Link href="/#meet-the-team" className="hover:text-darkGrayishBlue">
+              About
+            </Link>
+            <Link href="/#contact" className="hover:text-darkGrayishBlue">
+              Contact
+            </Link>
+            <Link href="#" className="hover:text-darkGrayishBlue">
+              Log Out
+            </Link>
+          </div>
+
           {/*  Hamburger Icon  */}
           <button
             id="menu-btn"
@@ -150,13 +153,7 @@ export default function Navbar() {
               href="#"
               onClick={() => setHamburgerClicked((current) => !current)}
             >
-              Sign In
-            </Link>
-            <Link
-              href="#"
-              onClick={() => setHamburgerClicked((current) => !current)}
-            >
-              Sign Up
+              Log In
             </Link>
             <Link
               href="/#meet-the-team"
@@ -170,6 +167,12 @@ export default function Navbar() {
             >
               Contact
             </Link>
+            <Link
+              href="#"
+              onClick={() => setHamburgerClicked((current) => !current)}
+            >
+              Log Out
+            </Link>
           </div>
         </div>
       </nav>
@@ -181,7 +184,7 @@ export default function Navbar() {
             <div className="text-center lg:hidden space-x-3">
               <input
                 type="text"
-                className="flex-1 px-3 py-2 rounded-lg text-center focus:outline-none border-2 border-gray-300"
+                className="flex-1 px-3 py-2 rounded-lg md:w-64 text-center focus:outline-none border-2 border-gray-300"
                 placeholder="Search for Courses"
                 value={courseTitle}
                 onChange={handleChange}

@@ -3,37 +3,6 @@ import React from 'react'
 export default function mission() {
   return (
     <div className="min-h-screen flex flex-col space-y-5 w-2/3 lg:w-1/2 mx-auto">
-      <div className="title">
-        <h1 className="font-bold text-center text-xl">Statement</h1>
-      </div>
-      <div className="text-center mx-auto">
-        <p>
-          At our bootcamp, we're dedicated to providing high-quality education
-          and training for anyone who wants to learn new skills and advance
-          their career. Our team of experienced instructors and industry
-          professionals are passionate about sharing their knowledge and
-          expertise with others, and we're committed to providing a supportive
-          and engaging learning environment.
-        </p>
-      </div>
-      <div className="text-center mx-auto">
-        <p>
-          In this page, you can read more about our mission and values, as well
-          as our approach to education and training. You'll also find
-          information about our team, including bios and photos of our
-          instructors and staff. We're proud to have a diverse and talented team
-          of professionals who are dedicated to helping our students succeed.
-        </p>
-      </div>
-      <div className="text-center mx-auto">
-        <p>
-          Finally, we invite you to get in touch with us if you have any
-          questions or would like to learn more about our bootcamp. Our team is
-          always happy to answer your questions and provide more information
-          about our courses and programs. We look forward to hearing from you!
-        </p>
-      </div>
-
       <div className="text-center mx-auto flex flex-col space-y-4">
         <h3 className="text-xl font-bold">Mission</h3>
         <p>
@@ -65,6 +34,37 @@ export default function mission() {
           education is the key to unlocking a world of possibilities, and we're
           committed to providing the best possible education and training to
           everyone who comes through our doors.
+        </p>
+      </div>
+
+      <div className="title">
+        <h1 className="font-bold text-center text-xl">Values</h1>
+      </div>
+      <div className="text-center mx-auto">
+        <p>
+          At our bootcamp, we're dedicated to providing high-quality education
+          and training for anyone who wants to learn new skills and advance
+          their career. Our team of experienced instructors and industry
+          professionals are passionate about sharing their knowledge and
+          expertise with others, and we're committed to providing a supportive
+          and engaging learning environment.
+        </p>
+      </div>
+      {/* <div className="text-center mx-auto">
+        <p>
+          In this page, you can read more about our mission and values, as well
+          as our approach to education and training. You'll also find
+          information about our team, including bios and photos of our
+          instructors and staff. We're proud to have a diverse and talented team
+          of professionals who are dedicated to helping our students succeed.
+        </p>
+      </div> */}
+      <div className="text-center mx-auto">
+        <p>
+          Finally, we invite you to get in touch with us if you have any
+          questions or would like to learn more about our bootcamp. Our team is
+          always happy to answer your questions and provide more information
+          about our courses and programs. We look forward to hearing from you!
         </p>
       </div>
     </div>
