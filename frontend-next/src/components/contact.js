@@ -58,7 +58,7 @@ function Contact() {
             </div>
             <button
               type="submit"
-              class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-purplish sm:w-fit hover:bg-lightPurplish"
+              class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-purplish sm:w-fit hover:bg-primary-700"
             >
               Send message
             </button>

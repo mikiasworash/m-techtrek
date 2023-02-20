@@ -55,7 +55,7 @@ function Testimonials() {
         <div className="my-16">
           <Link
             href="/register"
-            className="p-3 px-6 pt-2 text-white bg-purplish rounded-full baseline hover:bg-lightPurplish"
+            className="p-3 px-6 pt-2 text-white bg-purplish rounded-full baseline hover:bg-primary-700"
           >
             Get Started
           </Link>

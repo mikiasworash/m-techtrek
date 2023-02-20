@@ -53,10 +53,10 @@ export default function Footer() {
               <a href="#featured-courses" className="hover:text-brightRed">
                 Courses
               </a>
-              <Link href="#" className="hover:text-brightRed">
+              <Link href="/profile" className="hover:text-brightRed">
                 Profile
               </Link>
-              <Link href="#" className="hover:text-brightRed">
+              <Link href="/auth" className="hover:text-brightRed">
                 Log In
               </Link>
             </div>

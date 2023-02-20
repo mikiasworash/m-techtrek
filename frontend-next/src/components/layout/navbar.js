@@ -78,7 +78,7 @@ export default function Navbar() {
                 onChange={handleChange}
               />
               {coursesData.count == 0 && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none">
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none">
                   Go
                 </button>
               )}
@@ -92,22 +92,22 @@ export default function Navbar() {
 
           {/*  Menu Items*/}
           <div className="hidden lg:flex space-x-6">
-            <a href="/#featured-courses" className="hover:text-darkGrayishBlue">
+            <a href="/#featured-courses" className="hover:text-primary-700">
               Courses
             </a>
-            <Link href="#" className="hover:text-darkGrayishBlue">
+            <Link href="/profile" className="hover:text-primary-700">
               Profile
             </Link>
-            <Link href="#" className="hover:text-darkGrayishBlue">
+            <Link href="/auth" className="hover:text-primary-700">
               Log In
             </Link>
-            <Link href="/#meet-the-team" className="hover:text-darkGrayishBlue">
+            <Link href="/#meet-the-team" className="hover:text-primary-700">
               About
             </Link>
-            <Link href="/#contact" className="hover:text-darkGrayishBlue">
+            <Link href="/#contact" className="hover:text-primary-700">
               Contact
             </Link>
-            <Link href="#" className="hover:text-darkGrayishBlue">
+            <Link href="#" className="hover:text-primary-700">
               Log Out
             </Link>
           </div>
@@ -140,36 +140,42 @@ export default function Navbar() {
             <Link
               href="/#featured-courses"
               onClick={() => setHamburgerClicked((current) => !current)}
+              className="hover:hover:text-primary-700"
             >
               Courses
             </Link>
             <Link
-              href="#"
+              href="/profile"
               onClick={() => setHamburgerClicked((current) => !current)}
+              className="hover:hover:text-primary-700"
             >
               Profile
             </Link>
             <Link
-              href="#"
+              href="/auth"
               onClick={() => setHamburgerClicked((current) => !current)}
+              className="hover:hover:text-primary-700"
             >
               Log In
             </Link>
             <Link
               href="/#meet-the-team"
               onClick={() => setHamburgerClicked((current) => !current)}
+              className="hover:hover:text-primary-700"
             >
               About
             </Link>
             <Link
               href="/#contact"
               onClick={() => setHamburgerClicked((current) => !current)}
+              className="hover:hover:text-primary-700"
             >
               Contact
             </Link>
             <Link
               href="#"
               onClick={() => setHamburgerClicked((current) => !current)}
+              className="hover:hover:text-primary-700"
             >
               Log Out
             </Link>
