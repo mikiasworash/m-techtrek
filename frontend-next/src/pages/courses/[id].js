@@ -88,7 +88,7 @@ function CourseDetail(props) {
         </div>
         <div className="mb-4 text-center">
           <Link
-            href={'/register'}
+            href={'/auth'}
             className="px-6 py-2 text-white rounded-xl bg-purplish hover:bg-primary-700 focus:outline-none"
           >
             Enroll

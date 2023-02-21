@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { useSession, signOut } from 'next-auth/react'
 import CourseContext from '../../context/CourseContext'
 import { FaSchool } from 'react-icons/fa'
 import Link from 'next/link'
@@ -8,6 +9,8 @@ import Alert from './Alert'
 export default function Navbar() {
   const router = useRouter()
   const currentPath = router.pathname
+
+  const { data: session, status } = useSession()
 
   const {
     courseTitle,
@@ -43,6 +46,13 @@ export default function Navbar() {
   }, [])
 
   const [hamburgerClicked, setHamburgerClicked] = useState(false)
+
+  function logoutHandler() {
+    if (hamburgerClicked) {
+      setHamburgerClicked((current) => !current)
+    }
+    signOut()
+  }
 
   return (
     <>
@@ -95,21 +105,30 @@ export default function Navbar() {
             <a href="/#featured-courses" className="hover:text-primary-700">
               Courses
             </a>
-            <Link href="/profile" className="hover:text-primary-700">
-              Profile
-            </Link>
-            <Link href="/auth" className="hover:text-primary-700">
-              Log In
-            </Link>
+            {session && status === 'authenticated' && (
+              <Link href="/profile" className="hover:text-primary-700">
+                Profile
+              </Link>
+            )}
+            {!session && (
+              <Link href="/auth" className="hover:text-primary-700">
+                Log In
+              </Link>
+            )}
             <Link href="/#meet-the-team" className="hover:text-primary-700">
               About
             </Link>
             <Link href="/#contact" className="hover:text-primary-700">
               Contact
             </Link>
-            <Link href="#" className="hover:text-primary-700">
-              Log Out
-            </Link>
+            {session && (
+              <button
+                onClick={logoutHandler}
+                className="text-white bg-brightRed hover:bg-red-800 font-medium rounded-lg text-sm px-2 py-1"
+              >
+                Log Out
+              </button>
+            )}
           </div>
 
           {/*  Hamburger Icon  */}
@@ -144,20 +163,24 @@ export default function Navbar() {
             >
               Courses
             </Link>
-            <Link
-              href="/profile"
-              onClick={() => setHamburgerClicked((current) => !current)}
-              className="hover:hover:text-primary-700"
-            >
-              Profile
-            </Link>
-            <Link
-              href="/auth"
-              onClick={() => setHamburgerClicked((current) => !current)}
-              className="hover:hover:text-primary-700"
-            >
-              Log In
-            </Link>
+            {session && status === 'authenticated' && (
+              <Link
+                href="/profile"
+                onClick={() => setHamburgerClicked((current) => !current)}
+                className="hover:hover:text-primary-700"
+              >
+                Profile
+              </Link>
+            )}
+            {!session && (
+              <Link
+                href="/auth"
+                onClick={() => setHamburgerClicked((current) => !current)}
+                className="hover:hover:text-primary-700"
+              >
+                Log In
+              </Link>
+            )}
             <Link
               href="/#meet-the-team"
               onClick={() => setHamburgerClicked((current) => !current)}
@@ -172,13 +195,14 @@ export default function Navbar() {
             >
               Contact
             </Link>
-            <Link
-              href="#"
-              onClick={() => setHamburgerClicked((current) => !current)}
-              className="hover:hover:text-primary-700"
-            >
-              Log Out
-            </Link>
+            {session && (
+              <button
+                onClick={logoutHandler}
+                className="text-white bg-brightRed hover:bg-red-800 font-medium rounded-lg text-sm px-2 py-1"
+              >
+                Log Out
+              </button>
+            )}
           </div>
         </div>
       </nav>
@@ -196,7 +220,7 @@ export default function Navbar() {
                 onChange={handleChange}
               />
               {coursesData.count == 0 && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none">
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none">
                   Go
                 </button>
               )}

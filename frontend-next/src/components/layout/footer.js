@@ -1,7 +1,14 @@
+import { useSession, signOut } from 'next-auth/react'
 import { FaSchool } from 'react-icons/fa'
 import Link from 'next/link'
 
 export default function Footer() {
+  const { data: session, status } = useSession()
+
+  function logoutHandler() {
+    signOut()
+  }
+
   return (
     <>
       <footer className="bg-veryDarkBlue">
@@ -53,12 +60,16 @@ export default function Footer() {
               <a href="#featured-courses" className="hover:text-brightRed">
                 Courses
               </a>
-              <Link href="/profile" className="hover:text-brightRed">
-                Profile
-              </Link>
-              <Link href="/auth" className="hover:text-brightRed">
-                Log In
-              </Link>
+              {session && status === 'authenticated' && (
+                <Link href="/profile" className="hover:text-brightRed">
+                  Profile
+                </Link>
+              )}
+              {!session && (
+                <Link href="/auth" className="hover:text-brightRed">
+                  Log In
+                </Link>
+              )}
             </div>
             <div className="flex flex-col space-y-3 text-white">
               <Link href="/#meet-the-team" className="hover:text-brightRed">
@@ -67,9 +78,14 @@ export default function Footer() {
               <Link href="/#contact" className="hover:text-brightRed">
                 Contact
               </Link>
-              <Link href="#" className="hover:text-brightRed">
-                Log Out
-              </Link>
+              {session && (
+                <button
+                  onClick={logoutHandler}
+                  className="text-brightRedLight hover:text-brightRed"
+                >
+                  Log Out
+                </button>
+              )}
             </div>
           </div>
           {/*  Input container */}

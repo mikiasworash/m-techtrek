@@ -18,7 +18,7 @@ export default function Hero() {
             </p>
             <div className="flex justify-center lg:justify-start">
               <a
-                href="/register"
+                href="/auth"
                 className="p-3 px-6 pt-2 text-white bg-purplish rounded-full baseline hover:bg-primary-700"
               >
                 Get Started

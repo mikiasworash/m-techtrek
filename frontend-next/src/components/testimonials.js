@@ -54,7 +54,7 @@ function Testimonials() {
         {/* Button  */}
         <div className="my-16">
           <Link
-            href="/register"
+            href="/auth"
             className="p-3 px-6 pt-2 text-white bg-purplish rounded-full baseline hover:bg-primary-700"
           >
             Get Started
