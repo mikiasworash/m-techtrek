@@ -22,7 +22,7 @@ async function createUser(name, email, password, confirmPassword) {
 }
 
 function AuthForm() {
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(true)
 
   const nameInputRef = useRef()
   const loginEmailInputRef = useRef()
@@ -75,17 +75,17 @@ function AuthForm() {
   if (isLogin) {
     return (
       <section>
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:mb-40 md:mt-16 lg:py-0">
-          <div class="w-full bg-veryLightGray rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
-            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:mb-40 md:mt-16 lg:py-0">
+          <div className="w-full bg-veryLightGray rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Sign in to your account
               </h1>
-              <form class="space-y-4 md:space-y-6" onSubmit={submitHandler}>
+              <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
                 <div>
                   <label
-                    for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900"
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Your email
                   </label>
@@ -93,7 +93,7 @@ function AuthForm() {
                     type="email"
                     name="email"
                     id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     placeholder="name@company.com"
                     required=""
                     ref={loginEmailInputRef}
@@ -101,8 +101,8 @@ function AuthForm() {
                 </div>
                 <div>
                   <label
-                    for="password"
-                    class="block mb-2 text-sm font-medium text-gray-900"
+                    htmlFor="password"
+                    className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Password
                   </label>
@@ -111,42 +111,42 @@ function AuthForm() {
                     name="password"
                     id="password"
                     placeholder="••••••••"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     required=""
                     ref={loginPasswordInputRef}
                   />
                 </div>
-                <div class="flex justify-end">
-                  {/* <div class="flex items-start">
-                    <div class="flex items-center h-5">
+                <div className="flex justify-end">
+                  {/* <div className="flex items-start">
+                    <div className="flex items-center h-5">
                       <input
                         id="remember"
                         aria-describedby="remember"
                         type="checkbox"
-                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
+                        className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
                         required=""
                       />
                     </div>
-                    <div class="ml-3 text-sm">
-                      <label for="remember" class="text-gray-500">
+                    <div className="ml-3 text-sm">
+                      <label htmlFor="remember" className="text-gray-500">
                         Remember me
                       </label>
                     </div>
                   </div> */}
-                  <a href="#" class="text-sm  font-medium hover:underline">
+                  <a href="#" className="text-sm  font-medium hover:underline">
                     Forgot password?
                   </a>
                 </div>
                 <button
                   type="submit"
-                  class="w-full text-white bg-purplish hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  className="w-full text-white bg-purplish hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
                   Sign in
                 </button>
-                <p class="text-sm font-light text-gray-500">
+                <p className="text-sm font-light text-gray-500">
                   Don't have an account yet?{' '}
                   <a
-                    class="font-medium hover:underline"
+                    className="font-medium hover:underline"
                     onClick={switchAuthModeHandler}
                   >
                     Sign up
@@ -161,17 +161,17 @@ function AuthForm() {
   } else {
     return (
       <section>
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:mt-8 md:mt-2 lg:py-0">
-          <div class="w-full bg-veryLightGray rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
-            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:mt-8 md:mt-2 lg:py-0">
+          <div className="w-full bg-veryLightGray rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Create an account
               </h1>
-              <form class="space-y-4 md:space-y-6" onSubmit={submitHandler}>
+              <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
                 <div>
                   <label
-                    for="name"
-                    class="block mb-2 text-sm font-medium text-gray-900"
+                    htmlFor="name"
+                    className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Your full name
                   </label>
@@ -179,7 +179,7 @@ function AuthForm() {
                     type="text"
                     name="name"
                     id="name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     placeholder="John Doe"
                     required=""
                     ref={nameInputRef}
@@ -187,8 +187,8 @@ function AuthForm() {
                 </div>
                 <div>
                   <label
-                    for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900"
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Your email
                   </label>
@@ -196,7 +196,7 @@ function AuthForm() {
                     type="email"
                     name="email"
                     id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     placeholder="name@company.com"
                     required=""
                     ref={signUpEmailInputRef}
@@ -204,8 +204,8 @@ function AuthForm() {
                 </div>
                 <div>
                   <label
-                    for="password"
-                    class="block mb-2 text-sm font-medium text-gray-900"
+                    htmlFor="password"
+                    className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Password
                   </label>
@@ -214,15 +214,15 @@ function AuthForm() {
                     name="password"
                     id="password"
                     placeholder="••••••••"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     required=""
                     ref={SignUpPasswordInputRef}
                   />
                 </div>
                 <div>
                   <label
-                    for="confirmPassword"
-                    class="block mb-2 text-sm font-medium text-gray-900"
+                    htmlFor="confirmPassword"
+                    className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Confirm Password
                   </label>
@@ -231,27 +231,27 @@ function AuthForm() {
                     name="confirmPassword"
                     id="confirmPassword"
                     placeholder="••••••••"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     required=""
                     ref={ConfirmPasswordInputRef}
                   />
                 </div>
-                <div class="flex items-center justify-between">
-                  <div class="flex items-start">
-                    <div class="flex items-center h-5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-start">
+                    <div className="flex items-center h-5">
                       <input
                         id="remember"
                         aria-describedby="remember"
                         type="checkbox"
-                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
+                        className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
                         required=""
                       />
                     </div>
-                    <div class="ml-3 text-sm">
-                      <label for="remember" class="text-gray-500">
+                    <div className="ml-3 text-sm">
+                      <label htmlFor="remember" className="text-gray-500">
                         I accept the{' '}
                         <a
-                          class="font-medium hover:underline"
+                          className="font-medium hover:underline"
                           href="/terms-and-conditions"
                         >
                           Terms and Conditions
@@ -262,14 +262,14 @@ function AuthForm() {
                 </div>
                 <button
                   type="submit"
-                  class="w-full text-white bg-purplish hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  className="w-full text-white bg-purplish hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
                   Sign Up
                 </button>
-                <p class="text-sm font-light text-gray-500">
+                <p className="text-sm font-light text-gray-500">
                   Already have an account?{' '}
                   <a
-                    class="font-medium hover:underline"
+                    className="font-medium hover:underline"
                     onClick={switchAuthModeHandler}
                   >
                     Log In

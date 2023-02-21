@@ -1,5 +1,5 @@
-import { hashPassword } from '../../../lib/auth'
-import { connectToDatabase } from '../../../lib/db'
+import { hashPassword } from '@/lib/auth'
+import { connectToDatabase } from '@/lib/db'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -7,24 +7,35 @@ export default async function handler(req, res) {
   }
 
   const data = req.body
-  const { name, email, password } = data
+  const { name, email, password, confirmPassword } = data
 
-  if (!name) {
+  if (!name || !email) {
     res.status(422).json({
-      message: 'Invalid Input - name must be inserted',
+      message: 'Invalid Input - name & email must be inserted',
     })
     client.close()
     return
   }
 
-  if (
-    !email ||
-    !email.includes('@') ||
-    !password ||
-    password.trim().length < 7
-  ) {
+  if (!email.includes('@')) {
     res.status(422).json({
-      message: 'Invalid Input - password must be at least 7 characters long',
+      message: 'Invalid Input - email must be inserted correctly',
+    })
+    client.close()
+    return
+  }
+
+  if (!password || password.trim().length < 6) {
+    res.status(422).json({
+      message: 'Invalid Input - password must be at least 6 characters long',
+    })
+    client.close()
+    return
+  }
+
+  if (password !== confirmPassword) {
+    res.status(422).json({
+      message: 'Invalid Input - passwords must match',
     })
     client.close()
     return
@@ -47,7 +58,9 @@ export default async function handler(req, res) {
   const result = await db.collection('users').insertOne({
     name: name,
     email: email,
+    role: 'user',
     password: hashedPassword,
+    createdAt: Date.now(),
   })
 
   res.status(201).json({ message: 'User Created!' })
