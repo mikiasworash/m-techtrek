@@ -1,12 +1,12 @@
 import { useState, useRef } from 'react'
-// import { signIn } from 'next-auth/client'
+import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 // import { route } from 'next/dist/next-server/server/router'
 
-async function createUser(email, password) {
+async function createUser(name, email, password, confirmPassword) {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ name, email, password, confirmPassword }),
     headers: {
       'Content-Type': 'application/json',
     },
@@ -22,10 +22,15 @@ async function createUser(email, password) {
 }
 
 function AuthForm() {
-  const emailInputRef = useRef()
-  const passwordInputRef = useRef()
+  const [isLogin, setIsLogin] = useState(false)
 
-  const [isLogin, setIsLogin] = useState(true)
+  const nameInputRef = useRef()
+  const loginEmailInputRef = useRef()
+  const signUpEmailInputRef = useRef()
+  const loginPasswordInputRef = useRef()
+  const SignUpPasswordInputRef = useRef()
+  const ConfirmPasswordInputRef = useRef()
+
   const router = useRouter()
 
   function switchAuthModeHandler() {
@@ -35,22 +40,31 @@ function AuthForm() {
   async function submitHandler(e) {
     e.preventDefault()
 
-    const email = emailInputRef.current.value
-    const password = passwordInputRef.current.value
-
     if (isLogin) {
+      const Loginemail = loginEmailInputRef.current.value
+      const Loginpassword = loginPasswordInputRef.current.value
+
       const result = await signIn('credentials', {
         redirect: false,
-        email,
-        password,
+        Loginemail,
+        Loginpassword,
       })
 
       if (!result.error) {
         router.replace('/profile')
       }
     } else {
+      const name = nameInputRef.current.value
+      const SignUpemail = signUpEmailInputRef.current.value
+      const SignUpPassword = SignUpPasswordInputRef.current.value
+      const confirmPassword = ConfirmPasswordInputRef.current.value
       try {
-        const result = await createUser(email, password)
+        const result = await createUser(
+          name,
+          SignUpemail,
+          SignUpPassword,
+          confirmPassword
+        )
         console.log(result)
       } catch (error) {
         console.log(error)
@@ -58,7 +72,7 @@ function AuthForm() {
     }
   }
 
-  if (isLogin)
+  if (isLogin) {
     return (
       <section>
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:mb-40 md:mt-16 lg:py-0">
@@ -82,6 +96,7 @@ function AuthForm() {
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     placeholder="name@company.com"
                     required=""
+                    ref={loginEmailInputRef}
                   />
                 </div>
                 <div>
@@ -98,10 +113,11 @@ function AuthForm() {
                     placeholder="••••••••"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     required=""
+                    ref={loginPasswordInputRef}
                   />
                 </div>
-                <div class="flex items-center justify-between">
-                  <div class="flex items-start">
+                <div class="flex justify-end">
+                  {/* <div class="flex items-start">
                     <div class="flex items-center h-5">
                       <input
                         id="remember"
@@ -116,8 +132,8 @@ function AuthForm() {
                         Remember me
                       </label>
                     </div>
-                  </div>
-                  <a href="#" class="text-sm font-medium hover:underline">
+                  </div> */}
+                  <a href="#" class="text-sm  font-medium hover:underline">
                     Forgot password?
                   </a>
                 </div>
@@ -128,7 +144,7 @@ function AuthForm() {
                   Sign in
                 </button>
                 <p class="text-sm font-light text-gray-500">
-                  Don’t have an account yet?{' '}
+                  Don't have an account yet?{' '}
                   <a
                     class="font-medium hover:underline"
                     onClick={switchAuthModeHandler}
@@ -142,7 +158,7 @@ function AuthForm() {
         </div>
       </section>
     )
-  else
+  } else {
     return (
       <section>
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:mt-8 md:mt-2 lg:py-0">
@@ -166,6 +182,7 @@ function AuthForm() {
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     placeholder="John Doe"
                     required=""
+                    ref={nameInputRef}
                   />
                 </div>
                 <div>
@@ -182,6 +199,7 @@ function AuthForm() {
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     placeholder="name@company.com"
                     required=""
+                    ref={signUpEmailInputRef}
                   />
                 </div>
                 <div>
@@ -198,6 +216,7 @@ function AuthForm() {
                     placeholder="••••••••"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     required=""
+                    ref={SignUpPasswordInputRef}
                   />
                 </div>
                 <div>
@@ -214,6 +233,7 @@ function AuthForm() {
                     placeholder="••••••••"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     required=""
+                    ref={ConfirmPasswordInputRef}
                   />
                 </div>
                 <div class="flex items-center justify-between">
@@ -230,7 +250,10 @@ function AuthForm() {
                     <div class="ml-3 text-sm">
                       <label for="remember" class="text-gray-500">
                         I accept the{' '}
-                        <a class="font-medium hover:underline" href="#">
+                        <a
+                          class="font-medium hover:underline"
+                          href="/terms-and-conditions"
+                        >
                           Terms and Conditions
                         </a>
                       </label>
@@ -258,6 +281,7 @@ function AuthForm() {
         </div>
       </section>
     )
+  }
 }
 
 export default AuthForm
