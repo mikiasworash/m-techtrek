@@ -62,3 +62,15 @@ body {
     background-size: 600px;
   }
 }
+
+.passwordInputDiv {
+  position: relative;
+}
+
+.showPassword {
+  cursor: pointer;
+  position: absolute;
+  top: 30%;
+  right: 0%;
+  padding: 1rem;
+}

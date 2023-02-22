@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   if (!name || !email) {
     res.status(422).json({
-      message: 'Invalid Input - name & email must be inserted',
+      message: 'empty name or email',
     })
     client.close()
     return
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
   if (!email.includes('@')) {
     res.status(422).json({
-      message: 'Invalid Input - email must be inserted correctly',
+      message: 'invalid email',
     })
     client.close()
     return
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
 
   if (!password || password.trim().length < 6) {
     res.status(422).json({
-      message: 'Invalid Input - password must be at least 6 characters long',
+      message: 'password too short',
     })
     client.close()
     return
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
 
   if (password !== confirmPassword) {
     res.status(422).json({
-      message: 'Invalid Input - passwords must match',
+      message: 'password mismatch',
     })
     client.close()
     return

@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 // import { route } from 'next/dist/next-server/server/router'
+import { toast } from 'react-toastify'
 
 async function createUser(name, email, password, confirmPassword) {
   const response = await fetch('/api/auth/signup', {
@@ -15,6 +16,7 @@ async function createUser(name, email, password, confirmPassword) {
   const data = await response.json()
 
   if (!response.ok) {
+    toast.error('Sorry! Something went wrong. Try again later!')
     throw new Error(data.message || 'Something went wrong!')
   }
 
@@ -23,6 +25,28 @@ async function createUser(name, email, password, confirmPassword) {
 
 function AuthForm() {
   const [isLogin, setIsLogin] = useState(true)
+
+  const [formData, setFormData] = useState({
+    name: '',
+    emailIn: '',
+    emailUp: '',
+    passwordIn: '',
+    passwordUp: '',
+    confirmPassword: '',
+  })
+  const { name, emailIn, emailUp, passwordIn, passwordUp, confirmPassword } =
+    formData
+
+  const [showPasswordIn, setShowPasswordIn] = useState(false)
+  const [showPasswordUp, setShowPasswordUp] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
+  const handleChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }))
+  }
 
   const nameInputRef = useRef()
   const loginEmailInputRef = useRef()
@@ -51,7 +75,10 @@ function AuthForm() {
       })
 
       if (!result.error) {
+        toast.success('Login Success!')
         router.replace('/profile')
+      } else {
+        toast.error('Login Error! Wrong Credentials!')
       }
     } else {
       const name = nameInputRef.current.value
@@ -66,7 +93,22 @@ function AuthForm() {
           confirmPassword
         )
         console.log(result)
+        toast.success('User Created!')
+        switchAuthModeHandler()
       } catch (error) {
+        if (error.message == 'empty name or email') {
+          toast.error('Invalid Input! Please insert name & email.')
+        } else if (error.message == 'invalid email') {
+          toast.error('Invalid Input! Please insert a valid email.')
+        } else if (error.message == 'password too short') {
+          toast.error(
+            'Invalid Input! Password must be at least 6 characters long.'
+          )
+        } else if (error.message == 'password mismatch') {
+          toast.error('Invalid Input! Passwords must match.')
+        } else if (error.message == 'User already exists!') {
+          toast.error('Invalid Input! User already exists with that email.')
+        }
         console.log(error)
       }
     }
@@ -92,14 +134,16 @@ function AuthForm() {
                   <input
                     type="email"
                     name="email"
-                    id="email"
+                    id="emailIn"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     placeholder="name@company.com"
                     required=""
                     ref={loginEmailInputRef}
+                    onChange={handleChange}
+                    value={emailIn}
                   />
                 </div>
-                <div>
+                <div className="relative">
                   <label
                     htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900"
@@ -107,13 +151,21 @@ function AuthForm() {
                     Password
                   </label>
                   <input
-                    type="password"
+                    type={showPasswordIn ? 'text' : 'password'}
                     name="password"
-                    id="password"
+                    id="passwordIn"
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     required=""
                     ref={loginPasswordInputRef}
+                    onChange={handleChange}
+                    value={passwordIn}
+                  />
+                  <img
+                    src="img/visibilityIcon.svg"
+                    alt="Show password"
+                    className="showPassword"
+                    onClick={() => setShowPasswordIn((prevState) => !prevState)}
                   />
                 </div>
                 <div className="flex justify-end">
@@ -183,6 +235,8 @@ function AuthForm() {
                     placeholder="John Doe"
                     required=""
                     ref={nameInputRef}
+                    onChange={handleChange}
+                    value={name}
                   />
                 </div>
                 <div>
@@ -195,14 +249,16 @@ function AuthForm() {
                   <input
                     type="email"
                     name="email"
-                    id="email"
+                    id="emailUp"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     placeholder="name@company.com"
                     required=""
                     ref={signUpEmailInputRef}
+                    onChange={handleChange}
+                    value={emailUp}
                   />
                 </div>
-                <div>
+                <div className="relative">
                   <label
                     htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900"
@@ -210,16 +266,24 @@ function AuthForm() {
                     Password
                   </label>
                   <input
-                    type="password"
+                    type={showPasswordUp ? 'text' : 'password'}
                     name="password"
-                    id="password"
+                    id="passwordUp"
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     required=""
                     ref={SignUpPasswordInputRef}
+                    onChange={handleChange}
+                    value={passwordUp}
+                  />
+                  <img
+                    src="img/visibilityIcon.svg"
+                    alt="Show password"
+                    className="showPassword"
+                    onClick={() => setShowPasswordUp((prevState) => !prevState)}
                   />
                 </div>
-                <div>
+                <div className="relative">
                   <label
                     htmlFor="confirmPassword"
                     className="block mb-2 text-sm font-medium text-gray-900"
@@ -227,13 +291,23 @@ function AuthForm() {
                     Confirm Password
                   </label>
                   <input
-                    type="password"
+                    type={showConfirmPassword ? 'text' : 'password'}
                     name="confirmPassword"
                     id="confirmPassword"
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                     required=""
                     ref={ConfirmPasswordInputRef}
+                    onChange={handleChange}
+                    value={confirmPassword}
+                  />
+                  <img
+                    src="img/visibilityIcon.svg"
+                    alt="Show password"
+                    className="showPassword"
+                    onClick={() =>
+                      setShowConfirmPassword((prevState) => !prevState)
+                    }
                   />
                 </div>
                 <div className="flex items-center justify-between">

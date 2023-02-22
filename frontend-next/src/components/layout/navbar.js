@@ -5,6 +5,7 @@ import CourseContext from '../../context/CourseContext'
 import { FaSchool } from 'react-icons/fa'
 import Link from 'next/link'
 import Alert from './Alert'
+import { toast } from 'react-toastify'
 
 export default function Navbar() {
   const router = useRouter()
@@ -52,6 +53,7 @@ export default function Navbar() {
       setHamburgerClicked((current) => !current)
     }
     signOut()
+    toast.success('Logged Out!')
   }
 
   return (
