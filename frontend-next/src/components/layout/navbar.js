@@ -53,7 +53,6 @@ export default function Navbar() {
       setHamburgerClicked((current) => !current)
     }
     signOut()
-    toast.success('Logged Out!')
   }
 
   return (

@@ -1,8 +1,8 @@
 import UserProfile from '@/components/user-profile'
 import { getSession } from 'next-auth/react'
 
-function ProfilePage() {
-  return <UserProfile />
+function ProfilePage(props) {
+  return <UserProfile user={props.user} />
 }
 
 export async function getServerSideProps(context) {
@@ -14,12 +14,15 @@ export async function getServerSideProps(context) {
         permanent: false,
       },
     }
-  }
+  } else {
+    const user = session.user
 
-  return {
-    props: {
-      session,
-    },
+    return {
+      props: {
+        session,
+        user,
+      },
+    }
   }
 }
 

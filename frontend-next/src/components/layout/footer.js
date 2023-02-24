@@ -8,7 +8,6 @@ export default function Footer() {
 
   function logoutHandler() {
     signOut()
-    toast.success('Logged Out!')
   }
 
   return (
