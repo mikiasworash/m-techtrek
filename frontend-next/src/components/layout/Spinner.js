@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 function Spinner() {
   return (
-    <div className="w-100 mt-20">
+    <div className="w-100 mt-20 h-screen">
       <Image
         src={spinner}
         alt="Loading..."
