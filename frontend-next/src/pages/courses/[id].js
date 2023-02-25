@@ -4,6 +4,11 @@ import avatar from '../../../public/img/bram-naus-n8Qb1ZAkK88-unsplash.jpg'
 import Image from 'next/image'
 
 function CourseDetail(props) {
+  const { courseDetail } = props
+  if (!courseDetail) {
+    return <Spinner />
+  }
+
   const {
     title,
     description,
@@ -12,11 +17,7 @@ function CourseDetail(props) {
     weeks,
     minimumSkill,
     scholarshipAvailable,
-  } = props.courseDetail.data
-
-  if (!props.courseDetail.data) {
-    return <Spinner />
-  }
+  } = courseDetail
 
   return (
     <>
@@ -106,17 +107,31 @@ export async function getStaticProps(context) {
   const courseId = params.id
   const res = await fetch(`http://localhost:5000/courses/${courseId}`)
   const courseDetail = await res.json()
+  if (!courseDetail.data) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {
-      courseDetail,
+      courseDetail: courseDetail.data,
     },
   }
 }
 
 export async function getStaticPaths() {
+  const featuredTitle = 'dev'
+  const res = await fetch(
+    `http://localhost:5000/courses/title/${featuredTitle}`
+  )
+  const coursesData = await res.json()
+  const featuredCourses = coursesData.data
+  const ids = featuredCourses.map((course) => course._id)
+  const pathsWithParams = ids.map((id) => ({ params: { id: id } }))
+
   return {
-    paths: [{ params: { id: '5d725cb9c4ded7bcb480eaa1' } }],
+    paths: pathsWithParams,
     fallback: true,
   }
 }
