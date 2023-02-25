@@ -7,6 +7,7 @@ import FeaturedCourses from '@/components/courses/FeaturedCourses'
 import Testimonials from '@/components/testimonials'
 import Contact from '@/components/contact'
 import MeetTeam from '@/components/meet-the-team'
+import CourseLevels from '@/components/courses/CourseLevels'
 
 export default function Home({ featuredCourses }) {
   const { courses, coursesData } = useContext(CourseContext)
@@ -17,6 +18,7 @@ export default function Home({ featuredCourses }) {
     <>
       <Hero />
       <Features />
+      <CourseLevels />
       <FeaturedCourses featuredCourses={featuredCourses} />
       <Testimonials />
       <MeetTeam />

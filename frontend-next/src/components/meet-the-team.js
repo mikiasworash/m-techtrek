@@ -98,7 +98,7 @@ function MeetTeam() {
             <div>
               <img
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
                 alt="Henok"
               />
             </div>
@@ -215,7 +215,7 @@ function MeetTeam() {
             <div>
               <img
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
                 alt="Ismail"
               />
             </div>
