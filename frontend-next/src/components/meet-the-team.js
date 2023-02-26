@@ -25,7 +25,7 @@ function MeetTeam() {
             <div>
               <Image
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
-                src="/img/team/mikias.jpg"
+                src="/img/team/mikias2.jpg"
                 alt="Mikias Worash"
                 width={200}
                 height={200}
@@ -96,15 +96,17 @@ function MeetTeam() {
 
           <div className="items-center bg-veryLightGray hover:bg-veryPaleRed rounded-lg shadow sm:flex ">
             <div>
-              <img
+              <Image
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
-                alt="Henok"
+                src="/img/team/henok.jpg"
+                alt="Henok Setegne"
+                width={200}
+                height={200}
               />
             </div>
             <div className="p-5">
               <h3 className="text-xl font-bold">
-                <a href="#">Henok Setegn</a>
+                <a href="#">Henok Setegne</a>
               </h3>
               <span>CTO & Web Developer</span>
               <p className="mt-3 mb-4 text-darkGrayishBlue">

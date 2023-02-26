@@ -27,7 +27,7 @@ export default function CourseResults() {
       ''
     )
   ) : (
-    <div className="rounded-lg min-h-screen">
+    <div className="rounded-lg max-w-6xl px-5 mx-auto min-h-screen">
       <div className="text-center">
         <h2 className="text-3xl  my-4 mb-8 font-bold">
           {courses.length}
