@@ -137,8 +137,8 @@ export default function Navbar() {
             id="menu-btn"
             className={
               hamburgerClicked
-                ? 'block hamburger lg:hidden focus:outline-none open'
-                : 'block hamburger lg:hidden focus:outline-none'
+                ? 'block hamburger lg:hidden focus:outline-none mt-4 mr-2 open'
+                : 'block hamburger lg:hidden focus:outline-none mt-4 mr-2'
             }
             onClick={() => setHamburgerClicked((current) => !current)}
           >
