@@ -2,7 +2,7 @@ import React from 'react'
 
 function UserProfile({ user }) {
   return (
-    <div className="flex justify-center mt-16 mb-96">
+    <div className="flex justify-center mt-32 mb-96">
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
         <div className="flex flex-col items-center pb-10 pt-4">
           <img

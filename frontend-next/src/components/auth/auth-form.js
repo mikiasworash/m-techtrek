@@ -117,7 +117,7 @@ function AuthForm() {
   if (isLogin) {
     return (
       <section>
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:mb-40 md:mt-16 lg:py-0">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:mb-40 mt-16">
           <div className="w-full bg-veryLightGray rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
@@ -213,7 +213,7 @@ function AuthForm() {
   } else {
     return (
       <section>
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:mt-8 md:mt-2 lg:py-0">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto mt-16">
           <div className="w-full bg-veryLightGray rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">

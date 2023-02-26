@@ -4,7 +4,7 @@ import Image from 'next/image'
 function MeetTeam() {
   return (
     <section id="meet-the-team">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 lg:w-2/3">
+      <div className="px-4 lg:px-6 py-32 lg:py-20 mx-auto max-w-screen-xl lg:w-2/3">
         <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-16">
           <h2 className="mb-4 text-4xl font-bold">Our Team</h2>
           <p className="font-light text-gray-500 mb-4 sm:text-xl">

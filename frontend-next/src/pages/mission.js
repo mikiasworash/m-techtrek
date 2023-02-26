@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function mission() {
   return (
-    <div className="min-h-screen flex flex-col space-y-5 w-2/3 lg:w-1/2 mx-auto">
+    <div className="min-h-screen flex flex-col space-y-5 w-2/3 lg:w-1/2 mx-auto mt-16 lg:mt-20">
       <div className="text-center mx-auto flex flex-col space-y-4">
         <h3 className="text-xl font-bold">Mission</h3>
         <p>

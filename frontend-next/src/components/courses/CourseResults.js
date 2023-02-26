@@ -10,7 +10,7 @@ export default function CourseResults() {
     <Spinner />
   ) : courses.length === 0 ? (
     coursesData.success === false ? (
-      <div className="h-screen text-center">
+      <div className="h-screen text-center mt-32 mx-8">
         <h2 className="text-3xl my-4 font-bold">
           Sorry, we couldn't find any results for "{courseTitle}"
         </h2>
@@ -27,7 +27,7 @@ export default function CourseResults() {
       ''
     )
   ) : (
-    <div className="rounded-lg max-w-6xl px-5 mx-auto min-h-screen">
+    <div className="rounded-lg max-w-6xl px-5 mt-32 lg:mt-20 mx-auto min-h-screen">
       <div className="text-center">
         <h2 className="text-3xl  my-4 mb-8 font-bold">
           {courses.length}

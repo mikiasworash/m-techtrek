@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <>
       {/* Hero Section */}
-      <section id="hero">
+      <section id="hero" className="mt-40 lg:mt-32">
         {/* Flex container  */}
         <div className="container flex flex-col-reverse items-center px-6 mx-auto mt-10 space-y-0 md:space-y-0 lg:flex-row">
           {/* Left Item  */}

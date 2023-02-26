@@ -4,7 +4,7 @@ function Contact() {
   return (
     <div>
       <section id="contact">
-        <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+        <div class="py-32 lg:py-20 px-4 mx-auto max-w-screen-md">
           <h2 class="text-4xl font-bold text-center mb-8">Contact Us</h2>
           <p class="mb-8 lg:mb-16 font-light text-center text-gray-500  sm:text-xl">
             Our team is here to answer your questions, provide support and

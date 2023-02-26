@@ -21,7 +21,7 @@ function CourseDetail(props) {
 
   return (
     <>
-      <div className="mx-auto min-h-screen w-10/12 mt-6 z-0">
+      <div className="mx-auto min-h-screen w-10/12 mt-20 lg:mt-32 z-0">
         <div className="mb-4">
           <Link href={'/'} className="btn btn-ghost">
             Back To Home

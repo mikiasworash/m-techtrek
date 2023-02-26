@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 function NotFoundPage() {
   return (
-    <div className="flex justify-center mx-auto h-screen">
+    <div className="flex justify-center mx-auto h-screen mt-16">
       <div className="text-center mt-16">
         <div className="max-w-lg">
           <h1 className="text-8xl font-bold mb-8">Oops!</h1>

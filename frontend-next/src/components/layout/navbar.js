@@ -56,8 +56,8 @@ export default function Navbar() {
   }
 
   return (
-    <>
-      <nav className="relative container mx-auto p-6">
+    <div className="fixed top-0 mb-80 mx-auto bg-veryLightGray w-full z-50 bg-opacity-95">
+      <nav className="relative container mx-auto p-2 lg:p-4">
         {/* Flex Container */}
         <div className="flex items-center justify-between">
           {/*  Logo */}
@@ -239,6 +239,6 @@ export default function Navbar() {
       ) : (
         ''
       )}
-    </>
+    </div>
   )
 }

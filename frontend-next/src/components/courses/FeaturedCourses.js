@@ -9,8 +9,8 @@ import 'swiper/css/pagination'
 
 export default function FeaturedCourses({ featuredCourses }) {
   return (
-    <div id="featured-courses" className="rounded-lg max-w-6xl px-5  mx-auto">
-      <div className="text-center py-8 lg:py-16">
+    <div id="featured-courses" className="rounded-lg max-w-6xl px-5 mx-auto">
+      <div className="text-center py-32 lg:py-20">
         <h2 className="text-4xl mb-2 font-bold">Featured Courses</h2>
         <p className="font-light text-gray-500 mb-4 sm:text-xl">
           Swipe and explore our exclusive courses
