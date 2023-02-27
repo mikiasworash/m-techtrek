@@ -7,7 +7,7 @@ function MeetTeam() {
       <div className="px-4 lg:px-6 py-32 lg:py-20 mx-8 lg:mx-auto max-w-screen-xl lg:w-2/3">
         <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-16">
           <h2 className="mb-4 text-4xl font-bold">Our Team</h2>
-          <p className="font-light text-gray-500 mb-4 sm:text-xl">
+          <p className="font-light text-gray-500 mb-4 sm:text-xl dark:text-gray-400">
             We're proud to have a team of individuals who are dedicated to
             providing the best possible experience for our students, and we
             believe that their expertise and passion is a key factor in our
@@ -15,13 +15,13 @@ function MeetTeam() {
           </p>
           <Link
             href={'/mission'}
-            className="badge badge-info italic text-veryDarkBlue"
+            className="badge badge-info italic text-veryDarkBlue dark:text-gray-400"
           >
             Read our mission here
           </Link>
         </div>
         <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed rounded-lg shadow sm:flex ">
+          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg shadow sm:flex ">
             <div>
               <Image
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
@@ -31,12 +31,12 @@ function MeetTeam() {
                 height={200}
               />
             </div>
-            <div className="p-5">
+            <div className="p-5 ">
               <h3 className="text-xl font-bold">
                 <a href="#">Mikias Worash</a>
               </h3>
               <span>CEO & Web Developer</span>
-              <p className="mt-3 mb-4 text-darkGrayishBlue">
+              <p className="mt-3 mb-4 text-darkGrayishBlue dark:text-gray-300">
                 Develop strategic partnerships to expand reach and increase
                 enrollment
               </p>
@@ -94,7 +94,7 @@ function MeetTeam() {
             </div>
           </div>
 
-          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed rounded-lg shadow sm:flex ">
+          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg shadow sm:flex ">
             <div>
               <Image
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
@@ -109,7 +109,7 @@ function MeetTeam() {
                 <a href="#">Henok Setegne</a>
               </h3>
               <span>CTO & Web Developer</span>
-              <p className="mt-3 mb-4 text-darkGrayishBlue">
+              <p className="mt-3 mb-4 text-darkGrayishBlue dark:text-gray-300">
                 Implement new technologies to enhance student learning
                 experience
               </p>
@@ -155,7 +155,7 @@ function MeetTeam() {
             </div>
           </div>
 
-          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed rounded-lg shadow sm:flex ">
+          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg shadow sm:flex ">
             <div>
               <img
                 class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
@@ -168,7 +168,7 @@ function MeetTeam() {
                 <a href="#">Khalil Abdurehman</a>
               </h3>
               <span>COO & Web Developer</span>
-              <p className="mt-3 mb-4 text-darkGrayishBlue">
+              <p className="mt-3 mb-4 text-darkGrayishBlue dark:text-gray-300">
                 Streamline operations to improve efficiency and reduce costs
               </p>
               <ul className="flex space-x-4 sm:mt-0">
@@ -213,7 +213,7 @@ function MeetTeam() {
             </div>
           </div>
 
-          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed rounded-lg shadow sm:flex ">
+          <div className="items-center bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg shadow sm:flex ">
             <div>
               <img
                 className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
@@ -226,7 +226,7 @@ function MeetTeam() {
                 <a href="#">Ismail Yimer</a>
               </h3>
               <span>CFO & Web Developer</span>
-              <p className="mt-3 mb-4 text-darkGrayishBlue">
+              <p className="mt-3 mb-4 text-darkGrayishBlue dark:text-gray-300">
                 Maximizing revenue and profitability while maintaining quality
                 education standards
               </p>

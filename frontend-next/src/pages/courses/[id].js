@@ -90,7 +90,7 @@ function CourseDetail(props) {
         <div className="mb-4 text-center">
           <Link
             href={'/auth'}
-            className="px-6 py-2 text-white rounded-xl bg-purplish hover:bg-primary-700 focus:outline-none"
+            className="p-3 px-6 pt-2 text-white rounded-lg bg-purplish hover:bg-primary-700 dark:bg-primary-700 dark:hover:bg-primary-500 focus:outline-none"
           >
             Enroll
           </Link>

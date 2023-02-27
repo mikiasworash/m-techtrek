@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 body {
-  background-image: url('../../public/img/bg-tablet-pattern.svg');
-  background-repeat: no-repeat;
+  @apply dark:bg-slate-800 dark:text-gray-100 bg-white text-gray-900;
+}
+
+.hero {
   background-size: 800px;
   background-position: 10px -190px;
-  @apply dark:bg-slate-800 dark:text-gray-100 bg-gray-50 text-gray-900;
 }
 
 /* Hamburger Menu */
@@ -58,9 +59,9 @@ body {
 }
 
 @media (max-width: 576px) {
-  body {
-    background-position: 10px -120px;
-    background-size: 600px;
+  .hero {
+    background-position: 0px -120px;
+    background-size: 700px;
   }
 }
 

@@ -12,7 +12,7 @@ export default function FeaturedCourses({ featuredCourses }) {
     <div id="featured-courses" className="rounded-lg max-w-6xl px-5 mx-auto">
       <div className="text-center py-32 lg:py-20">
         <h2 className="text-4xl mb-2 font-bold">Featured Courses</h2>
-        <p className="font-light text-gray-500 mb-4 sm:text-xl">
+        <p className="font-light text-gray-500 mb-4 sm:text-xl dark:text-gray-400">
           Swipe and explore our exclusive courses
         </p>
         <Swiper
@@ -21,6 +21,11 @@ export default function FeaturedCourses({ featuredCourses }) {
           spaceBetween={40}
           slidesPerView={1}
           pagination={{ clickable: true }}
+          style={{
+            '--swiper-pagination-color': 'blue',
+            '--swiper-pagination-bullet-inactive-color': '#999999',
+            '--swiper-pagination-bullet-inactive-opacity': '1',
+          }}
         >
           {featuredCourses.map((course) => {
             return (

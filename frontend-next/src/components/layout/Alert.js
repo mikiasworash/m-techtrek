@@ -22,7 +22,7 @@ function Alert() {
             ></path>
           </svg>
         )}
-        <p className="flex-1 font-semibold leading-7 text-black">
+        <p className="flex-1 font-semibold leading-7 text-black dark:text-white">
           <strong>{alertData.msg}</strong>
         </p>
       </div>

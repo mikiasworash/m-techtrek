@@ -69,7 +69,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="fixed top-0 mb-80 mx-auto bg-veryLightGray dark:bg-veryDarkBlue w-full z-50 bg-opacity-95">
+    <div className="fixed top-0 mb-80 mx-auto bg-veryLightGray dark:bg-veryDarkBlue w-full z-50 bg-opacity-95 dark:bg-opacity-90">
       <nav className="relative container mx-auto p-2 lg:p-4">
         {/* Flex Container */}
         <div className="flex items-center justify-between">
@@ -113,12 +113,12 @@ export default function Navbar() {
                 onChange={handleChange}
               />
               {coursesData.count == 0 && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none dark:bg-primary-700 dark:hover:bg-primary-500">
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none dark:bg-gray-600 dark:hover:bg-primary-500">
                   Go
                 </button>
               )}
               {(coursesData.count > 0 || coursesData.success === false) && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none dark:bg-primary-500 dark:hover:bg-primary-300">
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none dark:bg-gray-600 dark:hover:bg-gray-400 dark:hover:text-black">
                   Clear
                 </button>
               )}
@@ -178,9 +178,9 @@ export default function Navbar() {
             }
             onClick={() => setHamburgerClicked((current) => !current)}
           >
-            <span className="hamburger-top"></span>
-            <span className="hamburger-middle"></span>
-            <span className="hamburger-bottom"></span>
+            <span className="hamburger-top dark:bg-white"></span>
+            <span className="hamburger-middle dark:bg-white"></span>
+            <span className="hamburger-bottom dark:bg-white"></span>
           </button>
         </div>
         {/*  Mobile Menu  */}
@@ -189,14 +189,14 @@ export default function Navbar() {
             id="menu"
             className={
               hamburgerClicked
-                ? 'absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md z-50'
+                ? 'absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white dark:bg-gray-700 dark:hover:bg-gray-600 sm:w-auto sm:self-center left-6 right-6 drop-shadow-md z-50'
                 : 'hidden'
             }
           >
             <Link
               href="/#featured-courses"
               onClick={() => setHamburgerClicked((current) => !current)}
-              className="hover:hover:text-primary-700"
+              className="hover:hover:text-primary-700 dark:hover:text-primary-500"
             >
               Courses
             </Link>
@@ -204,7 +204,7 @@ export default function Navbar() {
               <Link
                 href="/profile"
                 onClick={() => setHamburgerClicked((current) => !current)}
-                className="hover:hover:text-primary-700"
+                className="hover:hover:text-primary-700 dark:hover:text-primary-500"
               >
                 Profile
               </Link>
@@ -213,7 +213,7 @@ export default function Navbar() {
               <Link
                 href="/auth"
                 onClick={() => setHamburgerClicked((current) => !current)}
-                className="hover:hover:text-primary-700"
+                className="hover:hover:text-primary-700 dark:hover:text-primary-500"
               >
                 Log In
               </Link>
@@ -221,14 +221,14 @@ export default function Navbar() {
             <Link
               href="/#meet-the-team"
               onClick={() => setHamburgerClicked((current) => !current)}
-              className="hover:hover:text-primary-700"
+              className="hover:hover:text-primary-700 dark:hover:text-primary-500"
             >
               About
             </Link>
             <Link
               href="/#contact"
               onClick={() => setHamburgerClicked((current) => !current)}
-              className="hover:hover:text-primary-700"
+              className="hover:hover:text-primary-700 dark:hover:text-primary-500"
             >
               Contact
             </Link>
@@ -257,12 +257,12 @@ export default function Navbar() {
                 onChange={handleChange}
               />
               {coursesData.count == 0 && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none dark:bg-primary-700 dark:hover:bg-primary-500">
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none dark:bg-gray-600 dark:hover:bg-primary-500">
                   Go
                 </button>
               )}
               {(coursesData.count > 0 || coursesData.success === false) && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none dark:bg-primary-500 dark:hover:bg-primary-300">
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none dark:bg-gray-600 dark:hover:bg-gray-400 dark:hover:text-black">
                   Clear
                 </button>
               )}

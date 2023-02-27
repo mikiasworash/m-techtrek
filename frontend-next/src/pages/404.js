@@ -9,7 +9,7 @@ function NotFoundPage() {
           <h1 className="text-8xl font-bold mb-8">Oops!</h1>
           <p className="text-5xl mb-8">404 - Page not found!</p>
           <Link
-            className="btn btn-primary btn-lg bg-primary-500 text-white hover:bg-primary-400"
+            className="btn btn-primary btn-lg bg-primary-600 dark:border-none text-white hover:bg-primary-500"
             href={'/'}
           >
             <FaHome className="mr-2" />

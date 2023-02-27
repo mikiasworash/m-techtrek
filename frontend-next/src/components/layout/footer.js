@@ -98,10 +98,10 @@ export default function Footer() {
               <div className="flex space-x-3">
                 <input
                   type="text"
-                  className="flex-1 px-4 text-center rounded-lg focus:outline-none"
+                  className="flex-1 px-4 text-center rounded-lg focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400"
                   placeholder="Enter your email"
                 />
-                <button className="px-6 py-2  rounded-full bg-indigo-500 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                <button className="px-6 py-2  rounded-full bg-primary-700 font-semibold  text-white  hover:bg-primary-600">
                   Subscribe
                 </button>
               </div>

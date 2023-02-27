@@ -119,16 +119,16 @@ function AuthForm() {
     return (
       <section>
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:mb-40 mt-16">
-          <div className="w-full bg-veryLightGray rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+          <div className="w-full bg-veryLightGray dark:bg-gray-700 dark:border-gray-700 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+              <h1 className="text-2xl pb-4 font-bold leading-tight tracking-tight md:text-2xl">
                 Sign in to your account
               </h1>
               <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm font-medium text-gray-900"
+                    className="block mb-2 text-sm font-medium "
                   >
                     Your email
                   </label>
@@ -136,7 +136,7 @@ function AuthForm() {
                     type="email"
                     name="email"
                     id="emailIn"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                     placeholder="name@company.com"
                     required=""
                     ref={loginEmailInputRef}
@@ -147,7 +147,7 @@ function AuthForm() {
                 <div className="relative">
                   <label
                     htmlFor="password"
-                    className="block mb-2 text-sm font-medium text-gray-900"
+                    className="block mb-2 text-sm font-medium "
                   >
                     Password
                   </label>
@@ -156,7 +156,7 @@ function AuthForm() {
                     name="password"
                     id="passwordIn"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                     required=""
                     ref={loginPasswordInputRef}
                     onChange={handleChange}
@@ -196,7 +196,7 @@ function AuthForm() {
                 >
                   Sign in
                 </button>
-                <p className="text-sm font-light text-gray-500">
+                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don't have an account yet?{' '}
                   <a
                     className="font-medium hover:underline"
@@ -208,7 +208,7 @@ function AuthForm() {
 
                 {/* seperator  */}
                 <div className="flex flex-row justify-center mb-8">
-                  <span className="absolute bg-white px-4 text-gray-500">
+                  <span className="absolute bg-white dark:bg-gray-300 dark:text-black px-4 text-gray-500">
                     or sign-in with
                   </span>
                   <div className="w-full bg-gray-200 m-3 h-px"></div>
@@ -218,7 +218,7 @@ function AuthForm() {
                 <div className="flex flex-row gap-2">
                   <Link
                     href={'#'}
-                    className="bg-brightRedSupLight2 w-3/4 mx-auto p-2 flex flex-row justify-center gap-2 rounded-lg hover:bg-brightRedSupLight hover:cursor-pointer"
+                    className="bg-brightRedSupLight2 dark:text-black dark:bg-gray-400 dark:hover:bg-gray-500 w-3/4 mx-auto p-2 flex flex-row justify-center gap-2 rounded-lg hover:bg-brightRedSupLight hover:cursor-pointer"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -269,16 +269,16 @@ function AuthForm() {
     return (
       <section>
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto mt-16">
-          <div className="w-full bg-veryLightGray rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+          <div className="w-full bg-veryLightGray dark:bg-gray-700 dark:border-gray-700  rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+              <h1 className="text-2xl pb-4 font-bold leading-tight tracking-tight  md:text-2xl">
                 Create an account
               </h1>
               <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
                 <div>
                   <label
                     htmlFor="name"
-                    className="block mb-2 text-sm font-medium text-gray-900"
+                    className="block mb-2 text-sm font-medium "
                   >
                     Your full name
                   </label>
@@ -286,7 +286,7 @@ function AuthForm() {
                     type="text"
                     name="name"
                     id="name"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                     placeholder="John Doe"
                     required=""
                     ref={nameInputRef}
@@ -297,7 +297,7 @@ function AuthForm() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm font-medium text-gray-900"
+                    className="block mb-2 text-sm font-medium "
                   >
                     Your email
                   </label>
@@ -305,7 +305,7 @@ function AuthForm() {
                     type="email"
                     name="email"
                     id="emailUp"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                     placeholder="name@company.com"
                     required=""
                     ref={signUpEmailInputRef}
@@ -316,7 +316,7 @@ function AuthForm() {
                 <div className="relative">
                   <label
                     htmlFor="password"
-                    className="block mb-2 text-sm font-medium text-gray-900"
+                    className="block mb-2 text-sm font-medium "
                   >
                     Password
                   </label>
@@ -325,7 +325,7 @@ function AuthForm() {
                     name="password"
                     id="passwordUp"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                     required=""
                     ref={SignUpPasswordInputRef}
                     onChange={handleChange}
@@ -341,7 +341,7 @@ function AuthForm() {
                 <div className="relative">
                   <label
                     htmlFor="confirmPassword"
-                    className="block mb-2 text-sm font-medium text-gray-900"
+                    className="block mb-2 text-sm font-medium "
                   >
                     Confirm Password
                   </label>
@@ -350,7 +350,7 @@ function AuthForm() {
                     name="confirmPassword"
                     id="confirmPassword"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                     required=""
                     ref={ConfirmPasswordInputRef}
                     onChange={handleChange}
@@ -377,7 +377,10 @@ function AuthForm() {
                       />
                     </div>
                     <div className="ml-3 text-sm">
-                      <label htmlFor="remember" className="text-gray-500">
+                      <label
+                        htmlFor="remember"
+                        className="text-gray-500 dark:text-gray-400"
+                      >
                         I accept the{' '}
                         <a
                           className="font-medium hover:underline"
@@ -395,7 +398,7 @@ function AuthForm() {
                 >
                   Sign Up
                 </button>
-                <p className="text-sm font-light text-gray-500">
+                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Already have an account?{' '}
                   <a
                     className="font-medium hover:underline"
