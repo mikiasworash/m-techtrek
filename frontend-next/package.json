@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.16",
     "@next/font": "13.1.6",
     "bcryptjs": "^2.4.3",
     "daisyui": "^2.50.1",
     "mongodb": "^5.0.1",
     "next": "13.1.6",
     "next-auth": "^4.19.2",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",

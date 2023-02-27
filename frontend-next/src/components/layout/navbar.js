@@ -5,13 +5,20 @@ import CourseContext from '../../context/CourseContext'
 import { FaSchool } from 'react-icons/fa'
 import Link from 'next/link'
 import Alert from './Alert'
+import { MoonIcon, SunIcon } from '@heroicons/react/24/solid'
+import { useTheme } from 'next-themes'
 import { toast } from 'react-toastify'
 
 export default function Navbar() {
+  const [mounted, setMounted] = useState(false)
+  const { systemTheme, theme, setTheme } = useTheme()
+
   const router = useRouter()
   const currentPath = router.pathname
 
   const { data: session, status } = useSession()
+
+  const [hamburgerClicked, setHamburgerClicked] = useState(false)
 
   const {
     courseTitle,
@@ -46,7 +53,13 @@ export default function Navbar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const [hamburgerClicked, setHamburgerClicked] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
+
+  const currentTheme = theme === 'system' ? systemTheme : theme
 
   function logoutHandler() {
     if (hamburgerClicked) {
@@ -56,21 +69,32 @@ export default function Navbar() {
   }
 
   return (
-    <div className="fixed top-0 mb-80 mx-auto bg-veryLightGray w-full z-50 bg-opacity-95">
+    <div className="fixed top-0 mb-80 mx-auto bg-veryLightGray dark:bg-veryDarkBlue w-full z-50 bg-opacity-95">
       <nav className="relative container mx-auto p-2 lg:p-4">
         {/* Flex Container */}
         <div className="flex items-center justify-between">
           {/*  Logo */}
-          <div>
+          <div className="flex justify-between">
             {' '}
             <FaSchool className="inline pr-2 text-3xl" />
             <Link
               href={'/'}
-              className="text-lg font-bold align-middle"
+              className="text-lg font-bold align-middle inline"
               onClick={clearResults}
             >
               m-bootcamp
             </Link>
+            {currentTheme === 'dark' ? (
+              <SunIcon
+                className="mt-1 h-5 w-5 cursor-pointer ml-2 self-center lg:hidden"
+                onClick={() => setTheme('light')}
+              />
+            ) : (
+              <MoonIcon
+                className="mt-1 h-4 w-4 cursor-pointer ml-2 self-center lg:hidden"
+                onClick={() => setTheme('dark')}
+              />
+            )}
           </div>
           {/* Logo Images
           <Link href={'/'} class="pt-2">
@@ -83,18 +107,18 @@ export default function Navbar() {
               <Alert />
               <input
                 type="text"
-                className="flex-1 px-3 rounded-lg lg:w-72 text-center focus:outline-none border-2 border-gray-300"
+                className="flex-1 px-3 rounded-lg lg:w-72 text-center focus:outline-none border-2 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
                 placeholder="Search for Courses"
                 value={courseTitle}
                 onChange={handleChange}
               />
               {coursesData.count == 0 && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none">
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none dark:bg-primary-700 dark:hover:bg-primary-500">
                   Go
                 </button>
               )}
               {(coursesData.count > 0 || coursesData.success === false) && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none">
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none dark:bg-primary-500 dark:hover:bg-primary-300">
                   Clear
                 </button>
               )}
@@ -129,6 +153,18 @@ export default function Navbar() {
               >
                 Log Out
               </button>
+            )}
+
+            {currentTheme === 'dark' ? (
+              <SunIcon
+                className="mt-1 h-5 w-5 cursor-pointer "
+                onClick={() => setTheme('light')}
+              />
+            ) : (
+              <MoonIcon
+                className="mt-1 h-4 w-4 cursor-pointer"
+                onClick={() => setTheme('dark')}
+              />
             )}
           </div>
 
@@ -215,18 +251,18 @@ export default function Navbar() {
             <div className="text-center lg:hidden space-x-3">
               <input
                 type="text"
-                className="flex-1 px-3 py-2 rounded-lg md:w-64 text-center focus:outline-none border-2 border-gray-300"
+                className="flex-1 px-3 py-2 rounded-lg md:w-64 text-center focus:outline-none border-2 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
                 placeholder="Search for Courses"
                 value={courseTitle}
                 onChange={handleChange}
               />
               {coursesData.count == 0 && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none">
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none dark:bg-primary-700 dark:hover:bg-primary-500">
                   Go
                 </button>
               )}
               {(coursesData.count > 0 || coursesData.success === false) && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none">
+                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none dark:bg-primary-500 dark:hover:bg-primary-300">
                   Clear
                 </button>
               )}
