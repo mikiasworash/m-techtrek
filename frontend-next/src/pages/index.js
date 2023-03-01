@@ -30,7 +30,7 @@ export default function Home({ featuredCourses }) {
 export async function getStaticProps() {
   const featuredTitle = 'dev'
   const res = await fetch(
-    `http://localhost:5000/courses/title/${featuredTitle}`
+    `${process.env.REACT_APP_SERVER_URL}/courses/title/${featuredTitle}`
   )
   const coursesData = await res.json()
   const featuredCourses = coursesData.data

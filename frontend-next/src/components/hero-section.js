@@ -6,7 +6,7 @@ export default function Hero() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="hero bg-[url('../../public/img/bg-tablet-pattern.svg')] bg-no-repeat bg-left dark:bg-[url('')]"
+        className="hero bg-[url('../../public/img/bg-tablet-pattern.svg')] bg-no-repeat bg-left dark:bg-none"
       >
         {/* Flex container  */}
         <div className="container  flex flex-col-reverse items-center px-6 mx-auto mt-10 space-y-0 md:space-y-0 lg:flex-row ">

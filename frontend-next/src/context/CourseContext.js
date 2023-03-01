@@ -22,9 +22,9 @@ export const CourseProvider = ({ children }) => {
   })
 
   // Search for courses
-  const searchCourses = async (courseTitle) => {
+  const searchCourses = (courseTitle) => {
     setLoading(true)
-    await fetch(`http://localhost:5000/courses/title/${courseTitle}`)
+    fetch(`${process.env.REACT_APP_SERVER_URL}/courses/title/${courseTitle}`)
       .then((response) => response.json())
       .then((data) => {
         setLoading(false)
@@ -43,8 +43,8 @@ export const CourseProvider = ({ children }) => {
   }
 
   // Get a single course
-  const getCourse = async (id) => {
-    await fetch(`http://localhost:5000/courses/${id}`)
+  const getCourse = (id) => {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/courses/${id}`)
       .then((response) => response.json())
       .then((data) => {
         data.success ? setCourse(data.data) : console.log(data.error)

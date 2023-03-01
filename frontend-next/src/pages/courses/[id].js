@@ -105,7 +105,9 @@ export default CourseDetail
 export async function getStaticProps(context) {
   const { params } = context
   const courseId = params.id
-  const res = await fetch(`http://localhost:5000/courses/${courseId}`)
+  const res = await fetch(
+    `${process.env.REACT_APP_SERVER_URL}/courses/${courseId}`
+  )
   const courseDetail = await res.json()
   if (!courseDetail.data) {
     return {
@@ -123,7 +125,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const featuredTitle = 'dev'
   const res = await fetch(
-    `http://localhost:5000/courses/title/${featuredTitle}`
+    `${process.env.REACT_APP_SERVER_URL}/courses/title/${featuredTitle}`
   )
   const coursesData = await res.json()
   const featuredCourses = coursesData.data

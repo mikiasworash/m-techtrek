@@ -3,3 +3,4 @@ public/uploads/
 config/config.env
 .next
 frontend-next/src/lib/db.js
+frontend-next/next.config.js
