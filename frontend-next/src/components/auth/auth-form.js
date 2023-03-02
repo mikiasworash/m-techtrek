@@ -5,25 +5,6 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import Link from 'next/link'
 
-async function createUser(name, email, password, confirmPassword) {
-  const response = await fetch('/api/auth/signup', {
-    method: 'POST',
-    body: JSON.stringify({ name, email, password, confirmPassword }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-
-  const data = await response.json()
-
-  if (!response.ok) {
-    toast.error('Sorry! Something went wrong. Try again later!')
-    throw new Error(data.message || 'Something went wrong!')
-  }
-
-  return data
-}
-
 function AuthForm() {
   const [isLogin, setIsLogin] = useState(true)
 
@@ -86,31 +67,54 @@ function AuthForm() {
       const SignUpemail = signUpEmailInputRef.current.value
       const SignUpPassword = SignUpPasswordInputRef.current.value
       const confirmPassword = ConfirmPasswordInputRef.current.value
-      try {
-        const result = await createUser(
+
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           name,
-          SignUpemail,
-          SignUpPassword,
-          confirmPassword
+          email: SignUpemail,
+          password: SignUpPassword,
+          confirmPassword: confirmPassword,
+          role: 'user',
+        }),
+      }
+
+      if (!name) {
+        toast.error('Please add a name')
+      } else if (!SignUpemail) {
+        toast.error('Please add an email')
+      } else if (!SignUpPassword) {
+        toast.error('Please add a password')
+      } else if (!confirmPassword) {
+        toast.error('Please confirm your password')
+      } else {
+        fetch(
+          `${process.env.REACT_APP_SERVER_URL}/auth/register`,
+          requestOptions
         )
-        console.log(result)
-        toast.success('User Created!')
-        switchAuthModeHandler()
-      } catch (error) {
-        if (error.message == 'empty name or email') {
-          toast.error('Invalid Input! Please insert name & email.')
-        } else if (error.message == 'invalid email') {
-          toast.error('Invalid Input! Please insert a valid email.')
-        } else if (error.message == 'password too short') {
-          toast.error(
-            'Invalid Input! Password must be at least 6 characters long.'
-          )
-        } else if (error.message == 'password mismatch') {
-          toast.error('Invalid Input! Passwords must match.')
-        } else if (error.message == 'User already exists!') {
-          toast.error('Invalid Input! User already exists with that email.')
-        }
-        console.log(error)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              toast.success('User Registered!')
+              setFormData({
+                name: '',
+                emailIn: '',
+                emailUp: '',
+                passwordIn: '',
+                passwordUp: '',
+                confirmPassword: '',
+              })
+              switchAuthModeHandler()
+            } else {
+              toast.err(data.error)
+            }
+            console.log(data)
+          })
+          .catch((err) => {
+            console.log(err.message)
+            toast.error('Something went wrong!')
+          })
       }
     }
   }
