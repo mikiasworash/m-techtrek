@@ -1,5 +1,6 @@
 import UserProfile from '@/components/user-profile'
 import { getSession } from 'next-auth/react'
+import { connectToDatabase } from '@/lib/db'
 
 function ProfilePage(props) {
   return <UserProfile user={props.user} />
@@ -15,12 +16,19 @@ export async function getServerSideProps(context) {
       },
     }
   } else {
-    const user = session.user
+    const sessionUser = session.user
+    const client = await connectToDatabase()
+
+    const usersCollection = client.db().collection('users')
+    const user = await usersCollection.findOne({
+      email: sessionUser.email,
+    })
+    client.close()
 
     return {
       props: {
         session,
-        user,
+        user: { name: user.name, email: user.email, role: user.role },
       },
     }
   }

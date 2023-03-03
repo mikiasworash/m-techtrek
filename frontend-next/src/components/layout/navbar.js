@@ -69,7 +69,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="fixed top-0 mb-80 mx-auto bg-veryLightGray dark:bg-veryDarkBlue w-full z-50 bg-opacity-95 dark:bg-opacity-90">
+    <div className="fixed top-0 mb-80 mx-auto bg-veryLightGray border-b-solid border-b border-b-blue-100 dark:bg-veryDarkBlue dark:border-b-gray-600 w-full z-50 bg-opacity-95 dark:bg-opacity-90">
       <nav className="relative container mx-auto p-2 lg:p-4">
         {/* Flex Container */}
         <div className="flex items-center justify-between">
@@ -189,7 +189,7 @@ export default function Navbar() {
             id="menu"
             className={
               hamburgerClicked
-                ? 'absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white dark:bg-gray-700 dark:hover:bg-gray-600 sm:w-auto sm:self-center left-6 right-6 drop-shadow-md z-50'
+                ? 'absolute flex flex-col items-center w-48 md:w-64 self-end py-8 mt-4 space-y-6 font-bold bg-white dark:bg-gray-700 dark:hover:bg-gray-600  right-0 drop-shadow-md z-50'
                 : 'hidden'
             }
           >
