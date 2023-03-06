@@ -22,6 +22,10 @@ const UserSchema = new mongoose.Schema({
     enum: ['user', 'publisher'],
     default: 'user',
   },
+  profilePic: {
+    type: String,
+    default: 'defaultImg',
+  },
   password: {
     type: String,
     required: [true, 'Please add a password'],
@@ -34,6 +38,14 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  enrolledCourses: [
+    {
+      course: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Course',
+      },
+    },
+  ],
 })
 
 // Encrypt password using bcrypt
