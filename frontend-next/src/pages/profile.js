@@ -28,7 +28,12 @@ export async function getServerSideProps(context) {
     return {
       props: {
         session,
-        user: { name: user.name, email: user.email, role: user.role },
+        user: {
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          profilePic: user.profilePic,
+        },
       },
     }
   }

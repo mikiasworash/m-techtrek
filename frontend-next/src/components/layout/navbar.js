@@ -7,7 +7,6 @@ import Link from 'next/link'
 import Alert from './Alert'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid'
 import { useTheme } from 'next-themes'
-import { toast } from 'react-toastify'
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false)

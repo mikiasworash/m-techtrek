@@ -36,6 +36,7 @@ function AuthForm() {
   const loginPasswordInputRef = useRef()
   const SignUpPasswordInputRef = useRef()
   const ConfirmPasswordInputRef = useRef()
+  const AcceptTermsRef = useRef()
 
   const router = useRouter()
 
@@ -67,6 +68,7 @@ function AuthForm() {
       const SignUpemail = signUpEmailInputRef.current.value
       const SignUpPassword = SignUpPasswordInputRef.current.value
       const confirmPassword = ConfirmPasswordInputRef.current.value
+      const acceptTerms = AcceptTermsRef.current.checked
 
       const requestOptions = {
         method: 'POST',
@@ -86,8 +88,14 @@ function AuthForm() {
         toast.error('Please add an email')
       } else if (!SignUpPassword) {
         toast.error('Please add a password')
+      } else if (SignUpPassword.trim().length < 6) {
+        toast.error('Password must at least 6 characters')
       } else if (!confirmPassword) {
         toast.error('Please confirm your password')
+      } else if (SignUpPassword != confirmPassword) {
+        toast.error('Passwords must match')
+      } else if (!acceptTerms) {
+        toast.error('Please read and accept our terms and conditions')
       } else {
         fetch(
           `${process.env.REACT_APP_SERVER_URL}/auth/register`,
@@ -141,7 +149,7 @@ function AuthForm() {
                     name="email"
                     id="emailIn"
                     className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                    placeholder="name@company.com"
+                    // placeholder="name@company.com"
                     required=""
                     ref={loginEmailInputRef}
                     onChange={handleChange}
@@ -159,7 +167,7 @@ function AuthForm() {
                     type={showPasswordIn ? 'text' : 'password'}
                     name="password"
                     id="passwordIn"
-                    placeholder="••••••••"
+                    // placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                     required=""
                     ref={loginPasswordInputRef}
@@ -291,7 +299,7 @@ function AuthForm() {
                     name="name"
                     id="name"
                     className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                    placeholder="John Doe"
+                    // placeholder="John Doe"
                     required=""
                     ref={nameInputRef}
                     onChange={handleChange}
@@ -310,7 +318,7 @@ function AuthForm() {
                     name="email"
                     id="emailUp"
                     className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                    placeholder="name@company.com"
+                    // placeholder="name@company.com"
                     required=""
                     ref={signUpEmailInputRef}
                     onChange={handleChange}
@@ -328,7 +336,7 @@ function AuthForm() {
                     type={showPasswordUp ? 'text' : 'password'}
                     name="password"
                     id="passwordUp"
-                    placeholder="••••••••"
+                    // placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                     required=""
                     ref={SignUpPasswordInputRef}
@@ -353,7 +361,7 @@ function AuthForm() {
                     type={showConfirmPassword ? 'text' : 'password'}
                     name="confirmPassword"
                     id="confirmPassword"
-                    placeholder="••••••••"
+                    // placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                     required=""
                     ref={ConfirmPasswordInputRef}
@@ -378,6 +386,7 @@ function AuthForm() {
                         type="checkbox"
                         className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
                         required=""
+                        ref={AcceptTermsRef}
                       />
                     </div>
                     <div className="ml-3 text-sm">

@@ -1,7 +1,6 @@
 import { useSession, signOut } from 'next-auth/react'
 import { FaSchool } from 'react-icons/fa'
 import Link from 'next/link'
-import { toast } from 'react-toastify'
 
 export default function Footer() {
   const { data: session, status } = useSession()
