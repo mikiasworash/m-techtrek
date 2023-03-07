@@ -17,7 +17,11 @@ function Testimonials() {
         <div className="flex flex-col mt-24 md:flex-row md:space-x-6">
           {/* Testimonial 1  */}
           <div className="flex flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 md:w-1/3">
-            <img src="img/avatar-anisha.png" className="w-16 -mt-14" alt="" />
+            <img
+              src="img/phoebe.png"
+              className="w-16 h-16 -mt-14 rounded-full"
+              alt=""
+            />
             <h5 className="text-lg font-bold">Pheobe Buffay</h5>
             <p className="text-sm text-darkGrayishBlue dark:text-gray-300">
               "This bootcamp was a game-changer for me. I had been struggling to
@@ -28,8 +32,12 @@ function Testimonials() {
           </div>
           {/* Testimonial 2  */}
           <div className="hidden flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 md:flex md:w-1/3">
-            <img src="img/avatar-ali.png" className="w-16 -mt-14" alt="" />
-            <h5 className="text-lg font-bold">Regina Falange</h5>
+            <img
+              src="img/regina.gif"
+              className="w-16 h-16 -mt-14 rounded-full"
+              alt=""
+            />
+            <h5 className="text-lg font-bold">Regina Phalange</h5>
             <p className="text-sm text-darkGrayishBlue dark:text-gray-300">
               "I was hesitant to enroll in a bootcamp, but this one came highly
               recommended by a friend. I'm so glad I took the plunge - I learned
@@ -39,7 +47,11 @@ function Testimonials() {
           </div>
           {/* Testimonial 3  */}
           <div className="hidden flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 md:flex md:w-1/3">
-            <img src="img/avatar-richard.png" className="w-16 -mt-14" alt="" />
+            <img
+              src="img/kenadams.png"
+              className="w-16 h-16 -mt-14 rounded-full"
+              alt=""
+            />
             <h5 className="text-lg font-bold">Ken Adams</h5>
             <p className="text-sm text-darkGrayishBlue dark:text-gray-300">
               "I was impressed by the quality of the instructors and the level

@@ -10,7 +10,9 @@ function UserProfile({ user }) {
   const [uploadImageClicked, setUploadImageClicked] = useState(false)
   const [editProfileClicked, setEditProfileClicked] = useState(false)
   const [deleteProfileClicked, setDeleteProfileClicked] = useState(false)
-  const [nameVisible, setNameVisisble] = useState(user.name)
+  const [nameVisible, setNameVisible] = useState(user.name)
+  const [emailVisible, setEmailVisible] = useState(user.email)
+
   const [editForm, setEditForm] = useState({
     name: user.name,
     email: user.email,
@@ -54,8 +56,16 @@ function UserProfile({ user }) {
         .then((data) => {
           if (data.success) {
             toast.success('Profile Updated!')
-            setNameVisisble(name)
-            console.log(data)
+            setNameVisible(name)
+            setEmailVisible(email)
+            if (email !== user.email) {
+              toast.success(
+                'Email Update, You will be logged out! Sign in with the new email.'
+              )
+              setTimeout(() => {
+                signOut()
+              }, 4000)
+            }
           } else {
             toast.error('Error Updating Profile!')
           }
@@ -80,8 +90,10 @@ function UserProfile({ user }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          toast.success('Profile deleted!')
-          signOut()
+          toast.success('Profile deleted! You will be logged out!')
+          setTimeout(() => {
+            signOut()
+          }, 4000)
         } else {
           toast.error('Error Deleting Profile!')
         }
@@ -145,9 +157,7 @@ function UserProfile({ user }) {
           <div className="relative">
             <img
               className="w-24 h-24 mb-6 rounded-full shadow-lg"
-              src={
-                imageSrc !== 'defaultImg' ? imageSrc : '/img/avatar-richard.png'
-              }
+              src={imageSrc !== 'defaultImg' ? imageSrc : '/img/user.png'}
               alt="user image"
             />
             <FaCloudUploadAlt
@@ -157,7 +167,7 @@ function UserProfile({ user }) {
           </div>
           <h5 className="mb-1 text-xl font-medium">{nameVisible}</h5>
           <span className="text-sm text-gray-500 dark:text-gray-400">
-            {user.email}
+            {emailVisible}
           </span>
           <span className="text-sm italic text-gray-500 dark:text-gray-400">
             -{user.role}

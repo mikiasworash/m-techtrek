@@ -1,5 +1,3 @@
-import Image from 'next/image'
-import bootcampImage from '../../public/img/marvin-meyer-SYTO3xs06fU-unsplash.jpg'
 export default function Hero() {
   return (
     <>
@@ -11,7 +9,7 @@ export default function Hero() {
         {/* Flex container  */}
         <div className="container  flex flex-col-reverse items-center px-6 mx-auto mt-10 space-y-0 md:space-y-0 lg:flex-row ">
           {/* Left Item  */}
-          <div className="flex flex-col mb-32 space-y-12 md:w-1/2 mt-40 lg:mt-24">
+          <div className="flex flex-col mb-32 space-y-12 md:1/3 mt-40 lg:mt-24">
             <h1 className="max-w-md text-4xl font-bold text-center md:text-5xl lg:text-left">
               Unleash Your Potential with Our Platform
             </h1>
@@ -29,13 +27,26 @@ export default function Hero() {
             </div>
           </div>
           {/* Image for bootcamp  */}
-          <div className="hidden lg:flex flex-col lg:w-1/2 items-center ">
-            <Image
-              src={bootcampImage}
+          <div className="hidden lg:flex flex-col md:w-2/3 items-center ">
+            <img
+              src="img/cover1.jpg"
               alt="bootcamp img"
-              width={680}
-              className="rounded-3xl mb-24 mt-24"
+              className="rounded-3xl mb-24 mt-24 w-full h-full ml-40 xl:hidden"
             />
+            <div className="hidden xl:flex flex-row ml-16 space-x-24">
+              <img
+                src="img/cover2.jpg"
+                alt="bootcamp img"
+                width={450}
+                className="rounded-3xl mb-40 mt-24 hidden xl:flex"
+              />
+              <img
+                src="img/cover3.jpg"
+                alt="bootcamp img"
+                width={350}
+                className="rounded-3xl mb-24 mt-40 hidden xl:flex"
+              />
+            </div>
           </div>
         </div>
       </section>
