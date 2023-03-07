@@ -3,14 +3,70 @@ import { FaCloudUploadAlt } from 'react-icons/Fa'
 import { toast } from 'react-toastify'
 
 function UserProfile({ user }) {
-  const [uploadImageClicked, setUploadImageClicked] = useState(false)
   const profilePicture = user.profilePic
-
   const [imageSrc, setImageSrc] = useState(profilePicture)
-  // const [uploadData, setUPloadData] = useState()
+
+  const [uploadImageClicked, setUploadImageClicked] = useState(false)
+  const [editProfileClicked, setEditProfileClicked] = useState(false)
+  const [deleteProfileClicked, setDeleteProfileClicked] = useState(false)
+  const [editForm, setEditForm] = useState({
+    name: user.name,
+    email: user.email,
+  })
+
+  const { name, email } = editForm
+
+  const handleChange = (e) => {
+    setEditForm((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }))
+  }
 
   const handleUploadState = () => {
     setUploadImageClicked((current) => !current)
+  }
+
+  const handleEditState = () => {
+    setEditProfileClicked((current) => !current)
+  }
+
+  const handleDeleteState = () => {
+    setDeleteProfileClicked((current) => !current)
+  }
+
+  const handleEditProfile = async (event) => {
+    event.preventDefault()
+
+    if (name !== user.name || email !== user.email) {
+      fetch('/api/profile/editProfile', {
+        method: 'PUT',
+        body: JSON.stringify({
+          name: name,
+          newEmail: email,
+          email: user.email,
+        }),
+        headers: { 'Content-Type': 'application/json' },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            toast.success('Profile Updated!')
+            console.log(data)
+          } else {
+            toast.error('Error Updating Profile!')
+          }
+        })
+        .catch((err) => {
+          toast.error('Error Updating.')
+          console.log(err)
+        })
+    }
+  }
+
+  const handleDeleteProfile = async (event) => {
+    event.preventDefault()
+    console.log('Delete to be implemented')
   }
 
   const handleUpdateImageForm = async (event) => {
@@ -56,8 +112,6 @@ function UserProfile({ user }) {
           })
       })
 
-    // setUPloadData(data)
-
     console.log(data)
   }
 
@@ -86,10 +140,16 @@ function UserProfile({ user }) {
             -{user.role}
           </span>
           <div className="flex mt-4 space-x-3 md:mt-6">
-            <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 outline-none focus:ring-blue-300 ">
+            <button
+              onClick={handleEditState}
+              className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 outline-none focus:ring-blue-300 "
+            >
               Edit Profile
             </button>
-            <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-center bg-brightRedLight dark:bg-brightRed rounded-lg hover:bg-brightRed dark:hover:bg-brightRedLight">
+            <button
+              onClick={handleDeleteState}
+              className="inline-flex items-center px-4 py-2 text-sm font-medium text-center bg-brightRedLight dark:bg-brightRed rounded-lg hover:bg-brightRed dark:hover:bg-brightRedLight"
+            >
               Delete Account
             </button>
           </div>
@@ -125,6 +185,77 @@ function UserProfile({ user }) {
               className="text-white bg-blue-700 hover:bg-blue-600 font-medium rounded-lg px-2 py-1"
             >
               Update Photo
+            </button>
+          </form>
+        </div>
+
+        <div className="">
+          <form
+            onSubmit={handleEditProfile}
+            id="menu"
+            className={
+              editProfileClicked
+                ? 'absolute left-0 -bottom-56 mx-auto flex flex-col items-center w-full h-56 py-8 space-y-2 mt-4 font-bold bg-gray-100 dark:bg-gray-500 z-50'
+                : 'hidden'
+            }
+          >
+            <label>Your name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={name}
+              onChange={handleChange}
+              className="text-sm px-4 text-gray-700
+              border border-solid border-gray-400 dark:bg-gray-100"
+              required
+            />
+
+            <label>Your email</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              className="text-sm px-4 text-gray-700
+              border border-solid border-gray-400 dark:bg-gray-100"
+              required
+            />
+            <button
+              type="submit"
+              onClick={handleEditState}
+              className="text-white bg-blue-700 hover:bg-blue-600 font-medium rounded-lg px-2 py-2"
+            >
+              Edit Profile
+            </button>
+          </form>
+        </div>
+
+        <div className="">
+          <form
+            onSubmit={handleDeleteProfile}
+            id="menu"
+            className={
+              deleteProfileClicked
+                ? 'absolute left-0 -bottom-40 mx-auto flex flex-col items-center w-full h-40 py-8 space-y-2 mt-4 font-bold bg-gray-100 dark:bg-gray-500 z-50'
+                : 'hidden'
+            }
+          >
+            <label className="">Are you sure?</label>
+
+            <p
+              onClick={handleDeleteState}
+              className="text-white bg-blue-700 hover:bg-blue-600 font-medium rounded-lg px-2 py-1"
+            >
+              NO, Cancel
+            </p>
+            <button
+              type="submit"
+              onClick={handleDeleteState}
+              className="text-white bg-brightRedLight dark:bg-brightRed rounded-lg hover:bg-brightRed dark:hover:bg-brightRedLight font-medium  px-2 py-1"
+            >
+              Yes, Delete
             </button>
           </form>
         </div>

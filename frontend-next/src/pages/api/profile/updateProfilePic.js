@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
   if (!profilePic) {
     res.status(422).json({
-      message: 'Please insert profile',
+      message: 'Please insert an image!',
     })
     client.close()
     return
@@ -24,6 +24,6 @@ export default async function handler(req, res) {
     .collection('users')
     .updateOne({ email: email }, { $set: { profilePic: profilePic } })
 
-  res.status(201).json({ message: 'Profile Updated!' })
+  res.status(201).json({ message: 'Profile Pic Updated!' })
   client.close()
 }
