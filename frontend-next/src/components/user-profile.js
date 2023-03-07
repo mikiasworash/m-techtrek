@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaCloudUploadAlt } from 'react-icons/Fa'
 import { toast } from 'react-toastify'
+import { signOut } from 'next-auth/react'
 
 function UserProfile({ user }) {
   const profilePicture = user.profilePic
@@ -9,6 +10,7 @@ function UserProfile({ user }) {
   const [uploadImageClicked, setUploadImageClicked] = useState(false)
   const [editProfileClicked, setEditProfileClicked] = useState(false)
   const [deleteProfileClicked, setDeleteProfileClicked] = useState(false)
+  const [nameVisible, setNameVisisble] = useState(user.name)
   const [editForm, setEditForm] = useState({
     name: user.name,
     email: user.email,
@@ -50,8 +52,9 @@ function UserProfile({ user }) {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data) {
+          if (data.success) {
             toast.success('Profile Updated!')
+            setNameVisisble(name)
             console.log(data)
           } else {
             toast.error('Error Updating Profile!')
@@ -67,6 +70,26 @@ function UserProfile({ user }) {
   const handleDeleteProfile = async (event) => {
     event.preventDefault()
     console.log('Delete to be implemented')
+    fetch('/api/profile/deleteProfile', {
+      method: 'DELETE',
+      body: JSON.stringify({
+        email: user.email,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          toast.success('Profile deleted!')
+          signOut()
+        } else {
+          toast.error('Error Deleting Profile!')
+        }
+      })
+      .catch((err) => {
+        toast.error('Error Deleting Profile.')
+        console.log(err)
+      })
   }
 
   const handleUpdateImageForm = async (event) => {
@@ -103,7 +126,7 @@ function UserProfile({ user }) {
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data) {
+            if (data.success) {
               toast.success('Image Updated!')
               console.log(data)
             } else {
@@ -132,7 +155,7 @@ function UserProfile({ user }) {
               onClick={handleUploadState}
             />
           </div>
-          <h5 className="mb-1 text-xl font-medium">{user.name}</h5>
+          <h5 className="mb-1 text-xl font-medium">{nameVisible}</h5>
           <span className="text-sm text-gray-500 dark:text-gray-400">
             {user.email}
           </span>

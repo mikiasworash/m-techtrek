@@ -24,6 +24,6 @@ export default async function handler(req, res) {
     .collection('users')
     .updateOne({ email: email }, { $set: { profilePic: profilePic } })
 
-  res.status(201).json({ message: 'Profile Pic Updated!' })
+  res.status(201).json({ message: 'Profile Pic Updated!', success: true })
   client.close()
 }

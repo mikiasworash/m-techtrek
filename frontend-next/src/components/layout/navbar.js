@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useSession, signOut } from 'next-auth/react'
 import CourseContext from '../../context/CourseContext'
 import { FaSchool } from 'react-icons/fa'
+import { BsSearch } from 'react-icons/bs'
 import Link from 'next/link'
 import Alert from './Alert'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid'
@@ -102,8 +103,9 @@ export default function Navbar() {
 
           {/* Search Form  */}
           <form onSubmit={handleSubmit}>
-            <div className="hidden lg:flex space-x-3">
+            <div className="hidden lg:flex space-x-3 relative">
               <Alert />
+              <BsSearch className="absolute left-56 top-3" />
               <input
                 type="text"
                 className="flex-1 px-3 rounded-lg lg:w-72 text-center focus:outline-none border-2 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
@@ -188,7 +190,7 @@ export default function Navbar() {
             id="menu"
             className={
               hamburgerClicked
-                ? 'absolute flex flex-col items-center w-48 md:w-64 self-end py-8 mt-4 space-y-6 font-bold bg-white dark:bg-gray-700 dark:hover:bg-gray-600  right-0 drop-shadow-md z-50'
+                ? 'absolute flex flex-col items-center w-48 md:w-64 self-end py-8 mt-4 space-y-6 font-bold bg-gray-100 dark:bg-gray-600 dark:hover:bg-gray-600  right-0 drop-shadow-md z-50'
                 : 'hidden'
             }
           >
