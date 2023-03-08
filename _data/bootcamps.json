@@ -1,9 +1,9 @@
 [
   {
     "_id": "5d713995b721c3bb38c1f5d0",
-    "user": "5d7a514b5d2c12c7449be045",
-    "name": "Mike Bootcamp",
-    "description": "Mike Bootcamp is a full stack JavaScript Bootcamp located in the heart of Addis that focuses on the technologies you need to get a high paying job as a web developer. You will be taught by a highly experienced and skilled developers around.",
+    "user": "5d7a514b5d2c12c7449be042",
+    "name": "Mike Dev",
+    "description": "Mike dev is a full stack web development bootcamp located in the heart of Addis that focuses on the technologies you need to get a high paying job as a web developer.",
     "website": "https://mikebootcamp.com",
     "associatedCourses": [
       "5d725a4a7b292f5f8ceff789",
@@ -14,7 +14,7 @@
     "_id": "5d713a66ec8f2b88b8f830b8",
     "user": "5d7a514b5d2c12c7449be046",
     "name": "Khalil Abdurehman",
-    "description": "Khalil has one goal, and that is to make you a rockstar developer and/or designer with a six figure salary. He teachs both development and UI/UX.",
+    "description": "Khalil has one goal, and that is to make you a rockstar developer with a six figure salary.",
     "website": "https://khaliltech.com",
     "associatedCourses": [
       "5d725cb9c4ded7bcb480eaa1",
@@ -25,7 +25,7 @@
     "_id": "5d725a037b292f5f8ceff787",
     "user": "5c8a1d5b0190b214360dc031",
     "name": "Henok Setegne",
-    "description": "Is coding your passion? Henok will give you the skills and the tools to become the best developer possible. He specializes in full stack web development and data science. Enroll now.",
+    "description": "Is coding your passion? Henok will give you the skills and the tools to become the best developer possible. He specializes data science.",
     "website": "https://henoksetegne.com",
     "associatedCourses": [
       "5d725ce8c4ded7bcb480eaa3",
@@ -36,7 +36,7 @@
     "_id": "5d725a1b7b292f5f8ceff788",
     "user": "5c8a1d5b0190b214360dc032",
     "name": "Ismail Tech",
-    "description": "Is coding your passion? Addis Tech will give you the skills and the tools to become the best developer possible. We specialize in front end and full stack web development",
+    "description": "Ismail will give you the skills and the tools to become the best developer possible. He specializes in full stack web development",
     "website": "https://ismailtech.com",
     "associatedCourses": [
       "5d725cfec4ded7bcb480eaa5",
