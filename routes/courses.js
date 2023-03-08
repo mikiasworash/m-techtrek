@@ -7,6 +7,7 @@ const {
   updateCourse,
   deleteCourse,
   getCoursesByTitle,
+  getCoursesByLevel,
 } = require('../controllers/courses')
 
 const Course = require('../models/Course')
@@ -30,5 +31,6 @@ router
   .delete(protect, authorize('publisher', 'admin'), deleteCourse)
 
 router.route('/title/:courseTitle').get(getCoursesByTitle)
+router.route('/levels/:level').get(getCoursesByLevel)
 
 module.exports = router

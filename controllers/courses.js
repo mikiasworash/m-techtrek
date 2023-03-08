@@ -3,7 +3,7 @@ const asyncHandler = require('../middleware/async')
 const Course = require('../models/Course')
 const Bootcamp = require('../models/Bootcamp')
 
-// @desc    Get courses
+// @desc    Get courses by bootcamp Id
 // @route   GET /courses
 // @route   GET /bootcamps/:bootcampId/courses
 // @access  Public
@@ -23,7 +23,7 @@ exports.getCourses = asyncHandler(async (req, res, next) => {
   }
 })
 
-// @desc    Get courses
+// @desc    Get courses by title
 // @route   GET /courses/:courseTitle
 // @access  Public
 exports.getCoursesByTitle = asyncHandler(async (req, res, next) => {
@@ -44,6 +44,33 @@ exports.getCoursesByTitle = asyncHandler(async (req, res, next) => {
     return next(
       new ErrorResponse(
         `Course not found with the title of '${req.params.courseTitle}' `,
+        404
+      )
+    )
+  } else {
+    return res.status(200).json({
+      success: true,
+      count: courses.length,
+      data: courses,
+    })
+  }
+})
+
+// @desc    Get courses by Level of skill
+// @route   GET /courses/levels/:level
+// @access  Public
+exports.getCoursesByLevel = asyncHandler(async (req, res, next) => {
+  const courses = await Course.find({
+    minimumSkill: req.params.level,
+  }).populate({
+    path: 'bootcamp',
+    select: 'name website',
+  })
+
+  if (courses.length === 0) {
+    return next(
+      new ErrorResponse(
+        `Course not found with the level of '${req.params.level}' `,
         404
       )
     )

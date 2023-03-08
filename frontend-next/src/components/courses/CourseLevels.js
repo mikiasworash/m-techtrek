@@ -13,7 +13,7 @@ function CourseLevels() {
           Discover Your Learning Level: Explore Our Bootcamp Options
         </p>
 
-        <div className="flex flex-col mt-24 md:flex-row md:space-x-6">
+        <div className="flex flex-col space-y-8 md:space-y-0 mt-16 md:flex-row md:space-x-6">
           {/* Beginner */}
           <Link
             href={'/courses/beginner'}
