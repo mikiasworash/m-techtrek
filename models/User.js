@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['user', 'publisher'],
+    enum: ['user', 'publisher', 'admin'],
     default: 'user',
   },
   profilePic: {
@@ -40,10 +40,8 @@ const UserSchema = new mongoose.Schema({
   },
   enrolledCourses: [
     {
-      course: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Course',
-      },
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Course',
     },
   ],
 })

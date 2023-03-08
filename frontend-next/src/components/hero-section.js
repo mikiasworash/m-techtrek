@@ -38,13 +38,13 @@ export default function Hero() {
                 src="img/cover2.jpg"
                 alt="bootcamp img"
                 width={450}
-                className="rounded-3xl mb-40 mt-24 hidden xl:flex"
+                className="rounded-2xl mb-40 mt-24 hidden xl:flex"
               />
               <img
                 src="img/cover3.jpg"
                 alt="bootcamp img"
                 width={350}
-                className="rounded-3xl mb-24 mt-40 hidden xl:flex"
+                className="rounded-2xl mb-24 mt-40 hidden xl:flex"
               />
             </div>
           </div>

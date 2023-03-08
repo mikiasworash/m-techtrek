@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Spinner from '@/components/layout/Spinner'
-import avatar from '../../../public/img/bram-naus-n8Qb1ZAkK88-unsplash.jpg'
+import avatar from '../../../public/img/course.jpg'
 import Image from 'next/image'
 
 function CourseDetail(props) {

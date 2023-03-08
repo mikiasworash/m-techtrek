@@ -27,10 +27,8 @@ const BootcampSchema = new mongoose.Schema(
     },
     associatedCourses: [
       {
-        course: {
-          type: mongoose.Schema.ObjectId,
-          ref: 'Course',
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course',
       },
     ],
     user: {
