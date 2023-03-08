@@ -1,12 +1,32 @@
 import { useSession, signOut } from 'next-auth/react'
 import { FaSchool } from 'react-icons/fa'
 import Link from 'next/link'
+import { toast } from 'react-toastify'
+import { useState } from 'react'
 
 export default function Footer() {
   const { data: session, status } = useSession()
+  const [email, setEmail] = useState('')
 
   function logoutHandler() {
     signOut()
+  }
+
+  function handleChange(e) {
+    setEmail(e.target.value)
+  }
+
+  function handleSubscribe(e) {
+    e.preventDefault()
+
+    if (!email) {
+      toast.error('Please enter your email')
+    } else {
+      // Subsribe to newsletter to be implemented / stored on mongodb
+      //for now show a thank you message
+      toast.success('Thanks for subscribing.')
+      setEmail('')
+    }
   }
 
   return (
@@ -93,14 +113,21 @@ export default function Footer() {
             <h3 className="text-white sm:text-xl font-semibold text-center">
               Subscribe to our newsletter.
             </h3>
-            <form>
+            <form onSubmit={handleSubscribe}>
               <div className="flex space-x-3">
                 <input
-                  type="text"
+                  type="email"
+                  name="email"
+                  id="email"
+                  onChange={handleChange}
                   className="flex-1 px-4 text-center rounded-lg focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400"
                   placeholder="Enter your email"
+                  value={email}
                 />
-                <button className="px-6 py-2  rounded-full bg-primary-700 font-semibold  text-white  hover:bg-primary-600">
+                <button
+                  type="submit"
+                  className="px-6 py-2  rounded-full bg-primary-700 font-semibold  text-white  hover:bg-primary-600"
+                >
                   Subscribe
                 </button>
               </div>
