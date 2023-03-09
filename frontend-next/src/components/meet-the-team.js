@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { BsLinkedin } from 'react-icons/bs'
 
 function MeetTeam() {
   return (
@@ -24,7 +25,7 @@ function MeetTeam() {
           <div className="items-center bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg shadow sm:flex ">
             <div>
               <Image
-                className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+                className="w-full rounded-full"
                 src="/img/team/mikias2.jpg"
                 alt="Mikias Worash"
                 width={200}
@@ -33,12 +34,12 @@ function MeetTeam() {
             </div>
             <div className="p-5 ">
               <h3 className="text-xl font-bold">
-                <a href="#">Mikias Worash</a>
+                <a href="#">Mikias W.</a>
               </h3>
-              <span>CEO & Web Developer</span>
+              <span>MERN Stack Instructor </span>
               <p className="mt-3 mb-4 text-darkGrayishBlue dark:text-gray-300">
-                Develop strategic partnerships to expand reach and increase
-                enrollment
+                Experienced MERN instructor who is dedicated to guiding students
+                through the complexities of building full-stack web apps.
               </p>
               <ul className="flex space-x-4 sm:mt-0">
                 <li>
@@ -47,11 +48,7 @@ function MeetTeam() {
                     className="text-gray-500"
                     target="_blank"
                   >
-                    <img
-                      src="img/linkedin-svgrepo-com.svg"
-                      alt=""
-                      className="w-5 h-4"
-                    />
+                    <BsLinkedin className="w-5 h-5" />
                   </a>
                 </li>
                 <li>
@@ -97,7 +94,7 @@ function MeetTeam() {
           <div className="items-center bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg shadow sm:flex ">
             <div>
               <Image
-                className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+                className="w-full rounded-full"
                 src="/img/team/henok.jpg"
                 alt="Henok Setegne"
                 width={200}
@@ -106,21 +103,17 @@ function MeetTeam() {
             </div>
             <div className="p-5">
               <h3 className="text-xl font-bold">
-                <a href="#">Henok Setegne</a>
+                <a href="#">Henok S.</a>
               </h3>
-              <span>CTO & Web Developer</span>
+              <span>Data Science Instructor</span>
               <p className="mt-3 mb-4 text-darkGrayishBlue dark:text-gray-300">
-                Implement new technologies to enhance student learning
-                experience
+                Accomplished data science instructor with a wealth of experience
+                in the field, with both engaging and interactive style.
               </p>
               <ul className="flex space-x-4 sm:mt-0">
                 <li>
                   <a href="#" className="text-gray-500" target="_blank">
-                    <img
-                      src="img/linkedin-svgrepo-com.svg"
-                      alt=""
-                      className="w-5 h-4"
-                    />
+                    <BsLinkedin className="w-5 h-5" />
                   </a>
                 </li>
                 <li>
@@ -158,27 +151,24 @@ function MeetTeam() {
           <div className="items-center bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg shadow sm:flex ">
             <div>
               <img
-                class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+                class="w-full rounded-full"
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
                 alt="Khalil Abdurehman"
               />
             </div>
             <div className="p-5">
               <h3 className="text-lg font-bold">
-                <a href="#">Khalil Abdurehman</a>
+                <a href="#">Khalil A.</a>
               </h3>
-              <span>COO & Web Developer</span>
+              <span>Python Instructor</span>
               <p className="mt-3 mb-4 text-darkGrayishBlue dark:text-gray-300">
-                Streamline operations to improve efficiency and reduce costs
+                Skilled and experienced instructor with extensive knowledge in
+                Python programming language.
               </p>
               <ul className="flex space-x-4 sm:mt-0">
                 <li>
                   <a href="#" className="text-gray-500" target="_blank">
-                    <img
-                      src="img/linkedin-svgrepo-com.svg"
-                      alt=""
-                      className="w-5 h-4"
-                    />
+                    <BsLinkedin className="w-5 h-5" />
                   </a>
                 </li>
                 <li>
@@ -216,28 +206,24 @@ function MeetTeam() {
           <div className="items-center bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg shadow sm:flex ">
             <div>
               <img
-                className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+                className="w-full rounded-full"
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
                 alt="Ismail"
               />
             </div>
             <div className="p-5">
               <h3 className="text-lg font-bold">
-                <a href="#">Ismail Yimer</a>
+                <a href="#">Ismail Y.</a>
               </h3>
-              <span>CFO & Web Developer</span>
+              <span>UI/UX & MERN Instructor</span>
               <p className="mt-3 mb-4 text-darkGrayishBlue dark:text-gray-300">
-                Maximizing revenue and profitability while maintaining quality
-                education standards
+                Highly skilled UI/UX instructor who has a deep understanding of
+                how to create intuitive and user-friendly interfaces.
               </p>
               <ul className="flex space-x-4 sm:mt-0">
                 <li>
                   <a href="#" className="text-gray-500" target="_blank">
-                    <img
-                      src="img/linkedin-svgrepo-com.svg"
-                      alt=""
-                      className="w-5 h-4"
-                    />
+                    <BsLinkedin className="w-5 h-5" />
                   </a>
                 </li>
                 <li>

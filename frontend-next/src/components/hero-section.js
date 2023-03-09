@@ -31,20 +31,20 @@ export default function Hero() {
             <img
               src="img/cover1.jpg"
               alt="bootcamp img"
-              className="rounded-3xl mb-24 mt-24 w-full h-full ml-40 xl:hidden"
+              className="rounded-3xl mb-8 mt-8 w-full h-full ml-40 xl:hidden"
             />
             <div className="hidden xl:flex flex-row ml-16 space-x-24">
               <img
                 src="img/cover2.jpg"
                 alt="bootcamp img"
-                width={450}
-                className="rounded-2xl mb-40 mt-24 hidden xl:flex"
+                width={400}
+                className="rounded-2xl mb-40 mt-24 -rotate-12 hidden xl:flex"
               />
               <img
                 src="img/cover3.jpg"
                 alt="bootcamp img"
                 width={350}
-                className="rounded-2xl mb-24 mt-40 hidden xl:flex"
+                className="rounded-3xl self-center mt-8 rotate-12 hidden xl:flex"
               />
             </div>
           </div>

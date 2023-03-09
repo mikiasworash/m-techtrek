@@ -10,7 +10,7 @@ function CourseItem({ course }) {
   const { _id, title, description, tuition, bootcamp, minimumSkill } = course
 
   return (
-    <div className="w-5/6 md:w-1/2 mx-auto">
+    <div className="w-5/6 md:w-[700px] lg:w-[900px] mx-auto">
       <Link href={`/courses/${_id}`}>
         <div className="flex items-center flex-col mt-24 mb-12">
           <div className="flex flex-col items-center p-12 space-y-2 rounded-lg bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600">

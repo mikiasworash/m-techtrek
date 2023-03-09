@@ -4,6 +4,11 @@ import Link from 'next/link'
 import { toast } from 'react-toastify'
 import { useState } from 'react'
 
+import { BsGithub } from 'react-icons/bs'
+import { BsLinkedin } from 'react-icons/bs'
+import { BsTwitter } from 'react-icons/bs'
+import { BsTelegram } from 'react-icons/bs'
+
 export default function Footer() {
   const { data: session, status } = useSession()
   const [email, setEmail] = useState('')
@@ -36,7 +41,7 @@ export default function Footer() {
         <div className="container flex flex-col-reverse justify-between px-6 py-10 mx-auto mt-32 space-y-8 lg:flex-row lg:space-y-0">
           {/*  Logo and social links container  */}
           <div className="flex flex-col-reverse items-center justify-between space-y-12 lg:flex-col lg:space-y-0 lg:items-start">
-            <div className="mx-auto my-6 text-center text-white lg:hidden">
+            <div className="mx-auto  my-6 text-center text-white lg:hidden">
               Copyright &copy; 2022 All Rights Reserved!
             </div>
             {/*  Logo  */}
@@ -45,7 +50,7 @@ export default function Footer() {
               <FaSchool className="inline pr-2 text-3xl text-white" />
               <Link
                 href={'/'}
-                className="text-white text-lg font-bold align-middle"
+                className="text-white text-2xl font-bold align-middle"
               >
                 m-bootcamp
               </Link>
@@ -53,24 +58,20 @@ export default function Footer() {
             {/*  Social Links  */}
             <div className="flex justify-center space-x-4">
               {/*  Link 1  */}
-              <a href="https://www.facebook.com" target="_blank">
-                <img src="img/icon-facebook.svg" alt="" className="h-8" />
+              <a href="https://www.linkedin.com" target="_blank">
+                <BsLinkedin className="h-6 w-6 text-white" />
               </a>
               {/*  Link 2  */}
-              <a href="https://www.youtube.com" target="_blank">
-                <img src="img/icon-youtube.svg" alt="" className="h-8" />
+              <a href="https://www.twitter.com" target="_blank">
+                <BsTwitter className="h-6 w-6 text-white" />
               </a>
               {/*  Link 3  */}
-              <a href="https://www.twitter.com" target="_blank">
-                <img src="img/icon-twitter.svg" alt="" className="h-8" />
+              <a href="https://www.github.com" target="_blank">
+                <BsGithub className="h-6 w-6 text-white" />
               </a>
               {/* Link 4  */}
-              <a href="https://www.pinterest.com" target="_blank">
-                <img src="img/icon-pinterest.svg" alt="" className="h-8" />
-              </a>
-              {/*  Link 5  */}
-              <a href="https://www.instagram.com" target="_blank">
-                <img src="img/icon-instagram.svg" alt="" className="h-8" />
+              <a href="https://www.telegram.com" target="_blank">
+                <BsTelegram className="h-6 w-6 text-white" />
               </a>
             </div>
           </div>

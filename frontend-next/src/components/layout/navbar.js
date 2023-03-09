@@ -5,9 +5,9 @@ import CourseContext from '../../context/CourseContext'
 import { FaSchool } from 'react-icons/fa'
 import { BsSearch } from 'react-icons/bs'
 import Link from 'next/link'
-import Alert from './Alert'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid'
 import { useTheme } from 'next-themes'
+import { toast } from 'react-toastify'
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false)
@@ -26,7 +26,6 @@ export default function Navbar() {
     coursesData,
     searchCourses,
     clearResults,
-    setAlert,
   } = useContext(CourseContext)
 
   const handleChange = (e) => {
@@ -37,7 +36,7 @@ export default function Navbar() {
     e.preventDefault()
 
     if (courseTitle === '' && coursesData.success == null) {
-      setAlert('Please enter a title', 'error')
+      toast.error('Please enter a title')
     } else if (coursesData.count > 0 || coursesData.success === false) {
       clearResults()
     } else {
@@ -69,8 +68,8 @@ export default function Navbar() {
   }
 
   return (
-    <div className="fixed top-0 mb-80 mx-auto bg-veryLightGray border-b-solid border-b border-b-blue-100 dark:bg-veryDarkBlue dark:border-b-gray-600 w-full z-50 bg-opacity-95 dark:bg-opacity-90">
-      <nav className="relative container mx-auto p-2 lg:p-4">
+    <div className="fixed top-0 left-0 right-0 mb-80  bg-veryLightGray border-b-solid border-b border-b-blue-100 dark:bg-veryDarkBlue dark:border-b-gray-600 z-50 bg-opacity-95 dark:bg-opacity-90">
+      <nav className="relative w-full lg:mx-4 p-2 lg:p-4">
         {/* Flex Container */}
         <div className="flex items-center justify-between">
           {/*  Logo */}
@@ -79,7 +78,7 @@ export default function Navbar() {
             <FaSchool className="inline pr-2 text-3xl" />
             <Link
               href={'/'}
-              className="text-lg font-bold align-middle inline"
+              className="text-lg md:text-2xl font-bold align-middle inline"
               onClick={clearResults}
             >
               m-bootcamp
@@ -104,11 +103,10 @@ export default function Navbar() {
           {/* Search Form  */}
           <form onSubmit={handleSubmit}>
             <div className="hidden lg:flex space-x-3 relative">
-              <Alert />
-              <BsSearch className="absolute left-56 top-3" />
+              <BsSearch className="absolute left-10 top-3" />
               <input
                 type="text"
-                className="flex-1 px-3 rounded-lg lg:w-72 text-center focus:outline-none border-2 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+                className="px-3 rounded-lg lg:w-72 text-center focus:outline-none border-2 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
                 placeholder="Search for Courses"
                 value={courseTitle}
                 onChange={handleChange}
@@ -127,7 +125,7 @@ export default function Navbar() {
           </form>
 
           {/*  Menu Items*/}
-          <div className="hidden lg:flex space-x-6">
+          <div className="hidden lg:flex space-x-6 mr-16">
             <a href="/#featured-courses" className="hover:text-primary-700">
               Courses
             </a>
@@ -249,7 +247,7 @@ export default function Navbar() {
       {currentPath == '/' ? (
         <div>
           <form onSubmit={handleSubmit}>
-            <div className="text-center lg:hidden space-x-3">
+            <div className="text-center lg:hidden mb-4 space-x-3">
               <input
                 type="text"
                 className="flex-1 px-3 py-2 rounded-lg md:w-64 text-center focus:outline-none border-2 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
@@ -269,9 +267,6 @@ export default function Navbar() {
               )}
             </div>
           </form>
-          <div className="max-w-md mx-auto lg:hidden">
-            <Alert />
-          </div>
         </div>
       ) : (
         ''
