@@ -69,7 +69,7 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-0 left-0 right-0 mb-80  bg-veryLightGray border-b-solid border-b border-b-blue-100 dark:bg-veryDarkBlue dark:border-b-gray-600 z-50 bg-opacity-95 dark:bg-opacity-90">
-      <nav className="relative w-full lg:mx-4 p-2 lg:p-4">
+      <nav className="relative w-full lg:mx-4 xl:mx-16 p-2 lg:p-4">
         {/* Flex Container */}
         <div className="flex items-center justify-between">
           {/*  Logo */}
@@ -78,10 +78,10 @@ export default function Navbar() {
             <FaSchool className="inline pr-2 text-3xl" />
             <Link
               href={'/'}
-              className="text-lg md:text-2xl font-bold align-middle inline"
+              className="text-lg md:text-xl font-bold align-middle inline"
               onClick={clearResults}
             >
-              m-bootcamp
+              M-BOOTCAMP
             </Link>
             {currentTheme === 'dark' ? (
               <SunIcon
@@ -125,32 +125,32 @@ export default function Navbar() {
           </form>
 
           {/*  Menu Items*/}
-          <div className="hidden lg:flex space-x-6 mr-16">
+          <div className="hidden lg:flex space-x-6 xl:mr-32">
             <a href="/#featured-courses" className="hover:text-primary-700">
-              Courses
+              COURSES
             </a>
             {session && status === 'authenticated' && (
               <Link href="/profile" className="hover:text-primary-700">
-                Profile
+                PROFILE
               </Link>
             )}
             {!session && (
               <Link href="/auth" className="hover:text-primary-700">
-                Log In
+                LOG-IN
               </Link>
             )}
             <Link href="/#meet-the-team" className="hover:text-primary-700">
-              About
+              ABOUT
             </Link>
             <Link href="/#contact" className="hover:text-primary-700">
-              Contact
+              CONTACT
             </Link>
             {session && (
               <button
                 onClick={logoutHandler}
                 className="text-white bg-brightRed hover:bg-red-800 font-medium rounded-lg text-sm px-2 py-1"
               >
-                Log Out
+                LOG OUT
               </button>
             )}
 
@@ -197,7 +197,7 @@ export default function Navbar() {
               onClick={() => setHamburgerClicked((current) => !current)}
               className="hover:hover:text-primary-700 dark:hover:text-primary-500"
             >
-              Courses
+              COURSES
             </Link>
             {session && status === 'authenticated' && (
               <Link
@@ -205,7 +205,7 @@ export default function Navbar() {
                 onClick={() => setHamburgerClicked((current) => !current)}
                 className="hover:hover:text-primary-700 dark:hover:text-primary-500"
               >
-                Profile
+                PROFILE
               </Link>
             )}
             {!session && (
@@ -214,7 +214,7 @@ export default function Navbar() {
                 onClick={() => setHamburgerClicked((current) => !current)}
                 className="hover:hover:text-primary-700 dark:hover:text-primary-500"
               >
-                Log In
+                LOG IN
               </Link>
             )}
             <Link
@@ -222,21 +222,21 @@ export default function Navbar() {
               onClick={() => setHamburgerClicked((current) => !current)}
               className="hover:hover:text-primary-700 dark:hover:text-primary-500"
             >
-              About
+              ABOUT
             </Link>
             <Link
               href="/#contact"
               onClick={() => setHamburgerClicked((current) => !current)}
               className="hover:hover:text-primary-700 dark:hover:text-primary-500"
             >
-              Contact
+              CONTACT
             </Link>
             {session && (
               <button
                 onClick={logoutHandler}
                 className="text-white bg-brightRed hover:bg-red-800 font-medium rounded-lg text-sm px-2 py-1"
               >
-                Log Out
+                LOG OUT
               </button>
             )}
           </div>

@@ -44,7 +44,7 @@ export default function Hero() {
                 src="img/cover3.jpg"
                 alt="bootcamp img"
                 width={350}
-                className="rounded-3xl self-center mt-8 rotate-12 hidden xl:flex"
+                className="rounded-3xl self-center mt-8 rotate-3 hidden xl:flex"
               />
             </div>
           </div>
