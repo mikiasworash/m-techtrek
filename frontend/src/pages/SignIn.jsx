@@ -1,12 +1,10 @@
 import React from 'react'
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import visibilityIcon from '../components/layout/assets/visibilityIcon.svg'
-import BootcampContext from '../context/BootcampContext'
 
 function Register() {
-  const { logIn } = useContext(BootcampContext)
   const [showPassword, setShowPassword] = useState(false)
 
   const navigate = useNavigate()
@@ -42,7 +40,6 @@ function Register() {
             ? toast.success('Successfully Signed In!')
             : toast.error(data.error)
           if (data.success) {
-            logIn()
             navigate('/')
           }
           console.log(data)

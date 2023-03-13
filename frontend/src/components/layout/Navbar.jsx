@@ -1,11 +1,18 @@
-import { useContext } from 'react'
 import { FaSchool } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import BootcampContext from '../../context/BootcampContext'
+import Cookies from 'js-cookie'
+import { useNavigate } from 'react-router-dom'
 
 function Navbar({ title }) {
-  const { loggedIn } = useContext(BootcampContext)
+  const token = Cookies.get('token')
+
+  const navigate = useNavigate()
+
+  const handleLogOut = () => {
+    Cookies.remove('token')
+    navigate('/signin')
+  }
 
   return (
     <nav className="navbar mb-12 shadow-lg bg-neutral text-neutral-content">
@@ -25,23 +32,34 @@ function Navbar({ title }) {
             <Link to="/courses" className="btn btn-ghost btn-sm rounded-btn">
               Courses
             </Link>
-            {loggedIn ? (
-              <Link to="/profile" className="btn btn-ghost btn-sm rounded-btn">
-                Profile
-              </Link>
+            {token ? (
+              <>
+                <Link
+                  to="/profile"
+                  className="btn btn-ghost btn-sm rounded-btn"
+                >
+                  Profile
+                </Link>
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-ghost btn-sm rounded-btn"
+                >
+                  Logout
+                </button>
+              </>
             ) : (
-              <Link to="/signin" className="btn btn-ghost btn-sm rounded-btn">
-                Sign In
-              </Link>
+              <>
+                <Link to="/signin" className="btn btn-ghost btn-sm rounded-btn">
+                  Sign In
+                </Link>
+                <Link
+                  to="/register"
+                  className="btn btn-ghost btn-sm rounded-btn"
+                >
+                  Register
+                </Link>
+              </>
             )}
-            {loggedIn ? (
-              ''
-            ) : (
-              <Link to="/register" className="btn btn-ghost btn-sm rounded-btn">
-                Register
-              </Link>
-            )}
-
             <Link to="/about" className="btn btn-ghost btn-sm rounded-btn">
               About
             </Link>
