@@ -52,7 +52,7 @@ export default function Footer() {
                 href={'/'}
                 className="text-white text-2xl font-bold align-middle"
               >
-                m-bootcamp
+                m-TechTrek
               </Link>
             </div>
             {/*  Social Links  */}

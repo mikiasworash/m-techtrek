@@ -146,8 +146,6 @@ function UserProfile({ user }) {
             }
           })
       })
-
-    console.log(data)
   }
 
   return (

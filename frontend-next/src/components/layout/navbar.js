@@ -81,7 +81,7 @@ export default function Navbar() {
               className="text-lg md:text-xl font-bold align-middle inline"
               onClick={clearResults}
             >
-              M-BOOTCAMP
+              m-TechTrek
             </Link>
             {currentTheme === 'dark' ? (
               <SunIcon

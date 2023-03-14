@@ -56,7 +56,7 @@ function Contact() {
             </div>
             <div>
               <label
-                for="subject"
+                htmlFor="subject"
                 class="block mb-2 text-sm text-left font-medium dark:text-gray-400"
               >
                 Subject
@@ -72,7 +72,7 @@ function Contact() {
             </div>
             <div class="sm:col-span-2">
               <label
-                for="message"
+                htmlFor="message"
                 class="block mb-2 text-sm text-left font-medium dark:text-gray-400"
               >
                 Your message
