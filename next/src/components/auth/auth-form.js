@@ -1,11 +1,12 @@
 import { useState, useRef } from 'react'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 // import { route } from 'next/dist/next-server/server/router'
 import { toast } from 'react-toastify'
 import Link from 'next/link'
 
 function AuthForm() {
+  const { data: session } = useSession()
   const [isLogin, setIsLogin] = useState(true)
 
   const [formData, setFormData] = useState({
@@ -44,6 +45,10 @@ function AuthForm() {
 
   function switchAuthModeHandler() {
     setIsLogin((prevState) => !prevState)
+  }
+
+  async function handleGoogleAuth() {
+    signIn('google')
   }
 
   async function submitHandler(e) {
@@ -215,8 +220,8 @@ function AuthForm() {
 
                 {/* alternate sign-in  */}
                 <div className="flex flex-row gap-2">
-                  <Link
-                    href={'#'}
+                  <button
+                    onClick={handleGoogleAuth}
                     className="bg-brightRedSupLight2 dark:text-black dark:bg-gray-400 dark:hover:bg-gray-500 w-3/4 mx-auto p-2 flex flex-row justify-center gap-2 rounded-lg hover:bg-brightRedSupLight hover:cursor-pointer"
                   >
                     <svg
@@ -256,7 +261,7 @@ function AuthForm() {
                       />
                     </svg>
                     Google
-                  </Link>
+                  </button>
                 </div>
               </form>
             </div>

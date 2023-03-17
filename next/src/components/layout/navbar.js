@@ -78,7 +78,7 @@ export default function Navbar() {
             <FaSchool className="inline pr-2 text-3xl" />
             <Link
               href={'/'}
-              className="text-lg md:text-xl font-bold align-middle inline"
+              className="text-medium md:text-xl font-bold align-middle inline"
               onClick={clearResults}
             >
               m-TechTrek
@@ -95,29 +95,25 @@ export default function Navbar() {
               />
             )}
           </div>
-          {/* Logo Images
-          <Link href={'/'} class="pt-2">
-            <img src="" alt="m-bootcamp" />
-          </Link> */}
 
           {/* Search Form  */}
           <form onSubmit={handleSubmit}>
             <div className="hidden lg:flex space-x-3 relative">
-              <BsSearch className="absolute left-10 top-3" />
+              <BsSearch className="absolute left-10 top-2.5" />
               <input
                 type="text"
-                className="px-3 rounded-lg lg:w-72 text-center focus:outline-none border-2 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+                className="px-3 py-1 rounded-lg lg:w-72 text-center focus:outline-none border-2 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
                 placeholder="Search for Courses"
                 value={courseTitle}
                 onChange={handleChange}
               />
               {coursesData.count == 0 && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none dark:bg-gray-600 dark:hover:bg-primary-500">
+                <button className="px-6 py-1 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none dark:bg-gray-600 dark:hover:bg-primary-500">
                   Go
                 </button>
               )}
               {(coursesData.count > 0 || coursesData.success === false) && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none dark:bg-gray-600 dark:hover:bg-gray-400 dark:hover:text-black">
+                <button className="px-6 py-1 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none dark:bg-gray-600 dark:hover:bg-gray-400 dark:hover:text-black">
                   Clear
                 </button>
               )}
@@ -127,30 +123,30 @@ export default function Navbar() {
           {/*  Menu Items*/}
           <div className="hidden lg:flex space-x-6 xl:mr-32">
             <a href="/#featured-courses" className="hover:text-primary-700">
-              COURSES
+              Courses
             </a>
             {session && status === 'authenticated' && (
               <Link href="/profile" className="hover:text-primary-700">
-                PROFILE
+                Profile
               </Link>
             )}
             {!session && (
               <Link href="/auth" className="hover:text-primary-700">
-                LOG-IN
+                Sign-In
               </Link>
             )}
             <Link href="/#meet-the-team" className="hover:text-primary-700">
-              ABOUT
+              About
             </Link>
             <Link href="/#contact" className="hover:text-primary-700">
-              CONTACT
+              Contact
             </Link>
             {session && (
               <button
                 onClick={logoutHandler}
                 className="text-white bg-brightRed hover:bg-red-800 font-medium rounded-lg text-sm px-2 py-1"
               >
-                LOG OUT
+                Log-Out
               </button>
             )}
 
@@ -197,7 +193,7 @@ export default function Navbar() {
               onClick={() => setHamburgerClicked((current) => !current)}
               className="hover:hover:text-primary-700 dark:hover:text-primary-500"
             >
-              COURSES
+              Courses
             </Link>
             {session && status === 'authenticated' && (
               <Link
@@ -205,7 +201,7 @@ export default function Navbar() {
                 onClick={() => setHamburgerClicked((current) => !current)}
                 className="hover:hover:text-primary-700 dark:hover:text-primary-500"
               >
-                PROFILE
+                Profile
               </Link>
             )}
             {!session && (
@@ -214,7 +210,7 @@ export default function Navbar() {
                 onClick={() => setHamburgerClicked((current) => !current)}
                 className="hover:hover:text-primary-700 dark:hover:text-primary-500"
               >
-                LOG IN
+                Sign-In
               </Link>
             )}
             <Link
@@ -222,21 +218,21 @@ export default function Navbar() {
               onClick={() => setHamburgerClicked((current) => !current)}
               className="hover:hover:text-primary-700 dark:hover:text-primary-500"
             >
-              ABOUT
+              About
             </Link>
             <Link
               href="/#contact"
               onClick={() => setHamburgerClicked((current) => !current)}
               className="hover:hover:text-primary-700 dark:hover:text-primary-500"
             >
-              CONTACT
+              Contact
             </Link>
             {session && (
               <button
                 onClick={logoutHandler}
                 className="text-white bg-brightRed hover:bg-red-800 font-medium rounded-lg text-sm px-2 py-1"
               >
-                LOG OUT
+                Log-Out
               </button>
             )}
           </div>
@@ -250,18 +246,18 @@ export default function Navbar() {
             <div className="text-center lg:hidden mb-4 space-x-3">
               <input
                 type="text"
-                className="flex-1 px-3 py-2 rounded-lg md:w-64 text-center focus:outline-none border-2 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+                className="flex-1 px-3 py-1 rounded-lg md:w-64 text-center focus:outline-none border-2 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
                 placeholder="Search for Courses"
                 value={courseTitle}
                 onChange={handleChange}
               />
               {coursesData.count == 0 && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none dark:bg-gray-600 dark:hover:bg-primary-500">
+                <button className="px-6 py-1 text-white rounded-full bg-purplish hover:bg-primary-700 focus:outline-none dark:bg-gray-600 dark:hover:bg-primary-500">
                   Go
                 </button>
               )}
               {(coursesData.count > 0 || coursesData.success === false) && (
-                <button className="px-6 py-2 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none dark:bg-gray-600 dark:hover:bg-gray-400 dark:hover:text-black">
+                <button className="px-6 py-1 text-white rounded-full bg-purplish hover:bg-lightPurplish focus:outline-none dark:bg-gray-600 dark:hover:bg-gray-400 dark:hover:text-black">
                   Clear
                 </button>
               )}
