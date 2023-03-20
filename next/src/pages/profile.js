@@ -1,8 +1,16 @@
 import UserProfile from '@/components/user-profile'
-import { getSession } from 'next-auth/react'
+import { getSession, signOut } from 'next-auth/react'
 import { connectToDatabase } from '@/lib/db'
+import { toast } from 'react-toastify'
 
 function ProfilePage(props) {
+  if (!props.user) {
+    toast.error('User not found. Try Sign Up first.')
+    setTimeout(() => {
+      signOut()
+    }, 4000)
+    return
+  }
   return <UserProfile user={props.user} />
 }
 
@@ -24,6 +32,15 @@ export async function getServerSideProps(context) {
       email: sessionUser.email,
     })
     client.close()
+
+    if (!user) {
+      return {
+        props: {
+          session,
+          user: null,
+        },
+      }
+    }
 
     return {
       props: {
