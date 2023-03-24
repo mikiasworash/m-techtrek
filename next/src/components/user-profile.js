@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FaCloudUploadAlt } from 'react-icons/Fa'
 import { toast } from 'react-toastify'
 import { signOut } from 'next-auth/react'
+import Link from 'next/link'
 
 function UserProfile({ user }) {
   const profilePicture = user.profilePic
@@ -60,7 +61,7 @@ function UserProfile({ user }) {
             setEmailVisible(email)
             if (email !== user.email) {
               toast.success(
-                'Email Update, You will be logged out! Sign in with the new email.'
+                'Email Updated, You will be logged out in a momoment! Sign in with your new email.'
               )
               setTimeout(() => {
                 signOut()
@@ -79,7 +80,6 @@ function UserProfile({ user }) {
 
   const handleDeleteProfile = async (event) => {
     event.preventDefault()
-    console.log('Delete to be implemented')
     fetch('/api/profile/deleteProfile', {
       method: 'DELETE',
       body: JSON.stringify({
@@ -90,7 +90,7 @@ function UserProfile({ user }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          toast.success('Profile deleted! You will be logged out!')
+          toast.success('Profile deleted! You will be logged out in a moment!')
           setTimeout(() => {
             signOut()
           }, 4000)
@@ -99,7 +99,7 @@ function UserProfile({ user }) {
         }
       })
       .catch((err) => {
-        toast.error('Error Deleting Profile.')
+        toast.error('Error Deleting Profile!')
         console.log(err)
       })
   }
@@ -110,21 +110,16 @@ function UserProfile({ user }) {
     const fileInput = Array.from(form.elements).find(
       ({ name }) => name === 'profilepic'
     )
-
     const formData = new FormData()
     for (const file of fileInput.files) {
       formData.append('file', file)
     }
-
     formData.append('upload_preset', 'bootcamp_website_images')
 
-    const data = await fetch(
-      'https://api.cloudinary.com/v1_1/dlyd6gs9k/image/upload',
-      {
-        method: 'POST',
-        body: formData,
-      }
-    )
+    fetch('https://api.cloudinary.com/v1_1/dlyd6gs9k/image/upload', {
+      method: 'POST',
+      body: formData,
+    })
       .then((res) => res.json())
       .then((data) => {
         setImageSrc(data.secure_url)
@@ -140,7 +135,6 @@ function UserProfile({ user }) {
           .then((data) => {
             if (data.success) {
               toast.success('Image Updated!')
-              console.log(data)
             } else {
               toast.error('Error Uploading Image!')
             }
@@ -184,6 +178,22 @@ function UserProfile({ user }) {
               Delete Account
             </button>
           </div>
+          {user.role === 'teacher' && (
+            <div className="flex mt-4 space-x-3 md:mt-6">
+              <Link
+                href={'/courses/addCourse'}
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 outline-none focus:ring-blue-300 "
+              >
+                Add Courses
+              </Link>
+              <Link
+                href={'/courses/view'}
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center bg-brightRedLight dark:bg-brightRed rounded-lg hover:bg-brightRed dark:hover:bg-brightRedLight"
+              >
+                View Courses
+              </Link>
+            </div>
+          )}
         </div>
 
         <div className="">
@@ -258,7 +268,7 @@ function UserProfile({ user }) {
               onClick={handleEditState}
               className="text-white bg-blue-700 hover:bg-blue-600 font-medium rounded-lg px-2 py-2"
             >
-              Edit Profile
+              Apply Edit
             </button>
           </form>
         </div>
@@ -279,14 +289,14 @@ function UserProfile({ user }) {
               onClick={handleDeleteState}
               className="text-white bg-blue-700 hover:bg-blue-600 font-medium rounded-lg px-2 py-1"
             >
-              NO, Cancel
+              NO, Go Back!
             </p>
             <button
               type="submit"
               onClick={handleDeleteState}
               className="text-white bg-brightRedLight dark:bg-brightRed rounded-lg hover:bg-brightRed dark:hover:bg-brightRedLight font-medium  px-2 py-1"
             >
-              Yes, Delete
+              Yes, Delete!
             </button>
           </form>
         </div>
