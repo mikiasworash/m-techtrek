@@ -3,7 +3,7 @@
     "_id": "5d7a514b5d2c12c7449be042",
     "name": "Mikias Worash",
     "email": "mikias@gmail.com",
-    "role": "admin",
+    "role": "teacher",
     "password": "123456"
   },
   {
@@ -65,6 +65,13 @@
     "name": "Sami",
     "email": "sami@gmail.com",
     "role": "user",
+    "password": "123456"
+  },
+  {
+    "_id": "5c8a1d5b0190b214360dc034",
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "role": "admin",
     "password": "123456"
   }
 ]

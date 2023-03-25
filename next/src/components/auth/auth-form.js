@@ -65,7 +65,7 @@ function AuthForm() {
       })
 
       if (!result.error) {
-        toast.success('Login Success!')
+        toast.success('Login Success!', { autoClose: 1000 })
         router.replace('/profile')
       } else {
         toast.error('Login Error! Wrong Credentials!')
@@ -111,7 +111,7 @@ function AuthForm() {
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
-              toast.success('User Registered!')
+              toast.success('User Registered!', { autoClose: 2000 })
               setFormData({
                 name: '',
                 emailIn: '',
@@ -458,7 +458,7 @@ function AuthForm() {
                     className="font-medium hover:underline"
                     onClick={switchAuthModeHandler}
                   >
-                    Log In
+                    Sign In
                   </a>
                 </p>
               </form>

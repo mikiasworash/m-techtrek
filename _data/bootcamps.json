@@ -40,8 +40,15 @@
     "website": "https://ismailtech.com",
     "associatedCourses": [
       "5d725cfec4ded7bcb480eaa5",
-      "5d725cfec4ded7bcb480eaa6",
-      "5d725cfec4ded7bcb480eaa7"
+      "5d725cfec4ded7bcb480eaa6"
     ]
+  },
+  {
+    "_id": "5d725a1b7b292f5f8ceff789",
+    "user": "5c8a1d5b0190b214360dc033",
+    "name": "Sami Tech",
+    "email": "samigirma@gmail.com",
+    "description": "Sami Tech is an established developer who can teach you to become the best developer possible.",
+    "associatedCourses": ["5d725cfec4ded7bcb480eaa7"]
   }
 ]
