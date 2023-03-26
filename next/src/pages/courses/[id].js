@@ -1,9 +1,16 @@
+import { getSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Spinner from '@/components/layout/Spinner'
 import avatar from '../../../public/img/course.jpg'
 import Image from 'next/image'
+import { toast } from 'react-toastify'
 
 function CourseDetail(props) {
+  const router = useRouter()
+  const { id } = router.query
+
   const { courseDetail } = props
   if (!courseDetail) {
     return <Spinner />
@@ -18,6 +25,39 @@ function CourseDetail(props) {
     minimumSkill,
     scholarshipAvailable,
   } = courseDetail
+
+  const handleEnrollment = (e) => {
+    e.preventDefault()
+
+    getSession().then((session) => {
+      if (session) {
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userEmail: session.user.email,
+            courseId: id,
+          }),
+        }
+
+        fetch('/api/course/enrollToCourse', requestOptions)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              toast.success('Successfully enrolled to course', {
+                autoClose: 2500,
+              })
+            } else if (data.message == 'invalid user') {
+              toast.error('User not found')
+            } else {
+              toast.error('Failed to enroll')
+            }
+          })
+      } else {
+        router.replace('/auth')
+      }
+    })
+  }
 
   return (
     <>
@@ -88,12 +128,13 @@ function CourseDetail(props) {
           </div>
         </div>
         <div className="mb-4 text-center">
-          <Link
-            href={'/auth'}
+          <button
+            // href={'/auth'}
+            onClick={handleEnrollment}
             className="p-3 px-6 pt-2 text-white rounded-lg bg-purplish hover:bg-primary-700 dark:bg-primary-700 dark:hover:bg-primary-500 focus:outline-none"
           >
             Enroll
-          </Link>
+          </button>
         </div>
       </div>
     </>

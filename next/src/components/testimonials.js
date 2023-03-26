@@ -10,7 +10,7 @@ function Testimonials() {
         <h2 className="text-4xl font-bold text-center mb-2">
           What makes out bootcamp special?
         </h2>
-        <p class="font-light text-gray-500 mb-4 sm:text-xl dark:text-gray-400">
+        <p className="font-light text-gray-500 mb-4 sm:text-xl dark:text-gray-400">
           Don't take our words for it. Hear it from our students.
         </p>
         {/* Testimonials Container  */}
