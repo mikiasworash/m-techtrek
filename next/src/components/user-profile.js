@@ -187,7 +187,18 @@ function UserProfile({ user }) {
                 Add Courses
               </Link>
               <Link
-                href={'/courses/view'}
+                href={'/courses/viewCourses'}
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center bg-brightRedLight dark:bg-brightRed rounded-lg hover:bg-brightRed dark:hover:bg-brightRedLight"
+              >
+                View Courses
+              </Link>
+            </div>
+          )}
+
+          {user.role === 'user' && (
+            <div className="flex mt-4 space-x-3 md:mt-6">
+              <Link
+                href={'/courses/viewCourses'}
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-center bg-brightRedLight dark:bg-brightRed rounded-lg hover:bg-brightRed dark:hover:bg-brightRedLight"
               >
                 View Courses

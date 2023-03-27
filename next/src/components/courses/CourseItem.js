@@ -14,11 +14,6 @@ function CourseItem({ course }) {
       <Link href={`/courses/${_id}`}>
         <div className="flex items-center flex-col mt-24 mb-12">
           <div className="flex flex-col items-center p-12 space-y-2 rounded-lg bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600">
-            {/* <img
-              src="img/course.jpg"
-              className="w-32 -mt-20 rounded-lg"
-              alt="course image"
-            /> */}
             <Image
               src={courseImage}
               className="w-32 -mt-20 rounded-lg"

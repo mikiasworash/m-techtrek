@@ -225,12 +225,11 @@ export async function getServerSideProps(context) {
       },
     }
   } else {
-    const sessionUser = session.user
     const client = await connectToDatabase()
 
     const usersCollection = client.db().collection('users')
     const user = await usersCollection.findOne({
-      email: sessionUser.email,
+      email: session.user.email,
     })
     if (!user || user.role !== 'teacher') {
       client.close()
