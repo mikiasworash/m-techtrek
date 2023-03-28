@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 import { getSession } from 'next-auth/react'
 import { connectToDatabase } from '@/lib/db'
 import CourseItem from '@/components/courses/CourseItem'
@@ -12,48 +11,18 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 function viewCourses({ courses, role }) {
-  const courseIds = JSON.parse(courses)
-  const allCourses = []
-  const [loading, setLoading] = useState(true)
-  const [coursesToShow, setCoursesToShow] = useState([])
-
-  useEffect(() => {
-    async function fetchCourses() {
-      for (const id of courseIds) {
-        const response = await fetch(
-          `${process.env.REACT_APP_SERVER_URL}/courses/${id}`
-        )
-        const course = await response.json()
-        allCourses.push(course.data)
-      }
-    }
-
-    fetchCourses().then(() => {
-      setLoading(false)
-      setCoursesToShow(allCourses)
-      console.log(coursesToShow)
-      console.log(allCourses)
-    })
-  }, [])
-
-  if (loading) {
+  if (!courses) {
     return <Spinner />
   }
 
   return (
     <div id="featured-courses" className="rounded-lg max-w-6xl px-5 mx-auto">
-      <div className="text-center py-32 lg:py-20">
+      <div className="text-center py-24">
         <h2 className="text-4xl mb-2 font-bold">Your Courses</h2>
-
-        {role === 'user' ? (
-          <p className="font-light text-gray-500 mb-4 sm:text-xl dark:text-gray-400">
-            Swipe and explore through courses you are currently taking{' '}
-          </p>
-        ) : (
-          <p className="font-light text-gray-500 mb-4 sm:text-xl dark:text-gray-400">
-            Swipe and explore through courses you are currently teaching
-          </p>
-        )}
+        <p className="font-light text-gray-500 mb-4 sm:text-xl dark:text-gray-400">
+          Swipe and explore through courses you are currently{' '}
+          {role == 'user' ? 'taking' : 'teaching'}
+        </p>
         <Swiper
           // install Swiper modules
           modules={[Pagination]}
@@ -66,7 +35,7 @@ function viewCourses({ courses, role }) {
             '--swiper-pagination-bullet-inactive-opacity': '1',
           }}
         >
-          {coursesToShow.map((course) => {
+          {courses.map((course) => {
             return (
               <SwiperSlide key={course._id}>
                 <CourseItem key={course._id} course={course} />
@@ -106,11 +75,19 @@ export async function getServerSideProps(context) {
     }
 
     if (user.role === 'user') {
+      const courses = []
+      for (const id of user.enrolledCourses) {
+        const response = await fetch(
+          `${process.env.REACT_APP_SERVER_URL}/courses/${id}`
+        )
+        const course = await response.json()
+        courses.push(course.data)
+      }
       client.close()
       return {
         props: {
           session,
-          courses: JSON.stringify(user.enrolledCourses),
+          courses,
           role: user.role,
         },
       }
@@ -118,12 +95,21 @@ export async function getServerSideProps(context) {
 
     const bootcampCollections = client.db().collection('bootcamps')
     const bootcamp = await bootcampCollections.findOne({ user: user._id })
+
+    const courses = []
+    for (const id of bootcamp.associatedCourses) {
+      const response = await fetch(
+        `${process.env.REACT_APP_SERVER_URL}/courses/${id}`
+      )
+      const course = await response.json()
+      courses.push(course.data)
+    }
     client.close()
 
     return {
       props: {
         session,
-        courses: JSON.stringify(bootcamp.associatedCourses),
+        courses,
         role: user.role,
       },
     }
