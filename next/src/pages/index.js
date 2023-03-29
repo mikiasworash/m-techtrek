@@ -8,14 +8,31 @@ import Testimonials from '@/components/testimonials'
 import Contact from '@/components/contact'
 import MeetTeam from '@/components/meet-the-team'
 import CourseLevels from '@/components/courses/CourseLevels'
+import Head from 'next/head'
 
 export default function Home({ featuredCourses }) {
   const { courses, coursesData } = useContext(CourseContext)
 
   return courses.length > 0 || coursesData.success === false ? (
-    <CourseResults />
+    <>
+      <Head>
+        <title>m-TechTrek | Search Results</title>
+        <meta
+          name="description"
+          content="A bootcamp directory where you can find various courses on technology"
+        />
+      </Head>
+      <CourseResults />
+    </>
   ) : (
     <>
+      <Head>
+        <title>m-TechTrek | Home</title>
+        <meta
+          name="description"
+          content="A bootcamp directory where you can find various courses on technology"
+        />
+      </Head>
       <Hero />
       <Features />
       <CourseLevels />

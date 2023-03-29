@@ -2,6 +2,7 @@ import { getSession } from 'next-auth/react'
 import { connectToDatabase } from '@/lib/db'
 import CourseItem from '@/components/courses/CourseItem'
 import Spinner from '@/components/layout/Spinner'
+import Head from 'next/head'
 
 // import Swiper core and required modules
 import { Pagination } from 'swiper'
@@ -16,35 +17,44 @@ function viewCourses({ courses, role }) {
   }
 
   return (
-    <div id="featured-courses" className="rounded-lg max-w-6xl px-5 mx-auto">
-      <div className="text-center py-24">
-        <h2 className="text-4xl mb-2 font-bold">Your Courses</h2>
-        <p className="font-light text-gray-500 mb-4 sm:text-xl dark:text-gray-400">
-          Swipe and explore through courses you are currently{' '}
-          {role == 'user' ? 'taking' : 'teaching'}
-        </p>
-        <Swiper
-          // install Swiper modules
-          modules={[Pagination]}
-          spaceBetween={40}
-          slidesPerView={1}
-          pagination={{ clickable: true }}
-          style={{
-            '--swiper-pagination-color': 'blue',
-            '--swiper-pagination-bullet-inactive-color': '#999999',
-            '--swiper-pagination-bullet-inactive-opacity': '1',
-          }}
-        >
-          {courses.map((course) => {
-            return (
-              <SwiperSlide key={course._id}>
-                <CourseItem key={course._id} course={course} />
-              </SwiperSlide>
-            )
-          })}
-        </Swiper>
+    <>
+      <Head>
+        <title>m-TechTrek | View Courses</title>
+        <meta
+          name="description"
+          content="A bootcamp directory where you can find various courses on technology"
+        />
+      </Head>
+      <div id="featured-courses" className="rounded-lg max-w-6xl px-5 mx-auto">
+        <div className="text-center py-24">
+          <h2 className="text-4xl mb-2 font-bold">Your Courses</h2>
+          <p className="font-light text-gray-500 mb-4 sm:text-xl dark:text-gray-400">
+            Swipe and explore through courses you are currently{' '}
+            {role == 'user' ? 'taking' : 'teaching'}
+          </p>
+          <Swiper
+            // install Swiper modules
+            modules={[Pagination]}
+            spaceBetween={40}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            style={{
+              '--swiper-pagination-color': 'blue',
+              '--swiper-pagination-bullet-inactive-color': '#999999',
+              '--swiper-pagination-bullet-inactive-opacity': '1',
+            }}
+          >
+            {courses.map((course) => {
+              return (
+                <SwiperSlide key={course._id}>
+                  <CourseItem key={course._id} course={course} />
+                </SwiperSlide>
+              )
+            })}
+          </Swiper>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -9,8 +9,6 @@ export default async function handler(req, res) {
 
   const { userEmail, courseId } = data
 
-  console.log(data)
-
   if (!userEmail || !courseId) {
     res.status(422).json({
       message: 'incomplete data',

@@ -2,6 +2,7 @@ import UserProfile from '@/components/user-profile'
 import { getSession, signOut } from 'next-auth/react'
 import { connectToDatabase } from '@/lib/db'
 import { toast } from 'react-toastify'
+import Head from 'next/head'
 
 function ProfilePage(props) {
   if (!props.user) {
@@ -11,7 +12,18 @@ function ProfilePage(props) {
     }, 4000)
     return
   }
-  return <UserProfile user={props.user} />
+  return (
+    <>
+      <Head>
+        <title>m-TechTrek | Profile</title>
+        <meta
+          name="description"
+          content="A bootcamp directory where you can find various courses on technology"
+        />
+      </Head>
+      <UserProfile user={props.user} />
+    </>
+  )
 }
 
 export async function getServerSideProps(context) {

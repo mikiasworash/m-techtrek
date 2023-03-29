@@ -6,6 +6,7 @@ import Spinner from '@/components/layout/Spinner'
 import avatar from '../../../public/img/course.jpg'
 import Image from 'next/image'
 import { toast } from 'react-toastify'
+import Head from 'next/head'
 
 function CourseDetail(props) {
   const router = useRouter()
@@ -61,6 +62,13 @@ function CourseDetail(props) {
 
   return (
     <>
+      <Head>
+        <title>m-TechTrek | {title}</title>
+        <meta
+          name="description"
+          content="A bootcamp directory where you can find various courses on technology"
+        />
+      </Head>
       <div className="mx-auto min-h-screen w-10/12 mt-20 lg:mt-32 z-0">
         <div className="mb-4">
           <Link href={'/'} className="btn btn-ghost">

@@ -1,7 +1,19 @@
 import IntermediateCourses from '@/components/courses/IntermediateCourses'
+import Head from 'next/head'
 
 export default function Home({ intermediateCourses }) {
-  return <IntermediateCourses intermediateCourses={intermediateCourses} />
+  return (
+    <>
+      <Head>
+        <title>m-TechTrek | Intermediate Courses</title>
+        <meta
+          name="description"
+          content="A bootcamp directory where you can find various courses on technology"
+        />
+      </Head>
+      <IntermediateCourses intermediateCourses={intermediateCourses} />
+    </>
+  )
 }
 
 export async function getStaticProps() {

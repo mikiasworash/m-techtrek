@@ -182,13 +182,13 @@ function UserProfile({ user }) {
             <div className="flex mt-4 space-x-3 md:mt-6">
               <Link
                 href={'/courses/addCourse'}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 outline-none focus:ring-blue-300 "
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 hover:bg-blue-800 rounded-lg outline-none focus:ring-blue-300 "
               >
                 Add Courses
               </Link>
               <Link
                 href={'/courses/viewCourses'}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center bg-brightRedLight dark:bg-brightRed rounded-lg hover:bg-brightRed dark:hover:bg-brightRedLight"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center bg-blue-700 hover:bg-blue-800 rounded-lg"
               >
                 View Courses
               </Link>
@@ -199,7 +199,7 @@ function UserProfile({ user }) {
             <div className="flex mt-4 space-x-3 md:mt-6">
               <Link
                 href={'/courses/viewCourses'}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center bg-brightRedLight dark:bg-brightRed rounded-lg hover:bg-brightRed dark:hover:bg-brightRedLight"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center bg-blue-700 hover:bg-blue-800 rounded-lg"
               >
                 View Courses
               </Link>
