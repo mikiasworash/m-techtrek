@@ -26,7 +26,7 @@ function MeetTeam() {
             <div>
               <Image
                 className="w-full rounded-full"
-                src="/img/team/mikias2.jpg"
+                src="/img/team/mikias.jpg"
                 alt="Mikias Worash"
                 width={200}
                 height={200}
@@ -150,10 +150,12 @@ function MeetTeam() {
 
           <div className="items-center bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg shadow sm:flex ">
             <div>
-              <img
+              <Image
                 className="w-full rounded-full"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
-                alt="Khalil Abdurehman"
+                src="/img/user.png"
+                alt="Khalil A"
+                width={200}
+                height={200}
               />
             </div>
             <div className="p-5">
@@ -205,10 +207,12 @@ function MeetTeam() {
 
           <div className="items-center bg-veryLightGray hover:bg-veryPaleRed dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg shadow sm:flex ">
             <div>
-              <img
+              <Image
                 className="w-full rounded-full"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
-                alt="Ismail"
+                src="/img/user.png"
+                alt="ismail"
+                width={200}
+                height={200}
               />
             </div>
             <div className="p-5">
@@ -217,8 +221,8 @@ function MeetTeam() {
               </h3>
               <span>UI/UX & MERN Instructor</span>
               <p className="mt-3 mb-4 text-darkGrayishBlue dark:text-gray-300">
-                Highly skilled UI/UX instructor who has a deep understanding of
-                how to create intuitive and user-friendly interfaces.
+                Skilled UI/UX instructor who has a deep understanding of how to
+                create intuitive and user-friendly interfaces.
               </p>
               <ul className="flex space-x-4 sm:mt-0">
                 <li>

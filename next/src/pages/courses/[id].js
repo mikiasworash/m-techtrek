@@ -1,5 +1,4 @@
 import { getSession } from 'next-auth/react'
-import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Spinner from '@/components/layout/Spinner'

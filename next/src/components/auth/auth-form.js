@@ -1,12 +1,10 @@
 import { useState, useRef } from 'react'
-import { signIn, useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 // import { route } from 'next/dist/next-server/server/router'
 import { toast } from 'react-toastify'
-import Link from 'next/link'
 
 function AuthForm() {
-  const { data: session } = useSession()
   const [isLogin, setIsLogin] = useState(true)
 
   const [formData, setFormData] = useState({

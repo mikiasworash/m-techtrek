@@ -26,7 +26,7 @@ export default function Hero() {
               </a>
             </div>
           </div>
-          {/* Image for bootcamp  */}
+          {/* Images for bootcamp  */}
           <div className="hidden lg:flex flex-col md:w-2/3 items-center ">
             <img
               src="img/cover1.jpg"

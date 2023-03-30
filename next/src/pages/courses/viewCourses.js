@@ -29,7 +29,7 @@ function viewCourses({ courses, role }) {
         <div className="text-center py-24">
           <h2 className="text-4xl mb-2 font-bold">Your Courses</h2>
           <p className="font-light text-gray-500 mb-4 sm:text-xl dark:text-gray-400">
-            Swipe and explore through courses you are currently{' '}
+            Swipe through the courses you are currently{' '}
             {role == 'user' ? 'taking' : 'teaching'}
           </p>
           <Swiper
