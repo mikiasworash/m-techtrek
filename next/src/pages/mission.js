@@ -58,15 +58,6 @@ export default function mission() {
             and engaging learning environment.
           </p>
         </div>
-        {/* <div className="text-center mx-auto">
-     <p>
-       In this page, you can read more about our mission and values, as well
-       as our approach to education and training. You'll also find
-       information about our team, including bios and photos of our
-       instructors and staff. We're proud to have a diverse and talented team
-       of professionals who are dedicated to helping our students succeed.
-     </p>
-   </div> */}
         <div className="text-center mx-auto">
           <p>
             Finally, we invite you to get in touch with us if you have any

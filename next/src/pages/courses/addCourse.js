@@ -165,7 +165,7 @@ function addCourse(props) {
               id="tuition"
               name="tuition"
               className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-              placeholder="Enter Tuition Fee"
+              placeholder="Enter tuition fee"
               required
               onChange={handleChange}
               value={tuition}
@@ -199,7 +199,7 @@ function addCourse(props) {
               htmlFor="scholarship"
               className="block mb-2 text-sm text-left font-medium dark:text-gray-400"
             >
-              Scholarship Availability
+              Scholarship
             </label>
             <select
               id="scholarship"
