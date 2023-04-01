@@ -125,6 +125,13 @@ export default function Navbar() {
             <a href="/#featured-courses" className="hover:text-primary-700">
               Courses
             </a>
+            <a
+              href="https://blog-teal-alpha.vercel.app/"
+              target="_blank"
+              className="hover:text-primary-700"
+            >
+              Blog
+            </a>
             {session && status === 'authenticated' && (
               <Link href="/profile" className="hover:text-primary-700">
                 Profile
@@ -195,6 +202,13 @@ export default function Navbar() {
             >
               Courses
             </Link>
+            <a
+              href="https://blog-teal-alpha.vercel.app/"
+              target="_blank"
+              className="hover:hover:text-primary-700 dark:hover:text-primary-500"
+            >
+              Blog
+            </a>
             {session && status === 'authenticated' && (
               <Link
                 href="/profile"

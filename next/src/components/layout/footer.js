@@ -81,6 +81,13 @@ export default function Footer() {
               <a href="#featured-courses" className="hover:text-brightRed">
                 Courses
               </a>
+              <a
+                href="https://blog-teal-alpha.vercel.app/"
+                target="_blank"
+                className="hover:text-brightRed"
+              >
+                Blog
+              </a>
               {session && status === 'authenticated' && (
                 <Link href="/profile" className="hover:text-brightRed">
                   Profile
