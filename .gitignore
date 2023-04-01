@@ -2,5 +2,4 @@ node_modules/
 public/uploads/
 config/config.env
 .next
-src/lib/db.js
 next.config.js
